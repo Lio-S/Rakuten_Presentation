@@ -21,10 +21,10 @@ def initialize_pipeline():
     
     # Vérification des fichiers requis
     required_files = [
-        'config.yaml',
         'data/X_train_update.csv',
         'data/Y_train_CVw08PX.csv',
-        'data/X_test_update.csv'
+        'data/X_test_update.csv',
+        'config.yaml'
     ]
     
     missing_files = [f for f in required_files if not os.path.exists(f)]

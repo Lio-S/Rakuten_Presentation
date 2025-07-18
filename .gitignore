@@ -3,3 +3,4 @@
 **/__pycache__/**
 **/images/**
 *.npz
+**/temp_uploads/** 

@@ -19,7 +19,7 @@ from sklearn.metrics import (
     accuracy_score, f1_score#, precision_score, recall_score
 )
 from sklearn.model_selection import train_test_split#, StratifiedKFold
-import optuna
+# import optuna
 
 # Imports PyTorch
 import torch
