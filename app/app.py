@@ -163,7 +163,7 @@ def check_columns_and_get_mapping(df, expected_columns, file_type="rapport"):
     # Créer une copie du DataFrame pour ajouter les colonnes manquantes
     df_processed = df.copy()
     
-    # Mapping des codes vers les noms (basé sur votre preprocess.py)
+    # Mapping des codes vers les noms
     category_names = {
         10: "Livres", 2280: "Jeux vidéo", 50: "Jouets & Jeux",
         1280: "Accessoires téléphones", 2705: "Accessoires console",
@@ -179,125 +179,125 @@ def check_columns_and_get_mapping(df, expected_columns, file_type="rapport"):
         1940: "Instrument musique", 1301: "Consoles rétro"
     }
     
-    # Mapping détaillé avec descriptions et emoji
-    def get_category_description(code):
-        descriptions = {
-            10: {"name": "Livres", "emoji": "📚", "desc": "Romans, essais, BD, magazines"},
-            40: {"name": "DVD & Films", "emoji": "🎬", "desc": "Films, séries, documentaires"},
-            50: {"name": "Jouets & Jeux", "emoji": "🧸", "desc": "Jouets enfants, jeux de société"},
-            60: {"name": "Consoles", "emoji": "🎮", "desc": "PlayStation, Xbox, Nintendo"},
-            1140: {"name": "TV", "emoji": "📺", "desc": "Télévisions, écrans, projecteurs"},
-            1160: {"name": "Électroménager", "emoji": "🏠", "desc": "Frigo, lave-linge, micro-ondes"},
-            1180: {"name": "Décoration", "emoji": "🖼️", "desc": "Meubles, luminaires, objets déco"},
-            1280: {"name": "Accessoires téléphones", "emoji": "📱", "desc": "Coques, chargeurs, écouteurs"},
-            1281: {"name": "Téléphonie fixe", "emoji": "☎️", "desc": "Téléphones fixes, répondeurs"},
-            1300: {"name": "Jeux vidéo ancien", "emoji": "🕹️", "desc": "Jeux rétro, collectors"},
-            1301: {"name": "Consoles rétro", "emoji": "👾", "desc": "Anciennes consoles de jeu"},
-            1302: {"name": "Jeux vidéo rétro", "emoji": "🎯", "desc": "Jeux vintage, cartouches"},
-            1320: {"name": "CD", "emoji": "💿", "desc": "Musique, albums, compilations"},
-            1560: {"name": "Photos", "emoji": "📷", "desc": "Appareils photo, objectifs"},
-            1920: {"name": "Musique amplifiée", "emoji": "🎵", "desc": "Enceintes, amplis, sono"},
-            1940: {"name": "Instrument musique", "emoji": "🎸", "desc": "Guitares, pianos, batteries"},
-            2060: {"name": "Articles soins", "emoji": "🧴", "desc": "Cosmétiques, hygiène, bien-être"},
-            2220: {"name": "Puériculture", "emoji": "👶", "desc": "Poussettes, biberons, vêtements bébé"},
-            2280: {"name": "Jeux vidéo", "emoji": "🎮", "desc": "Jeux récents, dernières sorties"},
-            2403: {"name": "Livres en langues étrangères", "emoji": "📖", "desc": "Livres anglais, multilingues"},
-            2462: {"name": "Fournitures bureau", "emoji": "✏️", "desc": "Stylos, cahiers, classeurs"},
-            2522: {"name": "Équipement bébé", "emoji": "🍼", "desc": "Mobilier, sécurité, éveil bébé"},
-            2582: {"name": "Matériel & accessoires", "emoji": "🔧", "desc": "Outils, bricolage, jardinage"},
-            2583: {"name": "Articles sport", "emoji": "⚽", "desc": "Équipement sportif, vêtements"},
-            2585: {"name": "Sports & Loisirs", "emoji": "🏃", "desc": "Fitness, outdoor, loisirs créatifs"},
-            2705: {"name": "Accessoires console", "emoji": "🎮", "desc": "Manettes, casques gaming"},
-            2905: {"name": "Instruments musique", "emoji": "🎺", "desc": "Instruments à vent, cordes, percussions"}
-        }
+    # # Mapping détaillé avec descriptions et emoji
+    # def get_category_description(code):
+    #     descriptions = {
+    #         10: {"name": "Livres", "emoji": "📚", "desc": "Romans, essais, BD, magazines"},
+    #         40: {"name": "DVD & Films", "emoji": "🎬", "desc": "Films, séries, documentaires"},
+    #         50: {"name": "Jouets & Jeux", "emoji": "🧸", "desc": "Jouets enfants, jeux de société"},
+    #         60: {"name": "Consoles", "emoji": "🎮", "desc": "PlayStation, Xbox, Nintendo"},
+    #         1140: {"name": "TV", "emoji": "📺", "desc": "Télévisions, écrans, projecteurs"},
+    #         1160: {"name": "Électroménager", "emoji": "🏠", "desc": "Frigo, lave-linge, micro-ondes"},
+    #         1180: {"name": "Décoration", "emoji": "🖼️", "desc": "Meubles, luminaires, objets déco"},
+    #         1280: {"name": "Accessoires téléphones", "emoji": "📱", "desc": "Coques, chargeurs, écouteurs"},
+    #         1281: {"name": "Téléphonie fixe", "emoji": "☎️", "desc": "Téléphones fixes, répondeurs"},
+    #         1300: {"name": "Jeux vidéo ancien", "emoji": "🕹️", "desc": "Jeux rétro, collectors"},
+    #         1301: {"name": "Consoles rétro", "emoji": "👾", "desc": "Anciennes consoles de jeu"},
+    #         1302: {"name": "Jeux vidéo rétro", "emoji": "🎯", "desc": "Jeux vintage, cartouches"},
+    #         1320: {"name": "CD", "emoji": "💿", "desc": "Musique, albums, compilations"},
+    #         1560: {"name": "Photos", "emoji": "📷", "desc": "Appareils photo, objectifs"},
+    #         1920: {"name": "Musique amplifiée", "emoji": "🎵", "desc": "Enceintes, amplis, sono"},
+    #         1940: {"name": "Instrument musique", "emoji": "🎸", "desc": "Guitares, pianos, batteries"},
+    #         2060: {"name": "Articles soins", "emoji": "🧴", "desc": "Cosmétiques, hygiène, bien-être"},
+    #         2220: {"name": "Puériculture", "emoji": "👶", "desc": "Poussettes, biberons, vêtements bébé"},
+    #         2280: {"name": "Jeux vidéo", "emoji": "🎮", "desc": "Jeux récents, dernières sorties"},
+    #         2403: {"name": "Livres en langues étrangères", "emoji": "📖", "desc": "Livres anglais, multilingues"},
+    #         2462: {"name": "Fournitures bureau", "emoji": "✏️", "desc": "Stylos, cahiers, classeurs"},
+    #         2522: {"name": "Équipement bébé", "emoji": "🍼", "desc": "Mobilier, sécurité, éveil bébé"},
+    #         2582: {"name": "Matériel & accessoires", "emoji": "🔧", "desc": "Outils, bricolage, jardinage"},
+    #         2583: {"name": "Articles sport", "emoji": "⚽", "desc": "Équipement sportif, vêtements"},
+    #         2585: {"name": "Sports & Loisirs", "emoji": "🏃", "desc": "Fitness, outdoor, loisirs créatifs"},
+    #         2705: {"name": "Accessoires console", "emoji": "🎮", "desc": "Manettes, casques gaming"},
+    #         2905: {"name": "Instruments musique", "emoji": "🎺", "desc": "Instruments à vent, cordes, percussions"}
+    #     }
         
-        return descriptions.get(code, {
-            "name": f"Code_{code}", 
-            "emoji": "❓", 
-            "desc": "Catégorie non documentée"
-        })
+    #     return descriptions.get(code, {
+    #         "name": f"Code_{code}", 
+    #         "emoji": "❓", 
+    #         "desc": "Catégorie non documentée"
+    #     })
     
-    # Fonction pour améliorer la sélection d'exemples
-    def get_diverse_examples():
-        """Sélectionne des exemples en s'assurant d'avoir une bonne diversité de catégories"""
-        try:
-            # Charger les données
-            X_train_df = pd.read_csv('data/X_train_update.csv', index_col=0)
-            Y_train_df = pd.read_csv('data/Y_train_CVw08PX.csv', index_col=0)
+    # # Fonction pour améliorer la sélection d'exemples
+    # def get_diverse_examples():
+    #     """Sélectionne des exemples en s'assurant d'avoir une bonne diversité de catégories"""
+    #     try:
+    #         # Charger les données
+    #         X_train_df = pd.read_csv('data/X_train_update.csv', index_col=0)
+    #         Y_train_df = pd.read_csv('data/Y_train_CVw08PX.csv', index_col=0)
             
-            # Récupérer les indices du test_split
-            if hasattr(pipeline, 'preprocessed_data') and 'test_split_indices' in pipeline.preprocessed_data:
-                test_split_indices = pipeline.preprocessed_data['test_split_indices']
-            else:
-                n_total = len(X_train_df)
-                test_split_indices = X_train_df.index[-int(0.2 * n_total):]
+    #         # Récupérer les indices du test_split
+    #         if hasattr(pipeline, 'preprocessed_data') and 'test_split_indices' in pipeline.preprocessed_data:
+    #             test_split_indices = pipeline.preprocessed_data['test_split_indices']
+    #         else:
+    #             n_total = len(X_train_df)
+    #             test_split_indices = X_train_df.index[-int(0.2 * n_total):]
             
-            # Grouper par catégorie
-            available_indices = [idx for idx in test_split_indices if idx in X_train_df.index and idx in Y_train_df.index]
+    #         # Grouper par catégorie
+    #         available_indices = [idx for idx in test_split_indices if idx in X_train_df.index and idx in Y_train_df.index]
             
-            category_groups = {}
-            for idx in available_indices:
-                if idx in Y_train_df.index:
-                    category = Y_train_df.loc[idx, 'prdtypecode']
-                    if category not in category_groups:
-                        category_groups[category] = []
-                    category_groups[category].append(idx)
+    #         category_groups = {}
+    #         for idx in available_indices:
+    #             if idx in Y_train_df.index:
+    #                 category = Y_train_df.loc[idx, 'prdtypecode']
+    #                 if category not in category_groups:
+    #                     category_groups[category] = []
+    #                 category_groups[category].append(idx)
             
-            # Sélectionner 2-3 exemples par catégorie disponible
-            selected_examples = []
+    #         # Sélectionner 2-3 exemples par catégorie disponible
+    #         selected_examples = []
             
-            for category, indices in category_groups.items():
-                # Vérifier que les images existent
-                valid_indices = []
-                for idx in indices[:10]:  # Vérifier les 10 premiers
-                    row = X_train_df.loc[idx]
-                    image_file = f"image_{row['imageid']}_product_{row['productid']}.jpg"
-                    image_path = os.path.join('data/images/image_train', image_file)
-                    if os.path.exists(image_path):
-                        valid_indices.append(idx)
+    #         for category, indices in category_groups.items():
+    #             # Vérifier que les images existent
+    #             valid_indices = []
+    #             for idx in indices[:10]:  # Vérifier les 10 premiers
+    #                 row = X_train_df.loc[idx]
+    #                 image_file = f"image_{row['imageid']}_product_{row['productid']}.jpg"
+    #                 image_path = os.path.join('data/images/image_train', image_file)
+    #                 if os.path.exists(image_path):
+    #                     valid_indices.append(idx)
                 
-                # Prendre 2-3 exemples valides par catégorie
-                if len(valid_indices) > 0:
-                    n_samples = min(3, len(valid_indices))
-                    selected_indices = np.random.choice(valid_indices, size=n_samples, replace=False)
-                    selected_examples.extend(selected_indices)
+    #             # Prendre 2-3 exemples valides par catégorie
+    #             if len(valid_indices) > 0:
+    #                 n_samples = min(3, len(valid_indices))
+    #                 selected_indices = np.random.choice(valid_indices, size=n_samples, replace=False)
+    #                 selected_examples.extend(selected_indices)
             
-            # Créer les exemples
-            samples = []
-            for idx in selected_examples:
-                row = X_train_df.loc[idx]
-                label = Y_train_df.loc[idx]
+    #         # Créer les exemples
+    #         samples = []
+    #         for idx in selected_examples:
+    #             row = X_train_df.loc[idx]
+    #             label = Y_train_df.loc[idx]
                 
-                designation = str(row.get('designation', '')).strip()
-                description = str(row.get('description', '')).strip()
-                text = f"{designation} {description}".strip()
+    #             designation = str(row.get('designation', '')).strip()
+    #             description = str(row.get('description', '')).strip()
+    #             text = f"{designation} {description}".strip()
                 
-                image_file = f"image_{row['imageid']}_product_{row['productid']}.jpg"
-                image_path = os.path.join('data/images/image_train', image_file)
+    #             image_file = f"image_{row['imageid']}_product_{row['productid']}.jpg"
+    #             image_path = os.path.join('data/images/image_train', image_file)
                 
-                class_code = label['prdtypecode']
-                category_info = get_category_description(class_code)
+    #             class_code = label['prdtypecode']
+    #             category_info = get_category_description(class_code)
                 
-                if len(text) > 20:
-                    samples.append({
-                        'text': text,
-                        'image_path': image_path,
-                        'class_name': category_info['name'],
-                        'class_code': class_code,
-                        'class_emoji': category_info['emoji'],
-                        'class_desc': category_info['desc'],
-                        'imageid': row['imageid'],
-                        'productid': row['productid'],
-                        'index': idx,
-                        'designation': designation,
-                        'description': description
-                    })
+    #             if len(text) > 20:
+    #                 samples.append({
+    #                     'text': text,
+    #                     'image_path': image_path,
+    #                     'class_name': category_info['name'],
+    #                     'class_code': class_code,
+    #                     'class_emoji': category_info['emoji'],
+    #                     'class_desc': category_info['desc'],
+    #                     'imageid': row['imageid'],
+    #                     'productid': row['productid'],
+    #                     'index': idx,
+    #                     'designation': designation,
+    #                     'description': description
+    #                 })
             
-            return samples, category_groups
+    #         return samples, category_groups
             
-        except Exception as e:
-            st.error(f"❌ Erreur sélection exemples diversifiés: {e}")
-            return [], {}
+    #     except Exception as e:
+    #         st.error(f"❌ Erreur sélection exemples diversifiés: {e}")
+    #         return [], {}
     
     for expected_col in expected_columns:
         # Chercher la colonne existante
@@ -910,8 +910,8 @@ elif page == "🎯 Explicabilité":
         """Récupère des exemples depuis les données test_split pour l'explicabilité"""
         try:
             # Charger les données originales
-            X_train_df = pd.read_csv('data/X_train_update.csv', index_col=0)
             Y_train_df = pd.read_csv('data/Y_train_CVw08PX.csv', index_col=0)
+            X_train_df = pd.read_csv('data/X_train_update.csv', index_col=0)
             
             # Récupérer les indices du test_split depuis le pipeline
             if hasattr(pipeline, 'preprocessed_data') and 'test_split_indices' in pipeline.preprocessed_data:

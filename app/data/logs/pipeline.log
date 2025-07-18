@@ -1048,3 +1048,9 @@ AttributeError: 'numpy.ndarray' object has no attribute 'lower'
 2025-07-18 11:35:59,297 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
 2025-07-18 11:35:59,382 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
 2025-07-18 11:35:59,832 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-18 11:48:56,332 - classification_pipeline - INFO - Génération des explications simplifiées...
+2025-07-18 11:48:56,334 - classification_pipeline - INFO - Prétraitement des données streamlit..
+2025-07-18 11:48:56,999 - classification_pipeline - INFO - Prétraitement du texte...
+2025-07-18 11:48:57,008 - classification_pipeline - INFO - Texte transformé avec TF-IDF: (1, 45000)
+2025-07-18 11:48:57,008 - classification_pipeline - INFO - Prétraitement terminé avec succès.
+2025-07-18 11:48:57,060 - classification_pipeline - INFO - Explications simplifiées générées avec succès
