@@ -12,6 +12,7 @@ import yaml
 from dataclasses import dataclass, fields
 # import sys
 import random
+from utils import safe_read_csv
 
 # Imports machine learning
 import xgboost as xgb
@@ -637,7 +638,7 @@ class ProductClassificationPipeline:
             # Décider si on retraite ou charge les images
             reprocess_images = force_preprocess_image or not image_files_exist
             
-            X_train_df = pd.read_csv(self.base_dir / 'data/X_train_update.csv')
+            X_train_df = safe_read_csv(self.base_dir / 'data/X_train_update.csv')
         
             # Chargement/traitement des données image
             if not reprocess_images:
@@ -667,8 +668,8 @@ class ProductClassificationPipeline:
                     self.logger.warning(f"Les fichiers suivants sont manquants : {', '.join(missing_files)}")
                 
                 # a) Lecture des CSV
-                Y_train_df = pd.read_csv(self.base_dir / 'data/Y_train_CVw08PX.csv')
-                X_test_df = pd.read_csv(self.base_dir / 'data/X_test_update.csv')  
+                Y_train_df = safe_read_csv(self.base_dir / 'data/Y_train_CVw08PX.csv')
+                X_test_df = safe_read_csv(self.base_dir / 'data/X_test_update.csv')  
                 
                 # b) Split (train / test_split) => 80/20 sur le jeu d'entraînement
                 X_train, X_test_split, y_train, y_test_split = train_test_split(
@@ -731,7 +732,7 @@ class ProductClassificationPipeline:
                 self.logger.info("Prétraitement du texte en cours...")
                 
                 # Charger les fichiers CSV
-                Y_train_df = pd.read_csv('data/Y_train_CVw08PX.csv', index_col=0)
+                Y_train_df = safe_read_csv('data/Y_train_CVw08PX.csv')
                 
                 # Récupérer les indices exacts utilisés pour l'entraînement des images
                 test_split_indices = self.preprocessed_data['test_split_indices']
@@ -1728,7 +1729,7 @@ class ProductClassificationPipeline:
         df_final.to_csv(os.path.join(self.predictions_dir, f'predictions_{model_name}.csv'), index=False)
 
     def load_predictions(self, model_name):
-        pred_df = pd.read_csv(os.path.join(self.predictions_dir, f'predictions_{model_name}.csv'))
+        pred_df = safe_read_csv(os.path.join(self.predictions_dir, f'predictions_{model_name}.csv'))
         predictions = pred_df['prediction'].values
         
         # On récupère toutes les colonnes de probas
@@ -1984,8 +1985,8 @@ class ProductClassificationPipeline:
         test_split_indices = self.preprocessed_data['test_split_indices']
         
         # Charger les données originales
-        X_train_df = pd.read_csv(self.base_dir / 'data/X_train_update.csv', index_col=0)
-        Y_train_df = pd.read_csv(self.base_dir / 'data/Y_train_CVw08PX.csv', index_col=0)
+        X_train_df = safe_read_csv(self.base_dir / 'data/X_train_update.csv')
+        Y_train_df = safe_read_csv(self.base_dir / 'data/Y_train_CVw08PX.csv')
         
         # Filtrer selon les indices de test
         valid_indices = [idx for idx in test_split_indices if idx in X_train_df.index]
@@ -2077,7 +2078,7 @@ class ProductClassificationPipeline:
     def load_text_predictions(self, model_name='SVM'):
         """Charge les prédictions texte existantes"""
         pred_path = os.path.join(self.predictions_dir, f'predictions_text_{model_name}.csv')
-        pred_df = pd.read_csv(pred_path)
+        pred_df = safe_read_csv(pred_path)
         predictions = pred_df['prediction'].values
         
         # Récupérer les probabilités
@@ -2452,7 +2453,7 @@ class ProductClassificationPipeline:
             # On a besoin d'avoir accès au DataFrame original
             X_df_path = 'data/X_test_update.csv'
             if os.path.exists(X_df_path):
-                X_df = pd.read_csv(X_df_path, index_col=0)
+                X_df = safe_read_csv(X_df_path)
                 X_df_filtered = X_df.loc[product_indices]
                 
                 # Recréer le texte
@@ -2492,7 +2493,7 @@ class ProductClassificationPipeline:
         train_balanced_indices = self.preprocessed_data['train_indices']
         
         # Charger le dataset original pour avoir tous les indices
-        X_train_df = pd.read_csv('data/X_train_update.csv', index_col=0)
+        X_train_df = safe_read_csv('data/X_train_update.csv')
         all_indices = X_train_df.index.values
         
         # Reconstituer les indices d'entraînement originaux (avant balancing)

@@ -1064,3 +1064,19 @@ AttributeError: 'numpy.ndarray' object has no attribute 'lower'
 2025-07-18 12:14:42,694 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
 2025-07-18 12:14:42,768 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
 2025-07-18 12:14:43,147 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-18 13:10:26,963 - classification_pipeline - ERROR - Erreur préparation données: safe_read_csv() missing 1 required positional argument: 'path'
+2025-07-18 13:11:40,232 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-18 13:11:43,066 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-18 13:11:43,380 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-18 13:11:43,507 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-07-18 13:11:44,008 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-18 13:14:48,430 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-18 13:14:50,401 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-18 13:14:50,644 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-18 13:14:50,715 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-07-18 13:14:51,106 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-18 13:16:58,954 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-18 13:17:00,837 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-18 13:17:01,079 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-18 13:17:01,145 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-07-18 13:17:01,565 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès

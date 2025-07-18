@@ -8,8 +8,10 @@ import os
 import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
-import main 
 from pathlib import Path
+
+import main 
+from utils import safe_read_csv
 
 # Configuration de la page
 st.set_page_config(
@@ -105,7 +107,7 @@ def load_results_data():
     for key, file_path in results_files.items():
         if os.path.exists(file_path):
             try:
-                results[key] = pd.read_csv(file_path, index_col=0)
+                results[key] = safe_read_csv(file_path)
             except Exception as e:
                 st.warning(f"Erreur lecture {file_path}: {e}")
     
@@ -122,7 +124,7 @@ def load_results_data():
     for key, file_path in rapport_files.items():
         if os.path.exists(file_path):
             try:
-                results[key] = pd.read_csv(file_path)
+                results[key] = safe_read_csv(file_path)
             except Exception as e:
                 st.warning(f"Erreur lecture {file_path}: {e}")
     
@@ -222,8 +224,8 @@ def check_columns_and_get_mapping(df, expected_columns, file_type="rapport"):
     #     """Sélectionne des exemples en s'assurant d'avoir une bonne diversité de catégories"""
     #     try:
     #         # Charger les données
-    #         X_train_df = pd.read_csv('data/X_train_update.csv', index_col=0)
-    #         Y_train_df = pd.read_csv('data/Y_train_CVw08PX.csv', index_col=0)
+    #         X_train_df = safe_read_csv('data/X_train_update.csv')
+    #         Y_train_df = safe_read_csv('data/Y_train_CVw08PX.csv')
             
     #         # Récupérer les indices du test_split
     #         if hasattr(pipeline, 'preprocessed_data') and 'test_split_indices' in pipeline.preprocessed_data:
@@ -910,8 +912,8 @@ elif page == "🎯 Explicabilité":
         """Récupère des exemples depuis les données test_split pour l'explicabilité"""
         try:
             # Charger les données originales
-            Y_train_df = pd.read_csv('data/Y_train_CVw08PX.csv', index_col=0)
-            X_train_df = pd.read_csv('data/X_train_update.csv', index_col=0)
+            Y_train_df = safe_read_csv('data/Y_train_CVw08PX.csv')
+            X_train_df = safe_read_csv('data/X_train_update.csv')
             
             # Récupérer les indices du test_split depuis le pipeline
             if hasattr(pipeline, 'preprocessed_data') and 'test_split_indices' in pipeline.preprocessed_data:

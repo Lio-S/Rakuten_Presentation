@@ -113,3 +113,13 @@ def plot_prediction_distribution(report,model_name):
     plt.xticks(rotation=45, ha='right')
     plt.tight_layout()
     plt.show()    
+
+def safe_read_csv(path):
+    """Pour compatibilité avec streamlit cloud"""
+    df = pd.read_csv(path)
+    
+    # Si la première colonne ressemble à un index, l'utiliser
+    if df.columns[0] in ['Unnamed: 0', 'index'] or df.iloc[:, 0].name in [None, 0]:
+        df = df.set_index(df.columns[0])
+    
+    return df
