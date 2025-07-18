@@ -32,6 +32,10 @@ from torchvision.models import resnet50, ResNet50_Weights
 import torchvision.transforms as transforms
 # import torch.optim as optim
 from PIL import Image
+from pathlib import Path
+
+# Obtenir le répertoire du script (pour streamlit cloud)
+SCRIPT_DIR = Path(__file__).parent
 
 RANDOM_SEED = 42
 random.seed(RANDOM_SEED)
@@ -107,6 +111,8 @@ class ProductClassificationPipeline:
         self.config = config
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         
+        self.base_dir = Path(__file__).parent
+
         # Initialisation
         self._setup_logger()
         self._init_paths()
@@ -155,23 +161,23 @@ class ProductClassificationPipeline:
     def _init_paths(self):
         """Initialise tous les chemins nécessaires"""
         # Chemins principaux
-        self.train_image_dir = os.path.join(self.config.data_path, 'images/image_train')
-        self.test_image_dir = os.path.join(self.config.data_path, 'images/image_test')
+        self.train_image_dir = self.base_dir / self.config.data_path / 'images/image_train'
+        self.test_image_dir = self.base_dir / self.config.data_path / 'images/image_test'  
 
         # Chemins des modèles
-        self.model_dir = os.path.join(self.config.model_path)
-        os.makedirs(self.model_dir, exist_ok=True)
+        self.model_dir = self.base_dir / self.config.model_path
+        self.model_dir.mkdir(parents=True, exist_ok=True)      
 
         # Chemins des métadonnées
-        self.meta_path = os.path.join(self.config.data_path, 'metadata.pkl')
+        self.meta_path = self.base_dir / self.config.data_path / 'metadata.pkl'
         
         # Chemins pour les résultats
-        self.results_dir = os.path.join(self.config.data_path, 'results')
-        os.makedirs(self.results_dir, exist_ok=True)
+        self.results_dir = self.base_dir / self.config.data_path / 'results'   
+        self.results_dir.mkdir(parents=True, exist_ok=True)                    
         
         # Chemins pour les prédictions
-        self.predictions_dir = os.path.join(self.config.data_path, 'predictions')
-        os.makedirs(self.predictions_dir, exist_ok=True)
+        self.predictions_dir = self.base_dir / self.config.data_path / 'predictions'
+        self.predictions_dir.mkdir(parents=True, exist_ok=True)
         
     def _setup_logger(self):
         """Configure le logger pour le suivi des opérations"""
@@ -615,24 +621,24 @@ class ProductClassificationPipeline:
         """
         try:
             # Vérification des fichiers prétraités existants
-            features_dir = os.path.join(self.config.data_path, 'processed_data')
+            features_dir = self.base_dir / self.config.data_path / 'processed_data'
             required_files = {
-                'X_train': os.path.join(features_dir, 'X_train.npz'),
-                'y_train': os.path.join(features_dir, 'y_train.npz'),
-                'X_test': os.path.join(features_dir, 'X_test.npz'),
-                'X_test_split': os.path.join(features_dir, 'X_test_split.npz'),
-                'y_test_split': os.path.join(features_dir, 'y_test_split.npz'),
-                'train_indices': os.path.join(features_dir, 'train_indices.npz'),
-                'test_split_indices': os.path.join(features_dir, 'test_split_indices.npz'),
+                'X_train': features_dir / 'X_train.npz',
+                'y_train': features_dir / 'y_train.npz',
+                'X_test': features_dir / 'X_test.npz',  
+                'X_test_split': features_dir / 'X_test_split.npz',
+                'y_test_split': features_dir / 'y_test_split.npz',
+                'train_indices': features_dir / 'train_indices.npz',
+                'test_split_indices': features_dir / 'test_split_indices.npz',
             }
 
-            image_files_exist  = all(os.path.exists(path) for path in required_files.values())
-                
+            image_files_exist = all(path.exists() for path in required_files.values())
+            
             # Décider si on retraite ou charge les images
             reprocess_images = force_preprocess_image or not image_files_exist
             
-            X_train_df = pd.read_csv('data/X_train_update.csv')
-            
+            X_train_df = pd.read_csv(self.base_dir / 'data/X_train_update.csv')
+        
             # Chargement/traitement des données image
             if not reprocess_images:
                 self.logger.info("Chargement des features pré-calculées...")
@@ -661,8 +667,8 @@ class ProductClassificationPipeline:
                     self.logger.warning(f"Les fichiers suivants sont manquants : {', '.join(missing_files)}")
                 
                 # a) Lecture des CSV
-                Y_train_df = pd.read_csv('data/Y_train_CVw08PX.csv')
-                X_test_df  = pd.read_csv('data/X_test_update.csv')   # Test challenge
+                Y_train_df = pd.read_csv(self.base_dir / 'data/Y_train_CVw08PX.csv')
+                X_test_df = pd.read_csv(self.base_dir / 'data/X_test_update.csv')  
                 
                 # b) Split (train / test_split) => 80/20 sur le jeu d'entraînement
                 X_train, X_test_split, y_train, y_test_split = train_test_split(
@@ -1927,7 +1933,7 @@ class ProductClassificationPipeline:
             if not hasattr(self, 'text_model') or self.text_model is None:
                 try:
                     import joblib
-                    self.text_model = joblib.load('data/models/SVM/model.pkl')
+                    self.text_model = joblib.load(str(self.base_dir / 'data/models/SVM/model.pkl'))
                     self.logger.info("Modèle SVM texte chargé avec succès.")
                 except Exception as e:
                     self.logger.error(f"Erreur lors du chargement du modèle texte: {str(e)}")
@@ -1951,9 +1957,9 @@ class ProductClassificationPipeline:
     def load_text_model(self, model_name='SVM'):
         """Charge le modèle SVM texte dans le pipeline"""
         try:
-            model_path = os.path.join('data/models/SVM/model.pkl')
+            model_path = self.base_dir / 'data/models/SVM/model.pkl'
             import joblib
-            self.text_model = joblib.load(model_path)
+            self.text_model = joblib.load(str(model_path))
             self.logger.info(f"Modèle texte {model_name} chargé avec succès")
             return True
         except Exception as e:
@@ -1978,8 +1984,8 @@ class ProductClassificationPipeline:
         test_split_indices = self.preprocessed_data['test_split_indices']
         
         # Charger les données originales
-        X_train_df = pd.read_csv('data/X_train_update.csv', index_col=0)
-        Y_train_df = pd.read_csv('data/Y_train_CVw08PX.csv', index_col=0)
+        X_train_df = pd.read_csv(self.base_dir / 'data/X_train_update.csv', index_col=0)
+        Y_train_df = pd.read_csv(self.base_dir / 'data/Y_train_CVw08PX.csv', index_col=0)
         
         # Filtrer selon les indices de test
         valid_indices = [idx for idx in test_split_indices if idx in X_train_df.index]
