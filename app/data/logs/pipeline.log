@@ -1054,3 +1054,13 @@ AttributeError: 'numpy.ndarray' object has no attribute 'lower'
 2025-07-18 11:48:57,008 - classification_pipeline - INFO - Texte transformé avec TF-IDF: (1, 45000)
 2025-07-18 11:48:57,008 - classification_pipeline - INFO - Prétraitement terminé avec succès.
 2025-07-18 11:48:57,060 - classification_pipeline - INFO - Explications simplifiées générées avec succès
+2025-07-18 12:09:59,835 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-18 12:10:02,299 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-18 12:10:02,570 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-18 12:10:02,654 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-07-18 12:10:03,119 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-18 12:14:40,082 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-18 12:14:42,433 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-18 12:14:42,694 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-18 12:14:42,768 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-07-18 12:14:43,147 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès

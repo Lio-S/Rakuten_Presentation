@@ -238,122 +238,122 @@ class ProductClassificationPipeline:
             self.logger.error(f"Erreur _create_dataset : {str(e)}")
             raise
 
-    # def _create_balanced_dataset(self, X_train_df, Y_train_df):
-    #     """
-    #     Crée un dataset équilibré en considérant à la fois la distribution des classes
-    #     et la taille des fichiers images.
+    def _create_balanced_dataset(self, X_train_df, Y_train_df):
+        """
+        Crée un dataset équilibré en considérant à la fois la distribution des classes
+        et la taille des fichiers images.
         
-    #     Args:
-    #         X_train_df (pd.DataFrame): DataFrame contenant les métadonnées des images
-    #         Y_train_df (pd.DataFrame): DataFrame contenant les labels
+        Args:
+            X_train_df (pd.DataFrame): DataFrame contenant les métadonnées des images
+            Y_train_df (pd.DataFrame): DataFrame contenant les labels
             
-    #     Returns:
-    #         List[int]: Liste des indices sélectionnés pour le dataset équilibré
-    #     """
-    #     file_info = []
+        Returns:
+            List[int]: Liste des indices sélectionnés pour le dataset équilibré
+        """
+        file_info = []
         
-    #     # Fusion des DataFrames X et Y
-    #     df_merged = X_train_df.merge(Y_train_df, left_index=True, right_index=True)
+        # Fusion des DataFrames X et Y
+        df_merged = X_train_df.merge(Y_train_df, left_index=True, right_index=True)
         
-    #     # Collecte des informations sur les fichiers
-    #     for _, row in df_merged.iterrows():
-    #         image_file = f"image_{row['imageid']}_product_{row['productid']}.jpg"
-    #         file_path = os.path.join(self.train_image_dir, image_file)
+        # Collecte des informations sur les fichiers
+        for _, row in df_merged.iterrows():
+            image_file = f"image_{row['imageid']}_product_{row['productid']}.jpg"
+            file_path = os.path.join(self.train_image_dir, image_file)
             
-    #         if os.path.exists(file_path):
-    #             size_kb = os.path.getsize(file_path) / 1024
-    #             file_info.append({
-    #                 'index': row.name,
-    #                 'size_kb': size_kb,
-    #                 'prdtypecode': row['prdtypecode'],
-    #                 'imageid': row['imageid'],
-    #                 'productid': row['productid']
-    #             })
+            if os.path.exists(file_path):
+                size_kb = os.path.getsize(file_path) / 1024
+                file_info.append({
+                    'index': row.name,
+                    'size_kb': size_kb,
+                    'prdtypecode': row['prdtypecode'],
+                    'imageid': row['imageid'],
+                    'productid': row['productid']
+                })
         
-    #     df_analysis = pd.DataFrame(file_info)
-    #     df_analysis.set_index('index', inplace=True)
+        df_analysis = pd.DataFrame(file_info)
+        df_analysis.set_index('index', inplace=True)
         
-    #     balanced_indices = []
+        balanced_indices = []
         
-    #     # Pour chaque classe
-    #     for classe in df_analysis['prdtypecode'].unique():
-    #         class_data = df_analysis[df_analysis['prdtypecode'] == classe].copy()
-    #         n_samples = len(class_data)
+        # Pour chaque classe
+        for classe in df_analysis['prdtypecode'].unique():
+            class_data = df_analysis[df_analysis['prdtypecode'] == classe].copy()
+            n_samples = len(class_data)
             
-    #         if n_samples > self.config.target_size:
-    #             # Sous-échantillonnage stratifié par taille
-    #             size_bins = pd.qcut(class_data['size_kb'], q=5, labels=False)
-    #             class_data['size_bin'] = size_bins
-    #             samples_per_bin = self.config.target_size // 5
+            if n_samples > self.config.target_size:
+                # Sous-échantillonnage stratifié par taille
+                size_bins = pd.qcut(class_data['size_kb'], q=5, labels=False)
+                class_data['size_bin'] = size_bins
+                samples_per_bin = self.config.target_size // 5
                 
-    #             stratified_sample = []
-    #             for bin_id in range(5):
-    #                 bin_data = class_data[class_data['size_bin'] == bin_id]
-    #                 if len(bin_data) > 0:
-    #                     selected = bin_data.sample(
-    #                         n=min(len(bin_data), samples_per_bin),
-    #                         random_state=self.config.random_state
-    #                     ).index.tolist()
-    #                     stratified_sample.extend(selected)
+                stratified_sample = []
+                for bin_id in range(5):
+                    bin_data = class_data[class_data['size_bin'] == bin_id]
+                    if len(bin_data) > 0:
+                        selected = bin_data.sample(
+                            n=min(len(bin_data), samples_per_bin),
+                            random_state=self.config.random_state
+                        ).index.tolist()
+                        stratified_sample.extend(selected)
                 
-    #             # Si on n'a pas assez d'échantillons après stratification
-    #             remaining = self.config.target_size - len(stratified_sample)
-    #             if remaining > 0:
-    #                 additional = class_data[~class_data.index.isin(stratified_sample)].sample(
-    #                     n=min(remaining, len(class_data) - len(stratified_sample)),
-    #                     random_state=self.config.random_state
-    #                 ).index.tolist()
-    #                 stratified_sample.extend(additional)
+                # Si on n'a pas assez d'échantillons après stratification
+                remaining = self.config.target_size - len(stratified_sample)
+                if remaining > 0:
+                    additional = class_data[~class_data.index.isin(stratified_sample)].sample(
+                        n=min(remaining, len(class_data) - len(stratified_sample)),
+                        random_state=self.config.random_state
+                    ).index.tolist()
+                    stratified_sample.extend(additional)
                 
-    #             balanced_indices.extend(stratified_sample)
+                balanced_indices.extend(stratified_sample)
                 
-    #         else:
-    #             # Sur-échantillonnage stratifié par taille
-    #             current_indices = class_data.index.tolist()
-    #             balanced_indices.extend(current_indices)  # Ajoute d'abord tous les échantillons existants
+            else:
+                # Sur-échantillonnage stratifié par taille
+                current_indices = class_data.index.tolist()
+                balanced_indices.extend(current_indices)  # Ajoute d'abord tous les échantillons existants
                 
-    #             if n_samples > 0:
-    #                 # Calcul du nombre d'échantillons supplémentaires nécessaires
-    #                 n_needed = self.config.target_size - n_samples
+                if n_samples > 0:
+                    # Calcul du nombre d'échantillons supplémentaires nécessaires
+                    n_needed = self.config.target_size - n_samples
                     
-    #                 # Division en bins de taille
-    #                 size_bins = pd.qcut(class_data['size_kb'], q=min(5, n_samples), labels=False)
-    #                 class_data['size_bin'] = size_bins
+                    # Division en bins de taille
+                    size_bins = pd.qcut(class_data['size_kb'], q=min(5, n_samples), labels=False)
+                    class_data['size_bin'] = size_bins
                     
-    #                 # Sur-échantillonnage par bin
-    #                 additional_samples = []
-    #                 samples_needed_per_bin = n_needed // len(class_data['size_bin'].unique())
+                    # Sur-échantillonnage par bin
+                    additional_samples = []
+                    samples_needed_per_bin = n_needed // len(class_data['size_bin'].unique())
                     
-    #                 for bin_id in class_data['size_bin'].unique():
-    #                     bin_data = class_data[class_data['size_bin'] == bin_id]
-    #                     if len(bin_data) > 0:
-    #                         bin_indices = bin_data.index.tolist()
-    #                         additional = np.random.choice(
-    #                             bin_indices,
-    #                             size=samples_needed_per_bin,
-    #                             replace=True
-    #                         ).tolist()
-    #                         additional_samples.extend(additional)
+                    for bin_id in class_data['size_bin'].unique():
+                        bin_data = class_data[class_data['size_bin'] == bin_id]
+                        if len(bin_data) > 0:
+                            bin_indices = bin_data.index.tolist()
+                            additional = np.random.choice(
+                                bin_indices,
+                                size=samples_needed_per_bin,
+                                replace=True
+                            ).tolist()
+                            additional_samples.extend(additional)
                     
-    #                 # Gestion du reste
-    #                 remaining = n_needed - len(additional_samples)
-    #                 if remaining > 0:
-    #                     extra = np.random.choice(
-    #                         current_indices,
-    #                         size=remaining,
-    #                         replace=True
-    #                     ).tolist()
-    #                     additional_samples.extend(extra)
+                    # Gestion du reste
+                    remaining = n_needed - len(additional_samples)
+                    if remaining > 0:
+                        extra = np.random.choice(
+                            current_indices,
+                            size=remaining,
+                            replace=True
+                        ).tolist()
+                        additional_samples.extend(extra)
                     
-    #                 balanced_indices.extend(additional_samples)
+                    balanced_indices.extend(additional_samples)
         
-    #     # Vérification finale
-    #     self.logger.info(f"Indices retenus: {len(balanced_indices)} sur {len(df_analysis)} images")
-    #     for classe in df_analysis['prdtypecode'].unique():
-    #         n_class = sum(df_analysis.loc[balanced_indices, 'prdtypecode'] == classe)
-    #         self.logger.info(f"Classe {classe} ({self.category_names[classe]}): {n_class} images")
+        # Vérification finale
+        self.logger.info(f"Indices retenus: {len(balanced_indices)} sur {len(df_analysis)} images")
+        for classe in df_analysis['prdtypecode'].unique():
+            n_class = sum(df_analysis.loc[balanced_indices, 'prdtypecode'] == classe)
+            self.logger.info(f"Classe {classe} ({self.category_names[classe]}): {n_class} images")
         
-    #     return balanced_indices
+        return balanced_indices
 
     # def _save_processed_data(
     #     self,
