@@ -1253,15 +1253,15 @@ class ProductClassificationPipeline:
     def load_model(self, model_type: str):
         """Charge un modèle sauvegardé avec ses métadonnées"""
         try:
-            model_dir = os.path.join(self.config.model_path, model_type)
+            model_dir = self.model_dir / model_type
             
             affichage_param = False # Pour afficher les paramètres des modèles chargés
             
-            if not os.path.exists(model_dir):
+            if not model_dir.exists():
                 raise FileNotFoundError(f"Dossier modèle non trouvé: {model_dir}")
             if model_type == 'neural_net':
                 
-                model_path = os.path.join(model_dir, 'model.pth')
+                model_path = model_dir / 'model.pth'
                 model_data = torch.load(model_path, map_location=self.device)
                 if affichage_param:
                     # Affichage des paramètres du modèle neural_net
@@ -1284,7 +1284,7 @@ class ProductClassificationPipeline:
                 print(self.model) if affichage_param else None
                 self.category_names = model_data['category_mapping']
             else:
-                model_path = os.path.join(model_dir, 'model.pkl')
+                model_path = model_dir / 'model.pkl'
                 with open(model_path, 'rb') as f:
                     model_data = pickle.load(f)
                 
