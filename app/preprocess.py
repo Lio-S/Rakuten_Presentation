@@ -199,46 +199,68 @@ class ProductClassificationPipeline:
             )
             file_handler.setFormatter(formatter)
             self.logger.addHandler(file_handler)
-
-    def _create_dataset(self, df, labels=None, df_name=None):
-        """Crée un dataset PyTorch à partir des données"""
-        image_paths = []
-        images_not_found = 0
+    
+    def download_preprocessed_data(self):
+        """Télécharge les données préprocessées depuis Google Drive"""
+        import gdown
+        import zipfile
+        import shutil
+        
+        url = "https://drive.google.com/file/d/1guhuHp0dVRPWCtZ7570jEsTub6m2RrRF/view?usp=sharing"
+        fichier_zip = "Preprocessed_data.zip"
+        dossier_donnees_pretraitees = self.base_dir / "data/processed_data"
         
         try:
-            self.logger.info(f"Création dataset à partir de {len(df)} entrées...")
+            self.logger.info("📥 Téléchargement des données préprocessées...")
             
-            # Déterminer le répertoire d'images selon df_name
-            if df_name == "X_train" or df_name == "X_test_split":
-                df_path = self.train_image_dir
-            elif df_name == "X_test":
-                df_path = self.test_image_dir
-            else:
-                # Par défaut, utiliser train_image_dir
-                df_path = self.train_image_dir
-                self.logger.warning(f"df_name '{df_name}' non reconnu, utilisation de train_image_dir")
-                            
-            for _, row in df.iterrows():
-                image_file = f"image_{row['imageid']}_product_{row['productid']}.jpg"
-                image_path = os.path.join(df_path, image_file)
+            # 1) Téléchargement avec gdown
+            gdown.download(url, fichier_zip, fuzzy=True)
+            
+            # 2) Vérification et extraction
+            if not os.path.exists(fichier_zip):
+                raise FileNotFoundError("Le téléchargement a échoué")
                 
-                if os.path.exists(image_path):
-                    image_paths.append(image_path)
-                else:
-                    images_not_found += 1
-
-            if len(image_paths) == 0:
-                self.logger.error(f"Aucune image trouvée ! {images_not_found} images manquantes")
-                self.logger.error(f"Chemin recherché : {df_path}")
-                raise ValueError("Aucune image valide trouvée")
+            if not zipfile.is_zipfile(fichier_zip):
+                raise zipfile.BadZipFile("Le fichier téléchargé n'est pas un ZIP valide")
+            
+            # 3) Création du dossier de destination
+            dossier_donnees_pretraitees.mkdir(parents=True, exist_ok=True)
+            
+            # 4) Extraction temporaire
+            temp_dir = "temp_extraction"
+            if os.path.exists(temp_dir):
+                shutil.rmtree(temp_dir)
+            os.makedirs(temp_dir)
+            
+            self.logger.info("📂 Extraction des données...")
+            with zipfile.ZipFile(fichier_zip, 'r') as zip_ref:
+                zip_ref.extractall(temp_dir)
                 
-            self.logger.info(f"Dataset créé avec {len(image_paths)} images ({images_not_found} non trouvées)")
-            return RakutenImageDataset(image_paths, labels)
-
+            # 5) Déplacement des fichiers
+            source_dir = os.path.join(temp_dir, "processed_data")
+            for item in os.listdir(source_dir):
+                s = os.path.join(source_dir, item)
+                d = dossier_donnees_pretraitees / item
+                if d.exists():
+                    if d.is_dir():
+                        shutil.rmtree(d)
+                    else:
+                        d.unlink()
+                shutil.move(s, str(d))
+            
+            self.logger.info("✅ Données téléchargées et extraites avec succès")
+            
         except Exception as e:
-            self.logger.error(f"Erreur _create_dataset : {str(e)}")
+            self.logger.error(f"❌ Erreur téléchargement: {e}")
             raise
-
+            
+        finally:
+            # Nettoyage
+            if os.path.exists(temp_dir):
+                shutil.rmtree(temp_dir)
+            if os.path.exists(fichier_zip):
+                os.remove(fichier_zip)
+                
     def _create_balanced_dataset(self, X_train_df, Y_train_df):
         """
         Crée un dataset équilibré en considérant à la fois la distribution des classes
@@ -355,6 +377,45 @@ class ProductClassificationPipeline:
             self.logger.info(f"Classe {classe} ({self.category_names[classe]}): {n_class} images")
         
         return balanced_indices
+
+    def _create_dataset(self, df, labels=None, df_name=None):
+        """Crée un dataset PyTorch à partir des données"""
+        image_paths = []
+        images_not_found = 0
+        
+        try:
+            self.logger.info(f"Création dataset à partir de {len(df)} entrées...")
+            
+            # Déterminer le répertoire d'images selon df_name
+            if df_name == "X_train" or df_name == "X_test_split":
+                df_path = self.train_image_dir
+            elif df_name == "X_test":
+                df_path = self.test_image_dir
+            else:
+                # Par défaut, utiliser train_image_dir
+                df_path = self.train_image_dir
+                self.logger.warning(f"df_name '{df_name}' non reconnu, utilisation de train_image_dir")
+                            
+            for _, row in df.iterrows():
+                image_file = f"image_{row['imageid']}_product_{row['productid']}.jpg"
+                image_path = os.path.join(df_path, image_file)
+                
+                if os.path.exists(image_path):
+                    image_paths.append(image_path)
+                else:
+                    images_not_found += 1
+
+            if len(image_paths) == 0:
+                self.logger.error(f"Aucune image trouvée ! {images_not_found} images manquantes")
+                self.logger.error(f"Chemin recherché : {df_path}")
+                raise ValueError("Aucune image valide trouvée")
+                
+            self.logger.info(f"Dataset créé avec {len(image_paths)} images ({images_not_found} non trouvées)")
+            return RakutenImageDataset(image_paths, labels)
+
+        except Exception as e:
+            self.logger.error(f"Erreur _create_dataset : {str(e)}")
+            raise
 
     # def _save_processed_data(
     #     self,
@@ -635,6 +696,13 @@ class ProductClassificationPipeline:
 
             image_files_exist = all(path.exists() for path in required_files.values())
             
+            # Si les fichiers n'existent pas, les télécharger
+            if not image_files_exist and not force_preprocess_image:
+                self.logger.info("📥 Fichiers .npz manquants - Téléchargement automatique...")
+                self.download_preprocessed_data()
+                # Re-vérifier après téléchargement
+                image_files_exist = all(path.exists() for path in required_files.values())
+
             # Décider si on retraite ou charge les images
             reprocess_images = force_preprocess_image or not image_files_exist
             
