@@ -9,6 +9,13 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import main 
+from pathlib import Path
+import sys
+
+# Fix des chemins pour Streamlit Cloud
+script_dir = Path(__file__).parent
+sys.path.insert(0, str(script_dir))
+os.chdir(script_dir)
 
 # Configuration de la page
 st.set_page_config(
@@ -25,7 +32,7 @@ def load_pipeline():
     try:
         from preprocess import ProductClassificationPipeline, PipelineConfig
         
-        config = PipelineConfig.from_yaml('config.yaml')
+        config = PipelineConfig.from_yaml(str(Path(__file__).parent / 'config.yaml'))
         pipeline = ProductClassificationPipeline(config)
         
         # Charger les données pré-traitées

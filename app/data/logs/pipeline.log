@@ -1033,3 +1033,13 @@ AttributeError: 'numpy.ndarray' object has no attribute 'lower'
 2025-07-17 16:32:47,989 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
 2025-07-17 16:32:48,146 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
 2025-07-17 16:32:48,758 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-18 10:50:49,234 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-18 10:50:51,889 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-18 10:50:52,194 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-18 10:50:52,302 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-07-18 10:50:52,775 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-18 10:53:14,607 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-18 10:53:17,303 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-18 10:53:17,558 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-18 10:53:17,635 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-07-18 10:53:18,136 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
