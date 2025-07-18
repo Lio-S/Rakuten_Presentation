@@ -622,7 +622,7 @@ class ProductClassificationPipeline:
         """
         try:
             # Vérification des fichiers prétraités existants
-            features_dir = self.base_dir / self.config.data_path / 'processed_data'
+            features_dir = self.base_dir / 'data' / 'processed_data'
             required_files = {
                 'X_train': features_dir / 'X_train.npz',
                 'y_train': features_dir / 'y_train.npz',
