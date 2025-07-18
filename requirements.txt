@@ -1,0 +1,43 @@
+# Core ML/Data Science
+numpy==1.26.0
+pandas==1.5.0
+scikit-learn==1.2.2
+matplotlib==3.6.2
+Pillow==9.4.0
+seaborn==0.13.2
+streamlit==1.46.0
+
+# PyTorch ecosystem - versions avec auto-détection CPU/GPU
+torch==2.0.1
+torchaudio==2.0.2
+torchvision==0.15.2
+
+# CUDA acceleration (optionnel - s'installe seulement si compatible)
+cupy-cuda12x==13.3.0; sys_platform == "linux" and platform_machine == "x86_64"
+
+# ML utilities
+xgboost==2.1.3
+optuna==4.1.0
+shap==0.46.0
+imbalanced-learn==0.10.1
+
+# Jupyter/Development
+jupyterlab==3.6.3
+
+# Utilities
+tqdm==4.67.0
+gdown==5.2.0
+pyyaml==6.0.2
+fastrlock==0.8.2
+
+# Installation simple pour les autres:
+# pip install --upgrade pip
+# pip install -r requirements.txt
+# 
+# PyTorch s'installera automatiquement en version CPU ou CUDA selon la machine
+
+
+# si CG nvidia:
+# pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+# sinon
+# pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
