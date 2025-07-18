@@ -26,12 +26,32 @@ st.set_page_config(
 @st.cache_resource
 def load_pipeline():
     """Charge le pipeline et les modèles (mis en cache)"""
+    # Debug temporaire
+    current_dir = Path(__file__).parent
+    st.write("### 🔍 Debug - Informations sur les fichiers")
+    st.write(f"**Répertoire actuel:** `{current_dir}`")
+    st.write("**Fichiers trouvés:**")
+    
+    files_found = []
+    for fichier in current_dir.iterdir():
+        files_found.append(fichier.name)
+        icon = "📁" if fichier.is_dir() else "📄"
+        st.write(f"{icon} {fichier.name}")
+    
+    # Vérifier spécifiquement config.yaml
+    config_path = current_dir / 'config.yaml'
+    st.write(f"**Chemin config.yaml:** `{config_path}`")
+    st.write(f"**Existe:** {'✅' if config_path.exists() else '❌'}")
+    
+    if 'config.yaml' in files_found:
+        st.success("✅ config.yaml trouvé dans la liste !")
+    else:
+        st.error("❌ config.yaml absent de la liste")
     try:
         from preprocess import ProductClassificationPipeline, PipelineConfig
         
-        config_path = Path(__file__).parent / 'config.yaml'
         if not config_path.exists():
-            st.error(f"❌ config.yaml non trouvé dans {Path(__file__).parent}")
+            st.error(f"❌ config.yaml non trouvé")
             return None
             
         config = PipelineConfig.from_yaml(str(config_path))
