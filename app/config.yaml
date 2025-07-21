@@ -1,7 +1,7 @@
 # Chemins
-data_path: "./data"
-model_path: "./data/models"
-image_dir: "./data/images"
+data_path: "data"
+model_path: "data/models"
+image_dir: "data/images"
 
 batch_size: 32
 target_size: 2000

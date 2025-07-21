@@ -35,8 +35,7 @@ import torchvision.transforms as transforms
 from PIL import Image
 from pathlib import Path
 
-# Obtenir le répertoire du script (pour streamlit cloud)
-SCRIPT_DIR = Path(__file__).parent
+from utils_path import *
 
 RANDOM_SEED = 42
 random.seed(RANDOM_SEED)
@@ -112,7 +111,7 @@ class ProductClassificationPipeline:
         self.config = config
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         
-        self.base_dir = Path(__file__).parent
+        self.base_dir = Path.cwd()
 
         # Initialisation
         self._setup_logger()
@@ -135,10 +134,10 @@ class ProductClassificationPipeline:
                                 1160: "Cartes de jeux",
                                 1180: "Jeux de rôle et figurines",
                                 1280: "Jouets enfant",
-                                1281: "Jeux enfant", 
                                 1300: "Modélisme",
-                                1301: "Chaussettes enfant",
-                                1302: "Jeux de plein air",
+                                1281: "Jeux enfant", 
+                                1301: "Lingerie enfant et jeu de bar",
+                                1302: "Jeux et accessoires de plein air",
                                 1320: "Puériculture",
                                 1560: "Mobilier",
                                 1920: "Linge de maison",
@@ -147,13 +146,13 @@ class ProductClassificationPipeline:
                                 2220: "Animalerie",
                                 2280: "Journaux et revues occasion",
                                 2403: "Lots livres et magazines",
-                                2462: "Jeux vidéos occasion",
+                                2462: "Console et Jeux vidéos occasion",
                                 2522: "Fournitures papeterie",
-                                2582: "Mobilier de jardin",
+                                2582: "Mobilier et accessoires de jardin",
                                 2583: "Piscine et accessoires",
                                 2585: "Outillage de jardin",
                                 2705: "Livres neufs",
-                                2905: "Jeux PC"
+                                2905: "Jeux PC en téléchargement"
                             }
         # Créer le mapping vers des indices consécutifs
         self.category_to_idx = {code: idx for idx, code in enumerate(sorted(self.category_names.keys()))}
@@ -162,23 +161,20 @@ class ProductClassificationPipeline:
     def _init_paths(self):
         """Initialise tous les chemins nécessaires"""
         # Chemins principaux
-        self.train_image_dir = self.base_dir / self.config.data_path / 'images/image_train'
-        self.test_image_dir = self.base_dir / self.config.data_path / 'images/image_test'  
+        self.train_image_dir = TRAIN_IMAGES_DIR
+        self.test_image_dir = TEST_IMAGES_DIR
 
         # Chemins des modèles
-        self.model_dir = self.base_dir / self.config.model_path
-        self.model_dir.mkdir(parents=True, exist_ok=True)      
+        self.model_dir = MODELS_DIR  
 
         # Chemins des métadonnées
-        self.meta_path = self.base_dir / self.config.data_path / 'metadata.pkl'
+        self.meta_path = DATA_DIR / 'metadata.pkl'
         
         # Chemins pour les résultats
-        self.results_dir = self.base_dir / self.config.data_path / 'results'   
-        self.results_dir.mkdir(parents=True, exist_ok=True)                    
+        self.results_dir = RESULTS_DIR                  
         
         # Chemins pour les prédictions
-        self.predictions_dir = self.base_dir / self.config.data_path / 'predictions'
-        self.predictions_dir.mkdir(parents=True, exist_ok=True)
+        self.predictions_dir = PREDICTIONS_DIR
         
     def _setup_logger(self):
         """Configure le logger pour le suivi des opérations"""
@@ -193,10 +189,7 @@ class ProductClassificationPipeline:
             self.logger.addHandler(handler)
 
             # FileHandler pour sauvegarder les logs
-            os.makedirs(os.path.join(self.config.data_path, 'logs'), exist_ok=True)
-            file_handler = logging.FileHandler(
-                os.path.join(self.config.data_path, 'logs', 'pipeline.log')
-            )
+            file_handler = logging.FileHandler(LOGS_DIR / 'pipeline.log')
             file_handler.setFormatter(formatter)
             self.logger.addHandler(file_handler)
     
@@ -208,7 +201,7 @@ class ProductClassificationPipeline:
         
         url = "https://drive.google.com/file/d/1guhuHp0dVRPWCtZ7570jEsTub6m2RrRF/view?usp=sharing"
         fichier_zip = "Preprocessed_data.zip"
-        dossier_donnees_pretraitees = self.base_dir / "data/processed_data"
+        dossier_donnees_pretraitees = PROCESSED_DATA_DIR
         
         try:
             self.logger.info("📥 Téléchargement des données préprocessées...")
@@ -683,15 +676,14 @@ class ProductClassificationPipeline:
         """
         try:
             # Vérification des fichiers prétraités existants
-            features_dir = self.base_dir / 'data' / 'processed_data'
             required_files = {
-                'X_train': features_dir / 'X_train.npz',
-                'y_train': features_dir / 'y_train.npz',
-                'X_test': features_dir / 'X_test.npz',  
-                'X_test_split': features_dir / 'X_test_split.npz',
-                'y_test_split': features_dir / 'y_test_split.npz',
-                'train_indices': features_dir / 'train_indices.npz',
-                'test_split_indices': features_dir / 'test_split_indices.npz',
+                'X_train': PROCESSED_DATA_DIR / 'X_train.npz',
+                'y_train': PROCESSED_DATA_DIR / 'y_train.npz',
+                'X_test': PROCESSED_DATA_DIR / 'X_test.npz',  
+                'X_test_split': PROCESSED_DATA_DIR / 'X_test_split.npz',
+                'y_test_split': PROCESSED_DATA_DIR / 'y_test_split.npz',
+                'train_indices': PROCESSED_DATA_DIR / 'train_indices.npz',
+                'test_split_indices': PROCESSED_DATA_DIR / 'test_split_indices.npz',
             }
 
             image_files_exist = all(path.exists() for path in required_files.values())
@@ -706,7 +698,7 @@ class ProductClassificationPipeline:
             # Décider si on retraite ou charge les images
             reprocess_images = force_preprocess_image or not image_files_exist
             
-            X_train_df = safe_read_csv(self.base_dir / 'data/X_train_update.csv')
+            X_train_df = safe_read_csv(str(X_TRAIN_FILE))
         
             # Chargement/traitement des données image
             if not reprocess_images:
@@ -736,8 +728,8 @@ class ProductClassificationPipeline:
                     self.logger.warning(f"Les fichiers suivants sont manquants : {', '.join(missing_files)}")
                 
                 # a) Lecture des CSV
-                Y_train_df = safe_read_csv(self.base_dir / 'data/Y_train_CVw08PX.csv')
-                X_test_df = safe_read_csv(self.base_dir / 'data/X_test_update.csv')  
+                Y_train_df = safe_read_csv(str(Y_TRAIN_FILE))
+                X_test_df = safe_read_csv(str(X_TEST_FILE))
                 
                 # b) Split (train / test_split) => 80/20 sur le jeu d'entraînement
                 X_train, X_test_split, y_train, y_test_split = train_test_split(
@@ -800,7 +792,7 @@ class ProductClassificationPipeline:
                 self.logger.info("Prétraitement du texte en cours...")
                 
                 # Charger les fichiers CSV
-                Y_train_df = safe_read_csv('data/Y_train_CVw08PX.csv')
+                Y_train_df = safe_read_csv(str(Y_TRAIN_FILE))
                 
                 # Récupérer les indices exacts utilisés pour l'entraînement des images
                 test_split_indices = self.preprocessed_data['test_split_indices']
@@ -1228,8 +1220,8 @@ class ProductClassificationPipeline:
         
     def save_model(self, model_type):
         try:
-            model_dir = os.path.join(self.config.model_path, model_type)
-            os.makedirs(model_dir, exist_ok=True)
+            model_dir = get_model_path(model_type)
+            model_dir.mkdir(parents=True, exist_ok=True)
             
             if isinstance(self.model, NeuralClassifier):
                 torch.save({
@@ -1253,7 +1245,10 @@ class ProductClassificationPipeline:
     def load_model(self, model_type: str):
         """Charge un modèle sauvegardé avec ses métadonnées"""
         try:
-            model_dir = self.model_dir / model_type
+            model_dir = get_model_path(model_type)
+            
+            if not model_dir.exists():
+                raise FileNotFoundError(f"Dossier modèle non trouvé: {model_dir}")
             
             affichage_param = False # Pour afficher les paramètres des modèles chargés
             
@@ -2026,7 +2021,7 @@ class ProductClassificationPipeline:
     def load_text_model(self, model_name='SVM'):
         """Charge le modèle SVM texte dans le pipeline"""
         try:
-            model_path = self.base_dir / 'data/models/SVM/model.pkl'
+            model_path = get_model_path('SVM') / 'model.pkl'
             import joblib
             self.text_model = joblib.load(str(model_path))
             self.logger.info(f"Modèle texte {model_name} chargé avec succès")
@@ -2053,8 +2048,8 @@ class ProductClassificationPipeline:
         test_split_indices = self.preprocessed_data['test_split_indices']
         
         # Charger les données originales
-        X_train_df = safe_read_csv(self.base_dir / 'data/X_train_update.csv')
-        Y_train_df = safe_read_csv(self.base_dir / 'data/Y_train_CVw08PX.csv')
+        X_train_df = safe_read_csv(str(X_TRAIN_FILE))
+        Y_train_df = safe_read_csv(str(Y_TRAIN_FILE))
         
         # Filtrer selon les indices de test
         valid_indices = [idx for idx in test_split_indices if idx in X_train_df.index]

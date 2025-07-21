@@ -21,10 +21,10 @@ def initialize_pipeline():
     
     # Vérification des fichiers requis
     required_files = [
-        'config.yaml'
-        'data/X_train_update.csv',
-        'data/Y_train_CVw08PX.csv',
-        'data/X_test_update.csv'
+        'config.yaml',
+        '../data/X_train_update.csv',
+        '../data/Y_train_CVw08PX.csv',
+        '../data/X_test_update.csv'
     ]
     
     missing_files = [f for f in required_files if not os.path.exists(f)]
@@ -53,14 +53,14 @@ def initialize_pipeline():
     
     # Modèles image
     for model_name in ['xgboost', 'neural_net']:
-        model_path = os.path.join('data/models', model_name)
+        model_path = os.path.join('../data/models', model_name)
         if os.path.exists(model_path):
             models_status[model_name] = "✅ Disponible"
         else:
             models_status[model_name] = "❌ Manquant"
     
     # Modèle texte
-    svm_path = 'data/models/SVM/model.pkl'
+    svm_path = '../data/models/SVM/model.pkl'
     if os.path.exists(svm_path):
         models_status['SVM'] = "✅ Disponible"
     else:
@@ -73,9 +73,9 @@ def initialize_pipeline():
     
     # Vérification des résultats
     results_files = [
-        'data/results/image_models_comparison_results.csv',
-        'data/results/text_model_results.csv',
-        'data/reports/multimodal_comparison_results.csv'
+        '../data/results/models_comparaison_results.csv',
+        '../data/results/text_model_results.csv',
+        '../data/reports/multimodal_comparaison_results.csv'
     ]
     
     existing_results = [f for f in results_files if os.path.exists(f)]
@@ -83,11 +83,11 @@ def initialize_pipeline():
     
     # Création des répertoires nécessaires
     directories = [
-        'data/reports',
-        'data/explanations',
-        'data/rapports',
-        'data/erreurs',
-        'data/results',
+        '../data/reports',
+        '../data/explanations',
+        '../data/rapports',
+        '../data/erreurs',
+        '../data/results',
         'temp_uploads'
     ]
     

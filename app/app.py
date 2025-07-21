@@ -9,6 +9,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from pathlib import Path
+from utils_path import *
 
 import main 
 from utils import safe_read_csv
@@ -31,29 +32,27 @@ def load_pipeline():
     
     # Debug
     st.write("### 🔍 Debug")
-    st.write(f"**Répertoire du script:** `{script_dir}`")
+    st.write(f"**Répertoire du script:** `{APP_DIR}`")
     st.write(f"**Répertoire de travail:** `{Path.cwd()}`")
+    st.write(f"**Répertoire data:** `{DATA_DIR}`")
     
     try:
         # Vérifier que les fichiers existent
-        config_path = script_dir / 'config.yaml'
-        preprocess_path = script_dir / 'preprocess.py'
-        
-        st.write(f"**config.yaml existe:** {'✅' if config_path.exists() else '❌'}")
-        st.write(f"**preprocess.py existe:** {'✅' if preprocess_path.exists() else '❌'}")
-        
+        st.write(f"**config.yaml existe:** {'✅' if CONFIG_FILE.exists() else '❌'}")
+        st.write(f"**preprocess.py existe:** {'✅' if (APP_DIR / 'preprocess.py').exists() else '❌'}")
+                
         # Ajouter le répertoire du script au PATH Python
         import sys
-        if str(script_dir) not in sys.path:
-            sys.path.insert(0, str(script_dir))
+        if str(APP_DIR) not in sys.path:
+            sys.path.insert(0, str(APP_DIR))
         
         from preprocess import ProductClassificationPipeline, PipelineConfig
         
-        if not config_path.exists():
-            st.error(f"❌ config.yaml non trouvé dans {script_dir}")
+        if not CONFIG_FILE.exists():
+            st.error(f"❌ config.yaml non trouvé dans {APP_DIR}")
             return None
             
-        config = PipelineConfig.from_yaml(str(config_path))
+        config = PipelineConfig.from_yaml(str(CONFIG_FILE))
         pipeline = ProductClassificationPipeline(config)
         
         # Charger les données pré-traitées
@@ -99,32 +98,32 @@ def load_results_data():
     
     # Résultats de comparaison des modèles
     results_files = {
-        'image_models': 'data/results/image_models_comparison_results.csv',
-        'text_model': 'data/results/text_model_results.csv',
-        'multimodal': 'data/reports/multimodal_comparison_results.csv'
+        'image_models': get_result_file('models_comparaison_results.csv'),
+        'text_model': get_result_file('text_model_results.csv'),
+        'multimodal': get_report_file('multimodal_comparaison_results.csv')
     }
     
     for key, file_path in results_files.items():
-        if os.path.exists(file_path):
+        if file_path.exists:
             try:
-                results[key] = safe_read_csv(file_path)
+                results[key] = safe_read_csv(str(file_path))
             except Exception as e:
                 st.warning(f"Erreur lecture {file_path}: {e}")
     
     # Rapports détaillés
     rapport_files = {
-        'rapport_xgboost': 'data/rapports/rapport_xgboost.csv',
-        'rapport_neural_net': 'data/rapports/rapport_neural_net.csv',
-        'rapport_text_SVM': 'data/rapports/rapport_text_SVM.csv',
-        'erreurs_xgboost': 'data/erreurs/erreurs_xgboost.csv',
-        'erreurs_neural_net': 'data/erreurs/erreurs_neural_net.csv',
-        'erreurs_text_SVM': 'data/erreurs/erreurs_text_SVM.csv'
+        'rapport_xgboost': get_rapport_file('rapport_xgboost.csv'),
+        'rapport_neural_net': get_rapport_file('rapport_neural_net.csv'),
+        'rapport_text_SVM': get_rapport_file('rapport_text_SVM.csv'),
+        'erreurs_xgboost': get_erreur_file('erreurs_xgboost.csv'),
+        'erreurs_neural_net': get_erreur_file('erreurs_neural_net.csv'),
+        'erreurs_text_SVM': get_erreur_file('erreurs_text_SVM.csv')
     }
     
     for key, file_path in rapport_files.items():
-        if os.path.exists(file_path):
+        if file_path.exists():
             try:
-                results[key] = safe_read_csv(file_path)
+                results[key] = safe_read_csv(str(file_path))
             except Exception as e:
                 st.warning(f"Erreur lecture {file_path}: {e}")
     
@@ -167,139 +166,155 @@ def check_columns_and_get_mapping(df, expected_columns, file_type="rapport"):
     
     # Mapping des codes vers les noms
     category_names = {
-        10: "Livres", 2280: "Jeux vidéo", 50: "Jouets & Jeux",
-        1280: "Accessoires téléphones", 2705: "Accessoires console",
-        2522: "Équipement bébé", 2582: "Matériel & accessoires",
-        1560: "Photos", 1281: "Téléphonie fixe",
-        1920: "Musique amplifiée", 2403: "Livres en langues étrangères",
-        1140: "TV", 2583: "Articles sport", 1180: "Décoration",
-        1300: "Jeux vidéo ancien", 2462: "Fournitures bureau",
-        1160: "Électroménager", 2060: "Articles soins",
-        40: "DVD & Films", 60: "Consoles", 1320: "CD",
-        1302: "Jeux vidéo rétro", 2220: "Puériculture",
-        2905: "Instruments musique", 2585: "Sports & Loisirs",
-        1940: "Instrument musique", 1301: "Consoles rétro"
+            10: "Livres occasion",
+            40: "Jeux consoles neuf", 
+            50: "Accessoires gaming",
+            60: "Consoles de jeux",
+            1140: "Objets pop culture",
+            1160: "Cartes de jeux",
+            1180: "Jeux de rôle et figurines",
+            1280: "Jouets enfant",
+            1300: "Modélisme",
+            1281: "Jeux enfant", 
+            1301: "Lingerie enfant et jeu de bar",
+            1302: "Jeux et accessoires de plein air",
+            1320: "Puériculture",
+            1560: "Mobilier",
+            1920: "Linge de maison",
+            1940: "Épicerie",
+            2060: "Décoration",
+            2220: "Animalerie",
+            2280: "Journaux et revues occasion",
+            2403: "Lots livres et magazines",
+            2462: "Console et Jeux vidéos occasion",
+            2522: "Fournitures papeterie",
+            2582: "Mobilier et accessoires de jardin",
+            2583: "Piscine et accessoires",
+            2585: "Outillage de jardin",
+            2705: "Livres neufs",
+            2905: "Jeux PC en téléchargement"
     }
     
-    # # Mapping détaillé avec descriptions et emoji
-    # def get_category_description(code):
-    #     descriptions = {
-    #         10: {"name": "Livres", "emoji": "📚", "desc": "Romans, essais, BD, magazines"},
-    #         40: {"name": "DVD & Films", "emoji": "🎬", "desc": "Films, séries, documentaires"},
-    #         50: {"name": "Jouets & Jeux", "emoji": "🧸", "desc": "Jouets enfants, jeux de société"},
-    #         60: {"name": "Consoles", "emoji": "🎮", "desc": "PlayStation, Xbox, Nintendo"},
-    #         1140: {"name": "TV", "emoji": "📺", "desc": "Télévisions, écrans, projecteurs"},
-    #         1160: {"name": "Électroménager", "emoji": "🏠", "desc": "Frigo, lave-linge, micro-ondes"},
-    #         1180: {"name": "Décoration", "emoji": "🖼️", "desc": "Meubles, luminaires, objets déco"},
-    #         1280: {"name": "Accessoires téléphones", "emoji": "📱", "desc": "Coques, chargeurs, écouteurs"},
-    #         1281: {"name": "Téléphonie fixe", "emoji": "☎️", "desc": "Téléphones fixes, répondeurs"},
-    #         1300: {"name": "Jeux vidéo ancien", "emoji": "🕹️", "desc": "Jeux rétro, collectors"},
-    #         1301: {"name": "Consoles rétro", "emoji": "👾", "desc": "Anciennes consoles de jeu"},
-    #         1302: {"name": "Jeux vidéo rétro", "emoji": "🎯", "desc": "Jeux vintage, cartouches"},
-    #         1320: {"name": "CD", "emoji": "💿", "desc": "Musique, albums, compilations"},
-    #         1560: {"name": "Photos", "emoji": "📷", "desc": "Appareils photo, objectifs"},
-    #         1920: {"name": "Musique amplifiée", "emoji": "🎵", "desc": "Enceintes, amplis, sono"},
-    #         1940: {"name": "Instrument musique", "emoji": "🎸", "desc": "Guitares, pianos, batteries"},
-    #         2060: {"name": "Articles soins", "emoji": "🧴", "desc": "Cosmétiques, hygiène, bien-être"},
-    #         2220: {"name": "Puériculture", "emoji": "👶", "desc": "Poussettes, biberons, vêtements bébé"},
-    #         2280: {"name": "Jeux vidéo", "emoji": "🎮", "desc": "Jeux récents, dernières sorties"},
-    #         2403: {"name": "Livres en langues étrangères", "emoji": "📖", "desc": "Livres anglais, multilingues"},
-    #         2462: {"name": "Fournitures bureau", "emoji": "✏️", "desc": "Stylos, cahiers, classeurs"},
-    #         2522: {"name": "Équipement bébé", "emoji": "🍼", "desc": "Mobilier, sécurité, éveil bébé"},
-    #         2582: {"name": "Matériel & accessoires", "emoji": "🔧", "desc": "Outils, bricolage, jardinage"},
-    #         2583: {"name": "Articles sport", "emoji": "⚽", "desc": "Équipement sportif, vêtements"},
-    #         2585: {"name": "Sports & Loisirs", "emoji": "🏃", "desc": "Fitness, outdoor, loisirs créatifs"},
-    #         2705: {"name": "Accessoires console", "emoji": "🎮", "desc": "Manettes, casques gaming"},
-    #         2905: {"name": "Instruments musique", "emoji": "🎺", "desc": "Instruments à vent, cordes, percussions"}
-    #     }
+    # Mapping détaillé avec descriptions et emoji
+    def get_category_description(code):
+        descriptions = {
+            10: {"name": "Livres occasion", "emoji": "📚", "desc": "Romans, BD, essais d'occasion"},
+            40: {"name": "Jeux consoles neuf", "emoji": "🆕", "desc": "Jeux neufs pour consoles"},
+            50: {"name": "Accessoires gaming", "emoji": "🎧", "desc": "Casques, manettes, équipements gamer"},
+            60: {"name": "Consoles de jeux", "emoji": "🎮", "desc": "PlayStation, Xbox, Nintendo et autres"},
+            1300: {"name": "Modélisme", "emoji": "✈️", "desc": "Maquettes, trains miniatures, dioramas"},
+            1140: {"name": "Objets pop culture", "emoji": "🧙‍♂️", "desc": "Figurines, goodies, objets collectors"},
+            1160: {"name": "Cartes de jeux", "emoji": "🃏", "desc": "Cartes Pokémon, Magic, Yu-Gi-Oh!"},
+            1180: {"name": "Jeux de rôle et figurines", "emoji": "🐉", "desc": "Warhammer, Donjons & Dragons, figurines"},
+            1280: {"name": "Jouets enfant", "emoji": "🧸", "desc": "Jouets pour tous âges, éducatifs ou ludiques"},
+            1320: {"name": "Puériculture", "emoji": "👶", "desc": "Biberons, poussettes, produits bébé"},
+            1560: {"name": "Mobilier", "emoji": "🪑", "desc": "Meubles et accessoires pour toutes les pièces de la maison"},
+            1920: {"name": "Linge de maison", "emoji": "🛏️", "desc": "Draps, serviettes, couvertures"},
+            1940: {"name": "Épicerie", "emoji": "🛒", "desc": "Produits alimentaires et boissons"},
+            2060: {"name": "Décoration", "emoji": "🖼️", "desc": "Objets déco, cadres, bougies"},
+            2220: {"name": "Animalerie", "emoji": "🐾", "desc": "Accessoires pour chiens, chats et NAC"},
+            2280: {"name": "Journaux et revues occasion", "emoji": "📰", "desc": "Magazines, journaux, revues d'occasion"},
+            1281: {"name": "Jeux enfant", "emoji": "🧩", "desc": "Jeux d'éveil, de construction ou de société"},
+            1301: {"name": "Lingerie enfant et jeu de bar", "emoji": "🧦", "desc": "Chaussettes ludiques pour enfants, billard babyfoot et flechettes"},
+            1302: {"name": "Jeux et accessoires de plein air", "emoji": "🏸", "desc": "Trottinettes, ballons, jeux d'extérieur"},
+            2403: {"name": "Lots livres et magazines", "emoji": "📦", "desc": "Packs de livres, collections de magazines"},
+            2462: {"name": "Console et Jeux vidéos occasion", "emoji": "💿", "desc": "Jeux vidéo d'occasion pour toutes consoles"},
+            2522: {"name": "Fournitures papeterie", "emoji": "🖊️", "desc": "Stylos, cahiers, articles scolaires"},
+            2582: {"name": "Mobilier et accessoire de jardin", "emoji": "🌳", "desc": "Tables, chaises, bancs d'extérieur"},
+            2583: {"name": "Piscine et accessoires", "emoji": "🏊", "desc": "Piscines gonflables, jeux d'eau"},
+            2585: {"name": "Outillage de jardin", "emoji": "🛠️", "desc": "Outils, tondeuses, équipements jardin"},
+            2705: {"name": "Livres neufs", "emoji": "📖", "desc": "Romans, essais, albums neufs"},
+            2905: {"name": "Jeux PC en téléchargement", "emoji": "🖥️", "desc": "Jeux pour ordinateur, clefs numériques"}
+        }
+
         
-    #     return descriptions.get(code, {
-    #         "name": f"Code_{code}", 
-    #         "emoji": "❓", 
-    #         "desc": "Catégorie non documentée"
-    #     })
+        return descriptions.get(code, {
+            "name": f"Code_{code}", 
+            "emoji": "❓", 
+            "desc": "Catégorie non documentée"
+        })
     
-    # # Fonction pour améliorer la sélection d'exemples
-    # def get_diverse_examples():
-    #     """Sélectionne des exemples en s'assurant d'avoir une bonne diversité de catégories"""
-    #     try:
-    #         # Charger les données
-    #         X_train_df = safe_read_csv('data/X_train_update.csv')
-    #         Y_train_df = safe_read_csv('data/Y_train_CVw08PX.csv')
+    # Fonction pour améliorer la sélection d'exemples
+    def get_diverse_examples():
+        """Sélectionne des exemples en s'assurant d'avoir une bonne diversité de catégories"""
+        try:
+            # Charger les données
+            X_train_df = safe_read_csv('../data/X_train_update.csv')
+            Y_train_df = safe_read_csv('../data/Y_train_CVw08PX.csv')
             
-    #         # Récupérer les indices du test_split
-    #         if hasattr(pipeline, 'preprocessed_data') and 'test_split_indices' in pipeline.preprocessed_data:
-    #             test_split_indices = pipeline.preprocessed_data['test_split_indices']
-    #         else:
-    #             n_total = len(X_train_df)
-    #             test_split_indices = X_train_df.index[-int(0.2 * n_total):]
+            # Récupérer les indices du test_split
+            if hasattr(pipeline, 'preprocessed_data') and 'test_split_indices' in pipeline.preprocessed_data:
+                test_split_indices = pipeline.preprocessed_data['test_split_indices']
+            else:
+                n_total = len(X_train_df)
+                test_split_indices = X_train_df.index[-int(0.2 * n_total):]
             
-    #         # Grouper par catégorie
-    #         available_indices = [idx for idx in test_split_indices if idx in X_train_df.index and idx in Y_train_df.index]
+            # Grouper par catégorie
+            available_indices = [idx for idx in test_split_indices if idx in X_train_df.index and idx in Y_train_df.index]
             
-    #         category_groups = {}
-    #         for idx in available_indices:
-    #             if idx in Y_train_df.index:
-    #                 category = Y_train_df.loc[idx, 'prdtypecode']
-    #                 if category not in category_groups:
-    #                     category_groups[category] = []
-    #                 category_groups[category].append(idx)
+            category_groups = {}
+            for idx in available_indices:
+                if idx in Y_train_df.index:
+                    category = Y_train_df.loc[idx, 'prdtypecode']
+                    if category not in category_groups:
+                        category_groups[category] = []
+                    category_groups[category].append(idx)
             
-    #         # Sélectionner 2-3 exemples par catégorie disponible
-    #         selected_examples = []
+            # Sélectionner 2-3 exemples par catégorie disponible
+            selected_examples = []
             
-    #         for category, indices in category_groups.items():
-    #             # Vérifier que les images existent
-    #             valid_indices = []
-    #             for idx in indices[:10]:  # Vérifier les 10 premiers
-    #                 row = X_train_df.loc[idx]
-    #                 image_file = f"image_{row['imageid']}_product_{row['productid']}.jpg"
-    #                 image_path = os.path.join('data/images/image_train', image_file)
-    #                 if os.path.exists(image_path):
-    #                     valid_indices.append(idx)
+            for category, indices in category_groups.items():
+                # Vérifier que les images existent
+                valid_indices = []
+                for idx in indices[:10]:  # Vérifier les 10 premiers
+                    row = X_train_df.loc[idx]
+                    image_file = f"image_{row['imageid']}_product_{row['productid']}.jpg"
+                    image_path = os.path.join('../data/images/image_train', image_file)
+                    if image_path.exists():
+                        valid_indices.append(idx)
                 
-    #             # Prendre 2-3 exemples valides par catégorie
-    #             if len(valid_indices) > 0:
-    #                 n_samples = min(3, len(valid_indices))
-    #                 selected_indices = np.random.choice(valid_indices, size=n_samples, replace=False)
-    #                 selected_examples.extend(selected_indices)
+                # Prendre 2-3 exemples valides par catégorie
+                if len(valid_indices) > 0:
+                    n_samples = min(3, len(valid_indices))
+                    selected_indices = np.random.choice(valid_indices, size=n_samples, replace=False)
+                    selected_examples.extend(selected_indices)
             
-    #         # Créer les exemples
-    #         samples = []
-    #         for idx in selected_examples:
-    #             row = X_train_df.loc[idx]
-    #             label = Y_train_df.loc[idx]
+            # Créer les exemples
+            samples = []
+            for idx in selected_examples:
+                row = X_train_df.loc[idx]
+                label = Y_train_df.loc[idx]
                 
-    #             designation = str(row.get('designation', '')).strip()
-    #             description = str(row.get('description', '')).strip()
-    #             text = f"{designation} {description}".strip()
+                designation = str(row.get('designation', '')).strip()
+                description = str(row.get('description', '')).strip()
+                text = f"{designation} {description}".strip()
                 
-    #             image_file = f"image_{row['imageid']}_product_{row['productid']}.jpg"
-    #             image_path = os.path.join('data/images/image_train', image_file)
+                image_file = f"image_{row['imageid']}_product_{row['productid']}.jpg"
+                image_path = os.path.join('../data/images/image_train', image_file)
                 
-    #             class_code = label['prdtypecode']
-    #             category_info = get_category_description(class_code)
+                class_code = label['prdtypecode']
+                category_info = get_category_description(class_code)
                 
-    #             if len(text) > 20:
-    #                 samples.append({
-    #                     'text': text,
-    #                     'image_path': image_path,
-    #                     'class_name': category_info['name'],
-    #                     'class_code': class_code,
-    #                     'class_emoji': category_info['emoji'],
-    #                     'class_desc': category_info['desc'],
-    #                     'imageid': row['imageid'],
-    #                     'productid': row['productid'],
-    #                     'index': idx,
-    #                     'designation': designation,
-    #                     'description': description
-    #                 })
+                if len(text) > 20:
+                    samples.append({
+                        'text': text,
+                        'image_path': image_path,
+                        'class_name': category_info['name'],
+                        'class_code': class_code,
+                        'class_emoji': category_info['emoji'],
+                        'class_desc': category_info['desc'],
+                        'imageid': row['imageid'],
+                        'productid': row['productid'],
+                        'index': idx,
+                        'designation': designation,
+                        'description': description
+                    })
             
-    #         return samples, category_groups
+            return samples, category_groups
             
-    #     except Exception as e:
-    #         st.error(f"❌ Erreur sélection exemples diversifiés: {e}")
-    #         return [], {}
+        except Exception as e:
+            st.error(f"❌ Erreur sélection exemples diversifiés: {e}")
+            return [], {}
     
     for expected_col in expected_columns:
         # Chercher la colonne existante
@@ -433,14 +448,18 @@ if page == "🏠 Accueil":
     
     # Données de distribution (basées sur vos outputs)
     class_data = {
-        'Classe': [10, 40, 50, 60, 1140, 1160, 1180, 1280, 1281, 1300, 1301, 1302, 1320, 1560, 1920, 1940, 2060, 2220, 2280, 2403, 2462, 2522, 2582, 2583, 2585, 2705, 2905],
-        'Nom': ['Livres', 'DVD & Films', 'Jouets & Jeux', 'Consoles', 'TV', 'Électroménager', 'Décoration', 'Accessoires téléphones', 'Téléphonie fixe', 'Jeux vidéo ancien', 'Consoles rétro', 'Jeux vidéo rétro', 'CD', 'Photos', 'Musique amplifiée', 'Instrument musique', 'Articles soins', 'Puériculture', 'Jeux vidéo', 'Livres en langues étrangères', 'Fournitures bureau', 'Équipement bébé', 'Matériel & accessoires', 'Articles sport', 'Sports & Loisirs', 'Accessoires console', 'Instruments musique'],
+        'Classe': [1, 4, 5, 6, 13, 114, 116, 118, 128, 132, 156, 192, 194, 206, 222, 228, 1281, 1301, 1302, 2403, 2462, 2522, 2582, 2583, 2585, 2705, 2905],
+        'Nom': ["Livres occasion","Jeux consoles neuf", "Accessoires gaming","Consoles de jeux","Modélisme","Objets pop culture","Cartes de jeux","Jeux de rôle et figurines","Jouets enfant","Puériculture","Mobilier","Linge de maison","Épicerie","Décoration","Animalerie","Journaux et revues occasion","Jeux enfant", "Lingerie enfant et jeu de bar","Jeux et accessoires de plein air","Lots livres et magazines","Console et Jeux vidéos occasion","Fournitures papeterie","Mobilier et accessoires de jardin","Piscine et accessoires","Outillage de jardin","Livres neufs","Jeux PC en téléchargement"
+],
         'Échantillons': [3116, 2508, 1681, 832, 2671, 3953, 764, 4870, 2070, 5045, 807, 2491, 3241, 5073, 4303, 803, 4993, 824, 4760, 4774, 1421, 4989, 2589, 10209, 2496, 2761, 872],
         'Pourcentage': [3.67, 2.95, 1.98, 0.98, 3.15, 4.66, 0.90, 5.74, 2.44, 5.94, 0.95, 2.93, 3.82, 5.97, 5.07, 0.95, 5.88, 0.97, 5.61, 5.62, 1.67, 5.88, 3.05, 12.02, 2.94, 3.25, 1.03]
     }
     
     df_classes = pd.DataFrame(class_data)
     
+    if st.button("🔍 Debug des chemins"):
+        debug_paths()
+        
     # Graphique interactif
     fig = px.bar(df_classes, x='Nom', y='Échantillons', 
                  title="Distribution des Classes (Données Originales)",
@@ -458,11 +477,11 @@ elif page == "📊 Résultats Globaux":
         st.subheader("🏆 Comparaison des Performances")
         
         # Préparer les données pour la comparaison
-        comparison_data = []
+        comparaison_data = []
         
         # Modèles image
         for model_name, row in results_data['image_models'].iterrows():
-            comparison_data.append({
+            comparaison_data.append({
                 'Modèle': model_name,
                 'Type': 'Image',
                 'Accuracy': row['accuracy'],
@@ -473,7 +492,7 @@ elif page == "📊 Résultats Globaux":
         
         # Modèle texte
         for model_name, row in results_data['text_model'].iterrows():
-            comparison_data.append({
+            comparaison_data.append({
                 'Modèle': model_name,
                 'Type': 'Texte',
                 'Accuracy': row['accuracy'],
@@ -486,7 +505,7 @@ elif page == "📊 Résultats Globaux":
         if 'multimodal' in results_data and not results_data['multimodal'].empty:
             for model_name, row in results_data['multimodal'].iterrows():
                 model_type = 'Multimodal' if 'multimodal' in str(row.get('model_type', '')) else 'Fusion'
-                comparison_data.append({
+                comparaison_data.append({
                     'Modèle': model_name,
                     'Type': model_type,
                     'Accuracy': row['accuracy'],
@@ -495,11 +514,11 @@ elif page == "📊 Résultats Globaux":
                     'Rappel': row.get('weighted_recall', 0)
                 })
         
-        df_comparison = pd.DataFrame(comparison_data)
+        df_comparaison = pd.DataFrame(comparaison_data)
         
-        if not df_comparison.empty:
+        if not df_comparaison.empty:
             # Graphique de comparaison
-            fig = px.scatter(df_comparison, x='Accuracy', y='F1-Score', 
+            fig = px.scatter(df_comparaison, x='Accuracy', y='F1-Score', 
                             color='Type', size='Précision',
                             hover_data=['Modèle', 'Rappel'],
                             title="Performance des Modèles (Accuracy vs F1-Score)")
@@ -507,7 +526,7 @@ elif page == "📊 Résultats Globaux":
             
             # Tableau récapitulatif
             st.subheader("📋 Tableau Récapitulatif")
-            df_display = df_comparison.round(3)
+            df_display = df_comparaison.round(3)
             st.dataframe(df_display, use_container_width=True)
     
     # Métriques par classe (si disponible)
@@ -636,7 +655,7 @@ elif page == "🖼️ Analyse Images":
                         if 'confidence' in error_column_mapping:
                             conf_val = error.get(error_column_mapping['confidence'], 'N/A')
                             st.write(f"**Probabilité de prédiction**: {conf_val}")
-                        elif 'prediction_probability' in error.columns:
+                        elif 'prediction_probability' in error.index:
                             conf_val = error.get('prediction_probability', 'N/A')
                             st.write(f"**Probabilité de prédiction**: {conf_val}")
                         else:
@@ -765,13 +784,13 @@ elif page == "🔗 Analyse Multimodale":
         individual_results = multimodal_results[multimodal_results['model_type'] != 'multimodal']
         
         if not individual_results.empty:
-            comparison_fig = px.bar(
+            comparaison_fig = px.bar(
                 x=multimodal_results.index,
                 y=multimodal_results['weighted_f1'],
                 color=multimodal_results['model_type'],
                 title="Comparaison Individuel vs Multimodal"
             )
-            st.plotly_chart(comparison_fig, use_container_width=True)
+            st.plotly_chart(comparaison_fig, use_container_width=True)
     else:
         st.warning("Résultats multimodaux non disponibles. Exécutez d'abord main.py pour générer les analyses multimodales.")
 
@@ -827,10 +846,10 @@ elif page == "🧪 Test Nouvelles Données":
             st.image(image, caption="Image téléchargée", use_container_width=True)
             
             # Sauvegarder temporairement
-            temp_dir = "temp_uploads"
-            os.makedirs(temp_dir, exist_ok=True)
-            temp_image_path = os.path.join(temp_dir, uploaded_file.name)
-            image.save(temp_image_path)
+            temp_dir = APP_DIR / "temp_uploads"
+            temp_dir.mkdir(exist_ok=True)
+            temp_image_path = temp_dir / uploaded_file.name
+            image.save(str(temp_image_path))
         else:
             temp_image_path = None
     
@@ -912,8 +931,8 @@ elif page == "🎯 Explicabilité":
         """Récupère des exemples depuis les données test_split pour l'explicabilité"""
         try:
             # Charger les données originales
-            Y_train_df = safe_read_csv('data/Y_train_CVw08PX.csv')
-            X_train_df = safe_read_csv('data/X_train_update.csv')
+            X_train_df = safe_read_csv(str(X_TRAIN_FILE))
+            Y_train_df = safe_read_csv(str(Y_TRAIN_FILE))
             
             # Récupérer les indices du test_split depuis le pipeline
             if hasattr(pipeline, 'preprocessed_data') and 'test_split_indices' in pipeline.preprocessed_data:
@@ -938,12 +957,12 @@ elif page == "🎯 Explicabilité":
                 
                 # Construire le chemin image
                 image_file = f"image_{row['imageid']}_product_{row['productid']}.jpg"
-                image_path = os.path.join('data/images/image_train', image_file)
+                image_path = TRAIN_IMAGES_DIR / image_file
                 
                 # Nom de la classe
                 class_name = pipeline.category_names.get(label['prdtypecode'], 'Unknown')
                 
-                if os.path.exists(image_path) and len(text) > 10:
+                if image_path.exists() and len(text) > 10:
                     samples.append({
                         'text': text,
                         'image_path': image_path,
@@ -1180,23 +1199,6 @@ elif page == "🎯 Explicabilité":
     if not test_examples and mode == "🎲 Exemple test_split":
         st.warning("⚠️ Aucun exemple test_split disponible. Utilisez le mode 'Saisie manuelle'.")
     
-    # Suggestions d'amélioration
-    if len(test_examples) < 10:
-        with st.expander("💡 Suggestions d'amélioration"):
-            st.markdown("""
-            **Problème identifié**: Peu d'exemples test_split disponibles avec images.
-            
-            **Causes possibles**:
-            - Images manquantes dans le dossier `data/images/image_train/`
-            - Test split trop petit ou mal réparti
-            - Problèmes de chemins vers les images
-            
-            **Solutions suggérées**:
-            1. Vérifier l'intégrité du dataset d'images
-            2. Augmenter la taille du test_split (actuellement 20%)
-            3. Équilibrer la répartition des catégories dans le split
-            4. Utiliser des exemples synthétiques pour les catégories sous-représentées
-            """)
     
     # Statistiques sur les catégories
     if test_examples:
@@ -1207,7 +1209,7 @@ elif page == "🎯 Explicabilité":
                 if cat not in category_stats:
                     category_stats[cat] = {
                         'count': 0, 
-                        'emoji': example['class_emoji'],
+                        # 'emoji': example['class_emoji'],
                         'desc': example['class_desc']
                     }
                 category_stats[cat]['count'] += 1

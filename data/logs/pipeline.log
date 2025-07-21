@@ -1,0 +1,1165 @@
+2024-12-31 11:31:34,931 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 11:31:35,923 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 11:34:42,568 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 11:34:43,199 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 11:37:15,834 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 11:37:16,427 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 11:38:17,539 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 11:38:18,129 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 11:49:15,048 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 11:49:15,644 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 11:49:15,683 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 6, 'learning_rate': 0.28570714885887566, 'n_estimators': 393, 'min_child_weight': 5, 'gamma': 0.0864491338167939, 'subsample': 0.5779972601681014, 'colsample_bytree': 0.5290418060840998, 'reg_alpha': 0.8675143843171859, 'reg_lambda': 1.8073338851121945, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 12:02:31,445 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 12:02:32,110 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 12:02:32,145 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 6, 'learning_rate': 0.29000000000000004, 'n_estimators': 393, 'min_child_weight': 5, 'gamma': 0.08, 'subsample': 0.5, 'colsample_bytree': 0.5, 'reg_alpha': 0.87, 'reg_lambda': 1.81, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 12:05:23,381 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 12:05:24,027 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 12:05:24,065 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 6, 'learning_rate': 0.29000000000000004, 'n_estimators': 393, 'min_child_weight': 5, 'gamma': 0.08, 'subsample': 0.5, 'colsample_bytree': 0.5, 'reg_alpha': 0.87, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 12:19:14,170 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 12:19:14,856 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 12:19:14,892 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.12, 'n_estimators': 350, 'min_child_weight': 4, 'gamma': 0.03, 'subsample': 0.6, 'colsample_bytree': 0.6, 'reg_alpha': 0.28, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 12:33:00,732 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 12:33:01,340 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 12:33:01,378 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.12, 'n_estimators': 350, 'min_child_weight': 4, 'gamma': 0.09, 'subsample': 0.6, 'colsample_bytree': 0.6, 'reg_alpha': 0.3, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 12:41:30,234 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 12:41:30,886 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 12:41:30,923 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.08, 'n_estimators': 300, 'min_child_weight': 4, 'gamma': 0.08, 'subsample': 0.6, 'colsample_bytree': 0.8, 'reg_alpha': 0.1, 'reg_lambda': 1.5, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 12:41:30,928 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 10, 'learning_rate': 0.04, 'n_estimators': 200, 'min_child_weight': 2, 'gamma': 0.14, 'subsample': 0.8, 'colsample_bytree': 0.7, 'reg_alpha': 0.15000000000000002, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 12:41:30,940 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.08, 'n_estimators': 250, 'min_child_weight': 3, 'gamma': 0.08, 'subsample': 0.8, 'colsample_bytree': 0.9, 'reg_alpha': 0.25, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 12:41:30,946 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.08, 'n_estimators': 400, 'min_child_weight': 6, 'gamma': 0.1, 'subsample': 1.0, 'colsample_bytree': 0.9, 'reg_alpha': 0.15000000000000002, 'reg_lambda': 1.5, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 12:41:30,952 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 10, 'learning_rate': 0.09, 'n_estimators': 200, 'min_child_weight': 2, 'gamma': 0.11, 'subsample': 0.7, 'colsample_bytree': 0.7, 'reg_alpha': 0.2, 'reg_lambda': 1.5, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 12:41:30,961 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.04, 'n_estimators': 400, 'min_child_weight': 5, 'gamma': 0.14, 'subsample': 1.0, 'colsample_bytree': 1.0, 'reg_alpha': 0.15000000000000002, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 12:41:30,975 - classification_pipeline - INFO - Essai 7: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.08, 'n_estimators': 350, 'min_child_weight': 6, 'gamma': 0.11, 'subsample': 0.6, 'colsample_bytree': 0.9, 'reg_alpha': 0.3, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 12:48:08,189 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 12:48:09,169 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 12:48:09,211 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.06, 'n_estimators': 200, 'min_child_weight': 5, 'gamma': 0.08, 'subsample': 1.0, 'colsample_bytree': 0.9, 'reg_alpha': 0.15000000000000002, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 12:48:09,215 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 10, 'learning_rate': 0.07, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.16, 'subsample': 0.7, 'colsample_bytree': 0.8, 'reg_alpha': 0.15000000000000002, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 12:48:09,225 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.05, 'n_estimators': 300, 'min_child_weight': 6, 'gamma': 0.12, 'subsample': 0.9, 'colsample_bytree': 0.7, 'reg_alpha': 0.25, 'reg_lambda': 2.1, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 12:48:09,248 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.04, 'n_estimators': 200, 'min_child_weight': 3, 'gamma': 0.15000000000000002, 'subsample': 1.0, 'colsample_bytree': 0.9, 'reg_alpha': 0.3, 'reg_lambda': 1.6, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 12:48:09,272 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.06, 'n_estimators': 300, 'min_child_weight': 3, 'gamma': 0.08, 'subsample': 0.7, 'colsample_bytree': 0.7, 'reg_alpha': 0.15000000000000002, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 12:48:09,275 - classification_pipeline - INFO - Essai 7: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.06, 'n_estimators': 350, 'min_child_weight': 3, 'gamma': 0.11, 'subsample': 0.8, 'colsample_bytree': 0.6, 'reg_alpha': 0.25, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 12:48:09,277 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.11000000000000001, 'n_estimators': 350, 'min_child_weight': 5, 'gamma': 0.08, 'subsample': 0.8, 'colsample_bytree': 0.7, 'reg_alpha': 0.15000000000000002, 'reg_lambda': 2.1, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:09:24,741 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 13:09:25,726 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 13:13:16,401 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 13:13:17,081 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 13:13:17,118 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.12, 'n_estimators': 200, 'min_child_weight': 4, 'gamma': 0.11, 'subsample': 0.6, 'colsample_bytree': 0.8, 'reg_alpha': 0.15000000000000002, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:13:17,126 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 10, 'learning_rate': 0.04, 'n_estimators': 250, 'min_child_weight': 6, 'gamma': 0.12, 'subsample': 0.9, 'colsample_bytree': 0.8, 'reg_alpha': 0.25, 'reg_lambda': 1.5, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:13:17,130 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 10, 'learning_rate': 0.05, 'n_estimators': 200, 'min_child_weight': 4, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.6, 'reg_alpha': 0.25, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:13:17,139 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 10, 'learning_rate': 0.05, 'n_estimators': 400, 'min_child_weight': 3, 'gamma': 0.11, 'subsample': 0.7, 'colsample_bytree': 1.0, 'reg_alpha': 0.25, 'reg_lambda': 1.6, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:13:17,145 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.05, 'n_estimators': 350, 'min_child_weight': 2, 'gamma': 0.15000000000000002, 'subsample': 1.0, 'colsample_bytree': 0.8, 'reg_alpha': 0.2, 'reg_lambda': 1.5, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:13:17,164 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 11, 'learning_rate': 0.04, 'n_estimators': 400, 'min_child_weight': 6, 'gamma': 0.11, 'subsample': 0.8, 'colsample_bytree': 0.7, 'reg_alpha': 0.2, 'reg_lambda': 1.7, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:13:17,169 - classification_pipeline - INFO - Essai 7: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.06, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.13, 'subsample': 0.9, 'colsample_bytree': 0.8, 'reg_alpha': 0.1, 'reg_lambda': 2.1, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:19:08,713 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 13:19:11,474 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 13:19:11,517 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.05, 'n_estimators': 200, 'min_child_weight': 6, 'gamma': 0.15000000000000002, 'subsample': 0.8, 'colsample_bytree': 0.6, 'reg_alpha': 0.1, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:19:11,523 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.05, 'n_estimators': 200, 'min_child_weight': 5, 'gamma': 0.09, 'subsample': 1.0, 'colsample_bytree': 0.8, 'reg_alpha': 0.1, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:19:11,527 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.06, 'n_estimators': 300, 'min_child_weight': 6, 'gamma': 0.1, 'subsample': 1.0, 'colsample_bytree': 0.8, 'reg_alpha': 0.1, 'reg_lambda': 2.1, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:19:11,563 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 10, 'learning_rate': 0.09, 'n_estimators': 250, 'min_child_weight': 2, 'gamma': 0.09, 'subsample': 0.6, 'colsample_bytree': 0.8, 'reg_alpha': 0.3, 'reg_lambda': 1.6, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:19:11,564 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 11, 'learning_rate': 0.11000000000000001, 'n_estimators': 400, 'min_child_weight': 2, 'gamma': 0.13, 'subsample': 0.7, 'colsample_bytree': 1.0, 'reg_alpha': 0.1, 'reg_lambda': 1.7, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:19:11,566 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 11, 'learning_rate': 0.07, 'n_estimators': 250, 'min_child_weight': 4, 'gamma': 0.16, 'subsample': 0.9, 'colsample_bytree': 0.6, 'reg_alpha': 0.2, 'reg_lambda': 1.7, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:19:11,567 - classification_pipeline - INFO - Essai 7: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.06, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.11, 'subsample': 0.9, 'colsample_bytree': 0.6, 'reg_alpha': 0.15000000000000002, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:25:03,709 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 13:25:04,651 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 13:25:04,686 - classification_pipeline - INFO - Début optimisation xgboost à 13:25:04
+2024-12-31 13:25:04,686 - classification_pipeline - INFO - Nombre d'essais: 100, n_jobs: 6
+2024-12-31 13:25:04,692 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.11000000000000001, 'n_estimators': 400, 'min_child_weight': 2, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 1.0, 'reg_alpha': 0.1, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:25:04,698 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.12, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.08, 'subsample': 0.7, 'colsample_bytree': 0.6, 'reg_alpha': 0.3, 'reg_lambda': 1.5, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:25:04,711 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 10, 'learning_rate': 0.04, 'n_estimators': 350, 'min_child_weight': 3, 'gamma': 0.13, 'subsample': 0.8, 'colsample_bytree': 0.8, 'reg_alpha': 0.1, 'reg_lambda': 1.7, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:25:04,722 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 11, 'learning_rate': 0.05, 'n_estimators': 350, 'min_child_weight': 2, 'gamma': 0.16, 'subsample': 1.0, 'colsample_bytree': 0.7, 'reg_alpha': 0.15000000000000002, 'reg_lambda': 1.6, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:25:04,738 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.07, 'n_estimators': 200, 'min_child_weight': 4, 'gamma': 0.12, 'subsample': 0.9, 'colsample_bytree': 0.6, 'reg_alpha': 0.3, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:25:04,753 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 10, 'learning_rate': 0.12, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.1, 'subsample': 0.9, 'colsample_bytree': 0.7, 'reg_alpha': 0.3, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27}
+2024-12-31 13:31:34,181 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 13:31:35,114 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 13:31:35,149 - classification_pipeline - INFO - Début optimisation xgboost à 13:31:35
+2024-12-31 13:31:35,149 - classification_pipeline - INFO - Nombre d'essais: 100, n_jobs: 6
+2024-12-31 13:31:35,154 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 10, 'learning_rate': 0.08, 'n_estimators': 350, 'min_child_weight': 3, 'gamma': 0.08, 'subsample': 1.0, 'colsample_bytree': 0.7, 'reg_alpha': 0.25, 'reg_lambda': 1.6, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_bin': 128, 'gpu_id': 0, 'predictor': 'gpu_predictor', 'n_gpus': 1, 'max_leaves': 32}
+2024-12-31 13:31:35,158 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 10, 'learning_rate': 0.11000000000000001, 'n_estimators': 400, 'min_child_weight': 6, 'gamma': 0.14, 'subsample': 0.9, 'colsample_bytree': 0.8, 'reg_alpha': 0.2, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_bin': 128, 'gpu_id': 0, 'predictor': 'gpu_predictor', 'n_gpus': 1, 'max_leaves': 32}
+2024-12-31 13:31:35,164 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 10, 'learning_rate': 0.11000000000000001, 'n_estimators': 200, 'min_child_weight': 4, 'gamma': 0.11, 'subsample': 1.0, 'colsample_bytree': 0.7, 'reg_alpha': 0.3, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_bin': 128, 'gpu_id': 0, 'predictor': 'gpu_predictor', 'n_gpus': 1, 'max_leaves': 32}
+2024-12-31 13:31:35,175 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 11, 'learning_rate': 0.12, 'n_estimators': 300, 'min_child_weight': 4, 'gamma': 0.14, 'subsample': 0.8, 'colsample_bytree': 0.7, 'reg_alpha': 0.3, 'reg_lambda': 1.6, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_bin': 128, 'gpu_id': 0, 'predictor': 'gpu_predictor', 'n_gpus': 1, 'max_leaves': 32}
+2024-12-31 13:31:35,184 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.04, 'n_estimators': 300, 'min_child_weight': 3, 'gamma': 0.11, 'subsample': 0.7, 'colsample_bytree': 0.7, 'reg_alpha': 0.2, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_bin': 128, 'gpu_id': 0, 'predictor': 'gpu_predictor', 'n_gpus': 1, 'max_leaves': 32}
+2024-12-31 13:31:35,199 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.09, 'n_estimators': 250, 'min_child_weight': 2, 'gamma': 0.14, 'subsample': 0.6, 'colsample_bytree': 0.9, 'reg_alpha': 0.3, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_bin': 128, 'gpu_id': 0, 'predictor': 'gpu_predictor', 'n_gpus': 1, 'max_leaves': 32}
+2024-12-31 13:33:24,558 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 13:33:25,145 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 13:33:25,175 - classification_pipeline - INFO - Début optimisation xgboost à 13:33:25
+2024-12-31 13:33:25,175 - classification_pipeline - INFO - Nombre d'essais: 100, n_jobs: 6
+2024-12-31 13:33:25,178 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.12, 'n_estimators': 350, 'min_child_weight': 6, 'gamma': 0.14, 'subsample': 0.6, 'colsample_bytree': 0.6, 'reg_alpha': 0.2, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_bin': 128, 'max_leaves': 32}
+2024-12-31 13:33:25,181 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.1, 'n_estimators': 350, 'min_child_weight': 5, 'gamma': 0.16, 'subsample': 1.0, 'colsample_bytree': 0.9, 'reg_alpha': 0.15000000000000002, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_bin': 128, 'max_leaves': 32}
+2024-12-31 13:33:25,191 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 11, 'learning_rate': 0.11000000000000001, 'n_estimators': 350, 'min_child_weight': 5, 'gamma': 0.15000000000000002, 'subsample': 0.8, 'colsample_bytree': 1.0, 'reg_alpha': 0.15000000000000002, 'reg_lambda': 1.5, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_bin': 128, 'max_leaves': 32}
+2024-12-31 13:33:25,201 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.04, 'n_estimators': 250, 'min_child_weight': 5, 'gamma': 0.15000000000000002, 'subsample': 0.6, 'colsample_bytree': 0.6, 'reg_alpha': 0.2, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_bin': 128, 'max_leaves': 32}
+2024-12-31 13:33:25,210 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 10, 'learning_rate': 0.11000000000000001, 'n_estimators': 300, 'min_child_weight': 3, 'gamma': 0.14, 'subsample': 0.9, 'colsample_bytree': 1.0, 'reg_alpha': 0.1, 'reg_lambda': 1.7, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_bin': 128, 'max_leaves': 32}
+2024-12-31 13:33:25,231 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.08, 'n_estimators': 200, 'min_child_weight': 2, 'gamma': 0.1, 'subsample': 0.7, 'colsample_bytree': 0.9, 'reg_alpha': 0.25, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_bin': 128, 'max_leaves': 32}
+2024-12-31 13:48:10,675 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 13:48:11,291 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 13:48:11,322 - classification_pipeline - INFO - Début optimisation xgboost à 13:48:11
+2024-12-31 13:48:11,322 - classification_pipeline - INFO - Nombre d'essais: 100, n_jobs: 6
+2024-12-31 13:48:11,326 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.08, 'n_estimators': 200, 'min_child_weight': 5, 'gamma': 0.13, 'subsample': 0.7, 'colsample_bytree': 0.8, 'reg_alpha': 0.25, 'reg_lambda': 1.7, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 13:48:11,332 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.05, 'n_estimators': 200, 'min_child_weight': 2, 'gamma': 0.14, 'subsample': 1.0, 'colsample_bytree': 1.0, 'reg_alpha': 0.15000000000000002, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 13:48:11,364 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.04, 'n_estimators': 250, 'min_child_weight': 4, 'gamma': 0.14, 'subsample': 0.7, 'colsample_bytree': 0.6, 'reg_alpha': 0.2, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 13:48:11,366 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 10, 'learning_rate': 0.04, 'n_estimators': 200, 'min_child_weight': 3, 'gamma': 0.16, 'subsample': 0.7, 'colsample_bytree': 0.8, 'reg_alpha': 0.25, 'reg_lambda': 2.1, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 13:48:11,366 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 10, 'learning_rate': 0.12, 'n_estimators': 300, 'min_child_weight': 3, 'gamma': 0.11, 'subsample': 0.9, 'colsample_bytree': 0.8, 'reg_alpha': 0.3, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 13:48:11,367 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 11, 'learning_rate': 0.12, 'n_estimators': 200, 'min_child_weight': 4, 'gamma': 0.14, 'subsample': 1.0, 'colsample_bytree': 0.8, 'reg_alpha': 0.2, 'reg_lambda': 1.7, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 13:53:08,234 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 13:53:09,244 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 13:53:09,285 - classification_pipeline - INFO - Début optimisation xgboost à 13:53:09
+2024-12-31 13:53:09,286 - classification_pipeline - INFO - Nombre d'essais: 100, n_jobs: 6
+2024-12-31 13:53:09,290 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.11, 'n_estimators': 200, 'min_child_weight': 5, 'gamma': 0.1, 'subsample': 0.7999999999999999, 'colsample_bytree': 0.7, 'reg_alpha': 0.25, 'reg_lambda': 1.9000000000000001, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 13:53:09,295 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 10, 'learning_rate': 0.11, 'n_estimators': 300, 'min_child_weight': 3, 'gamma': 0.12000000000000001, 'subsample': 0.8999999999999999, 'colsample_bytree': 0.7, 'reg_alpha': 0.2, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 13:53:09,301 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.08, 'n_estimators': 300, 'min_child_weight': 3, 'gamma': 0.14, 'subsample': 0.8999999999999999, 'colsample_bytree': 0.8999999999999999, 'reg_alpha': 0.25, 'reg_lambda': 1.6, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 13:53:09,314 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.08, 'n_estimators': 400, 'min_child_weight': 4, 'gamma': 0.1, 'subsample': 0.7999999999999999, 'colsample_bytree': 0.7, 'reg_alpha': 0.2, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 13:53:09,327 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.08, 'n_estimators': 400, 'min_child_weight': 5, 'gamma': 0.1, 'subsample': 0.7999999999999999, 'colsample_bytree': 0.7, 'reg_alpha': 0.2, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 13:53:09,343 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 10, 'learning_rate': 0.060000000000000005, 'n_estimators': 350, 'min_child_weight': 4, 'gamma': 0.14, 'subsample': 0.7, 'colsample_bytree': 0.8999999999999999, 'reg_alpha': 0.2, 'reg_lambda': 1.9000000000000001, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 14:11:21,902 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 14:11:22,945 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 14:11:22,981 - classification_pipeline - INFO - Début optimisation xgboost à 14:11:22
+2024-12-31 14:11:22,981 - classification_pipeline - INFO - Nombre d'essais: 100, n_jobs: 6
+2024-12-31 14:11:23,010 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 11, 'learning_rate': 0.08, 'n_estimators': 400, 'min_child_weight': 5, 'gamma': 0.14, 'subsample': 0.8, 'colsample_bytree': 0.9, 'reg_alpha': 0.3, 'reg_lambda': 1.6, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 14:11:23,010 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 11, 'learning_rate': 0.11, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.13, 'subsample': 0.7, 'colsample_bytree': 0.9, 'reg_alpha': 0.1, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 14:11:23,012 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.11, 'n_estimators': 250, 'min_child_weight': 5, 'gamma': 0.11, 'subsample': 0.8, 'colsample_bytree': 0.7, 'reg_alpha': 0.2, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 14:11:23,014 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.1, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.1, 'subsample': 0.8, 'colsample_bytree': 0.8, 'reg_alpha': 0.2, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 14:11:23,016 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.06, 'n_estimators': 250, 'min_child_weight': 5, 'gamma': 0.1, 'subsample': 0.7, 'colsample_bytree': 0.9, 'reg_alpha': 0.3, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 14:11:23,022 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 11, 'learning_rate': 0.05, 'n_estimators': 300, 'min_child_weight': 4, 'gamma': 0.13, 'subsample': 0.8, 'colsample_bytree': 0.7, 'reg_alpha': 0.1, 'reg_lambda': 1.6, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 14:16:55,046 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 14:16:56,005 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 14:16:56,040 - classification_pipeline - INFO - Début optimisation xgboost à 14:16:56
+2024-12-31 14:16:56,040 - classification_pipeline - INFO - Nombre d'essais: 100, n_jobs: 6
+2024-12-31 14:16:56,043 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 11, 'learning_rate': 0.05, 'n_estimators': 350, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.9, 'colsample_bytree': 0.9, 'reg_alpha': 0.1, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 14:16:56,047 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.09, 'n_estimators': 200, 'min_child_weight': 5, 'gamma': 0.1, 'subsample': 0.9, 'colsample_bytree': 0.8, 'reg_alpha': 0.1, 'reg_lambda': 1.6, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 14:16:56,054 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.11, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.14, 'subsample': 0.8, 'colsample_bytree': 0.7, 'reg_alpha': 0.1, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 14:16:56,065 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.11, 'n_estimators': 250, 'min_child_weight': 5, 'gamma': 0.13, 'subsample': 0.9, 'colsample_bytree': 0.7, 'reg_alpha': 0.3, 'reg_lambda': 1.7, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 14:16:56,077 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 11, 'learning_rate': 0.05, 'n_estimators': 200, 'min_child_weight': 3, 'gamma': 0.1, 'subsample': 0.9, 'colsample_bytree': 0.7, 'reg_alpha': 0.1, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 14:16:56,094 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.07, 'n_estimators': 250, 'min_child_weight': 4, 'gamma': 0.1, 'subsample': 0.9, 'colsample_bytree': 0.7, 'reg_alpha': 0.2, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 32}
+2024-12-31 14:19:36,794 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 14:19:37,744 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 14:19:37,788 - classification_pipeline - INFO - Début optimisation xgboost à 14:19:37
+2024-12-31 14:19:37,788 - classification_pipeline - INFO - Nombre d'essais: 100, n_jobs: 6
+2024-12-31 14:19:37,794 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.1, 'n_estimators': 350, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.7, 'colsample_bytree': 0.7, 'reg_alpha': 0.1, 'reg_lambda': 1.6, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 256}
+2024-12-31 14:19:37,799 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.11, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.13, 'subsample': 0.8, 'colsample_bytree': 0.9, 'reg_alpha': 0.1, 'reg_lambda': 1.7, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 256}
+2024-12-31 14:19:37,806 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 10, 'learning_rate': 0.1, 'n_estimators': 350, 'min_child_weight': 4, 'gamma': 0.1, 'subsample': 0.9, 'colsample_bytree': 0.7, 'reg_alpha': 0.1, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 256}
+2024-12-31 14:19:37,817 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.09, 'n_estimators': 200, 'min_child_weight': 4, 'gamma': 0.12, 'subsample': 0.7, 'colsample_bytree': 0.9, 'reg_alpha': 0.3, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 256}
+2024-12-31 14:19:37,829 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.11, 'n_estimators': 250, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.9, 'reg_alpha': 0.1, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 256}
+2024-12-31 14:19:37,845 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.11, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.13, 'subsample': 0.9, 'colsample_bytree': 0.7, 'reg_alpha': 0.3, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 256}
+2024-12-31 14:21:43,300 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 14:21:45,367 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 14:21:45,414 - classification_pipeline - INFO - Début optimisation xgboost à 14:21:45
+2024-12-31 14:21:45,415 - classification_pipeline - INFO - Nombre d'essais: 100, n_jobs: 6
+2024-12-31 14:21:45,420 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.11, 'n_estimators': 350, 'min_child_weight': 4, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.7, 'reg_alpha': 0.3, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 14:21:45,453 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.07, 'n_estimators': 400, 'min_child_weight': 4, 'gamma': 0.11, 'subsample': 0.9, 'colsample_bytree': 0.8, 'reg_alpha': 0.2, 'reg_lambda': 1.6, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 14:21:45,455 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 10, 'learning_rate': 0.11, 'n_estimators': 200, 'min_child_weight': 4, 'gamma': 0.14, 'subsample': 0.7, 'colsample_bytree': 0.9, 'reg_alpha': 0.3, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 14:21:45,457 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.09, 'n_estimators': 200, 'min_child_weight': 5, 'gamma': 0.14, 'subsample': 0.9, 'colsample_bytree': 0.8, 'reg_alpha': 0.3, 'reg_lambda': 1.6, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 14:21:45,458 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.11, 'n_estimators': 350, 'min_child_weight': 4, 'gamma': 0.13, 'subsample': 0.7, 'colsample_bytree': 0.8, 'reg_alpha': 0.1, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 14:21:45,459 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 11, 'learning_rate': 0.07, 'n_estimators': 350, 'min_child_weight': 3, 'gamma': 0.12, 'subsample': 0.9, 'colsample_bytree': 0.8, 'reg_alpha': 0.3, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 14:30:29,870 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 14:30:30,845 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 14:30:30,881 - classification_pipeline - INFO - Début optimisation xgboost à 14:30:30
+2024-12-31 14:30:30,881 - classification_pipeline - INFO - Nombre d'essais: 100, n_jobs: 6
+2024-12-31 14:30:30,906 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.06, 'n_estimators': 250, 'min_child_weight': 3, 'gamma': 0.1, 'subsample': 0.9, 'colsample_bytree': 0.8, 'reg_alpha': 0.1, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 14:30:30,907 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.09, 'n_estimators': 250, 'min_child_weight': 4, 'gamma': 0.13, 'subsample': 0.9, 'colsample_bytree': 0.8, 'reg_alpha': 0.2, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 14:30:30,909 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.06, 'n_estimators': 200, 'min_child_weight': 4, 'gamma': 0.11, 'subsample': 0.8, 'colsample_bytree': 0.8, 'reg_alpha': 0.3, 'reg_lambda': 1.7, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 14:30:30,914 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.09, 'n_estimators': 300, 'min_child_weight': 3, 'gamma': 0.13, 'subsample': 0.9, 'colsample_bytree': 0.8, 'reg_alpha': 0.1, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 14:30:30,915 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.1, 'n_estimators': 250, 'min_child_weight': 3, 'gamma': 0.13, 'subsample': 0.9, 'colsample_bytree': 0.8, 'reg_alpha': 0.2, 'reg_lambda': 1.7, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 14:30:30,917 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.06, 'n_estimators': 300, 'min_child_weight': 4, 'gamma': 0.13, 'subsample': 0.8, 'colsample_bytree': 0.9, 'reg_alpha': 0.3, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 14:43:35,461 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 14:43:36,391 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 14:43:36,431 - classification_pipeline - INFO - Début optimisation xgboost à 14:43:36
+2024-12-31 14:43:36,431 - classification_pipeline - INFO - Nombre d'essais: 60, n_jobs: 6
+2024-12-31 14:43:36,437 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.09, 'n_estimators': 250, 'min_child_weight': 3, 'gamma': 0.12, 'subsample': 0.9, 'colsample_bytree': 0.9, 'reg_alpha': 0.1, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 14:43:36,441 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.08, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.9, 'colsample_bytree': 0.8, 'reg_alpha': 0.1, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 14:43:36,448 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.08, 'n_estimators': 250, 'min_child_weight': 4, 'gamma': 0.1, 'subsample': 0.9, 'colsample_bytree': 0.7, 'reg_alpha': 0.2, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 14:43:36,454 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.07, 'n_estimators': 400, 'min_child_weight': 5, 'gamma': 0.1, 'subsample': 0.8, 'colsample_bytree': 0.9, 'reg_alpha': 0.1, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 14:43:36,467 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.06, 'n_estimators': 300, 'min_child_weight': 4, 'gamma': 0.14, 'subsample': 0.8, 'colsample_bytree': 0.9, 'reg_alpha': 0.3, 'reg_lambda': 1.6, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 14:43:36,487 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.07, 'n_estimators': 200, 'min_child_weight': 5, 'gamma': 0.13, 'subsample': 0.7, 'colsample_bytree': 0.8, 'reg_alpha': 0.1, 'reg_lambda': 1.6, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 15:04:57,228 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 15:04:58,224 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 15:04:58,258 - classification_pipeline - INFO - Début optimisation xgboost à 15:04:58
+2024-12-31 15:04:58,258 - classification_pipeline - INFO - Nombre d'essais: 60, n_jobs: 6
+2024-12-31 15:04:58,264 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.09, 'n_estimators': 250, 'min_child_weight': 4, 'gamma': 0.12, 'subsample': 0.9, 'colsample_bytree': 0.7, 'reg_alpha': 0.2, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 15:04:58,269 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.06, 'n_estimators': 350, 'min_child_weight': 4, 'gamma': 0.13, 'subsample': 0.9, 'colsample_bytree': 0.8, 'reg_alpha': 0.25, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 15:04:58,276 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.08, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.11, 'subsample': 0.9, 'colsample_bytree': 0.8, 'reg_alpha': 0.15, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 15:04:58,285 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.09, 'n_estimators': 250, 'min_child_weight': 3, 'gamma': 0.14, 'subsample': 0.9, 'colsample_bytree': 0.9, 'reg_alpha': 0.25, 'reg_lambda': 1.7, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 15:04:58,298 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.07, 'n_estimators': 350, 'min_child_weight': 4, 'gamma': 0.13, 'subsample': 0.7, 'colsample_bytree': 0.9, 'reg_alpha': 0.25, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 15:04:58,308 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.09, 'n_estimators': 350, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.9, 'colsample_bytree': 0.8, 'reg_alpha': 0.15, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 15:13:54,692 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 15:13:55,657 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 15:13:55,696 - classification_pipeline - INFO - Début optimisation xgboost à 15:13:55
+2024-12-31 15:13:55,696 - classification_pipeline - INFO - Nombre d'essais: 60, n_jobs: 6
+2024-12-31 15:13:55,701 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.09, 'n_estimators': 325, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.85, 'reg_alpha': 0.15, 'reg_lambda': 1.7, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 15:13:55,705 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.08, 'n_estimators': 275, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.75, 'colsample_bytree': 0.85, 'reg_alpha': 0.2, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 15:13:55,731 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.09, 'n_estimators': 325, 'min_child_weight': 3, 'gamma': 0.12, 'subsample': 0.85, 'colsample_bytree': 0.75, 'reg_alpha': 0.2, 'reg_lambda': 1.7, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 15:13:55,734 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.08, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.13, 'subsample': 0.8, 'colsample_bytree': 0.8, 'reg_alpha': 0.25, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 15:13:55,738 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.08, 'n_estimators': 325, 'min_child_weight': 4, 'gamma': 0.13, 'subsample': 0.75, 'colsample_bytree': 0.85, 'reg_alpha': 0.15, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 15:13:55,739 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.08, 'n_estimators': 300, 'min_child_weight': 4, 'gamma': 0.11, 'subsample': 0.8, 'colsample_bytree': 0.8, 'reg_alpha': 0.2, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 16:25:14,919 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 16:25:15,922 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 16:25:15,960 - classification_pipeline - INFO - Début optimisation xgboost à 16:25:15
+2024-12-31 16:25:15,961 - classification_pipeline - INFO - Nombre d'essais: 30, n_jobs: 6
+2024-12-31 16:25:15,965 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.08, 'n_estimators': 275, 'min_child_weight': 3, 'gamma': 0.13, 'subsample': 0.75, 'colsample_bytree': 0.75, 'reg_alpha': 0.15, 'reg_lambda': 1.7, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 16:25:15,973 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.09, 'n_estimators': 300, 'min_child_weight': 4, 'gamma': 0.13, 'subsample': 0.75, 'colsample_bytree': 0.75, 'reg_alpha': 0.2, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 16:25:15,979 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.09, 'n_estimators': 275, 'min_child_weight': 5, 'gamma': 0.11, 'subsample': 0.75, 'colsample_bytree': 0.85, 'reg_alpha': 0.25, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 16:25:15,986 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.09, 'n_estimators': 300, 'min_child_weight': 4, 'gamma': 0.12, 'subsample': 0.85, 'colsample_bytree': 0.8, 'reg_alpha': 0.25, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 16:25:15,999 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.07, 'n_estimators': 325, 'min_child_weight': 3, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.75, 'reg_alpha': 0.2, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 16:25:16,015 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.08, 'n_estimators': 325, 'min_child_weight': 5, 'gamma': 0.13, 'subsample': 0.85, 'colsample_bytree': 0.8, 'reg_alpha': 0.25, 'reg_lambda': 1.7, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 16:28:10,359 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2024-12-31 16:28:11,418 - classification_pipeline - INFO - Chargement effectué avec succès.
+2024-12-31 16:28:11,461 - classification_pipeline - INFO - Début optimisation xgboost à 16:28:11
+2024-12-31 16:28:11,462 - classification_pipeline - INFO - Nombre d'essais: 30, n_jobs: 6
+2024-12-31 16:28:11,465 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.09, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.11, 'subsample': 0.75, 'colsample_bytree': 0.85, 'reg_alpha': 0.15, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 16:28:11,473 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.09, 'n_estimators': 275, 'min_child_weight': 4, 'gamma': 0.13, 'subsample': 0.75, 'colsample_bytree': 0.75, 'reg_alpha': 0.15, 'reg_lambda': 1.7, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 16:28:11,482 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.08, 'n_estimators': 275, 'min_child_weight': 3, 'gamma': 0.13, 'subsample': 0.75, 'colsample_bytree': 0.85, 'reg_alpha': 0.2, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 16:28:11,496 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.09, 'n_estimators': 300, 'min_child_weight': 4, 'gamma': 0.11, 'subsample': 0.75, 'colsample_bytree': 0.75, 'reg_alpha': 0.2, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 16:28:11,509 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.08, 'n_estimators': 325, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.85, 'colsample_bytree': 0.75, 'reg_alpha': 0.25, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2024-12-31 16:28:11,528 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.09, 'n_estimators': 325, 'min_child_weight': 3, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.85, 'reg_alpha': 0.15, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2025-01-06 13:59:09,177 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-06 13:59:10,369 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-01-06 13:59:10,410 - classification_pipeline - INFO - Début optimisation xgboost à 13:59:10
+2025-01-06 13:59:10,411 - classification_pipeline - INFO - Nombre d'essais: 100, n_jobs: 6
+2025-01-06 13:59:10,416 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.075, 'n_estimators': 325, 'min_child_weight': 3, 'gamma': 0.13, 'subsample': 0.85, 'colsample_bytree': 0.85, 'reg_alpha': 0.2, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2025-01-06 13:59:10,423 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.09, 'n_estimators': 275, 'min_child_weight': 4, 'gamma': 0.12, 'subsample': 0.85, 'colsample_bytree': 0.75, 'reg_alpha': 0.2, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2025-01-06 13:59:10,434 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.09, 'n_estimators': 300, 'min_child_weight': 3, 'gamma': 0.13, 'subsample': 0.85, 'colsample_bytree': 0.75, 'reg_alpha': 0.25, 'reg_lambda': 1.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2025-01-06 13:59:10,469 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.07, 'n_estimators': 275, 'min_child_weight': 3, 'gamma': 0.13, 'subsample': 0.8, 'colsample_bytree': 0.8, 'reg_alpha': 0.25, 'reg_lambda': 1.7, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2025-01-06 13:59:10,475 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.08, 'n_estimators': 275, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.75, 'colsample_bytree': 0.75, 'reg_alpha': 0.2, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2025-01-06 13:59:10,478 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.08, 'n_estimators': 275, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.75, 'reg_alpha': 0.25, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128}
+2025-01-06 14:16:12,881 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-06 14:16:14,029 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-01-06 14:16:14,068 - classification_pipeline - INFO - Début optimisation xgboost à 14:16:14
+2025-01-06 14:16:14,068 - classification_pipeline - INFO - Nombre d'essais: 200, n_jobs: 6
+2025-01-06 14:16:14,073 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.07, 'n_estimators': 325, 'min_child_weight': 5, 'gamma': 0.11, 'subsample': 0.8, 'colsample_bytree': 0.8, 'reg_alpha': 0.2, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128, 'random_state': 42, 'seed': 42}
+2025-01-06 14:16:14,077 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.085, 'n_estimators': 300, 'min_child_weight': 3, 'gamma': 0.11, 'subsample': 0.8, 'colsample_bytree': 0.85, 'reg_alpha': 0.15, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128, 'random_state': 42, 'seed': 42}
+2025-01-06 14:16:14,085 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.09, 'n_estimators': 300, 'min_child_weight': 3, 'gamma': 0.12, 'subsample': 0.75, 'colsample_bytree': 0.8, 'reg_alpha': 0.25, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128, 'random_state': 42, 'seed': 42}
+2025-01-06 14:16:14,105 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.09, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.13, 'subsample': 0.8, 'colsample_bytree': 0.75, 'reg_alpha': 0.15, 'reg_lambda': 1.9, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128, 'random_state': 42, 'seed': 42}
+2025-01-06 14:16:14,137 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.085, 'n_estimators': 325, 'min_child_weight': 4, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.85, 'reg_alpha': 0.25, 'reg_lambda': 2.0, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128, 'random_state': 42, 'seed': 42}
+2025-01-06 14:16:14,158 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.075, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.8, 'reg_alpha': 0.15, 'reg_lambda': 1.7, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'max_leaves': 128, 'random_state': 42, 'seed': 42}
+2025-01-06 15:29:26,249 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-06 15:35:21,198 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-06 15:35:22,002 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-01-06 15:35:22,039 - classification_pipeline - INFO - Début optimisation xgboost à 15:35:22
+2025-01-06 15:35:22,039 - classification_pipeline - INFO - Nombre d'essais: 48, n_jobs: 6
+2025-01-06 15:35:22,042 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.075, 'n_estimators': 325, 'max_leaves': 128, 'random_state': 42, 'seed': 42}
+2025-01-06 15:35:22,044 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.07, 'n_estimators': 275, 'max_leaves': 128, 'random_state': 42, 'seed': 42}
+2025-01-06 15:35:22,049 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.09, 'n_estimators': 325, 'max_leaves': 128, 'random_state': 42, 'seed': 42}
+2025-01-06 15:35:22,058 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.07, 'n_estimators': 275, 'max_leaves': 128, 'random_state': 42, 'seed': 42}
+2025-01-06 15:38:07,422 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-06 15:38:08,460 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-01-06 15:38:08,498 - classification_pipeline - INFO - Début optimisation xgboost à 15:38:08
+2025-01-06 15:38:08,499 - classification_pipeline - INFO - Nombre d'essais: 48, n_jobs: 6
+2025-01-06 15:38:08,503 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.08, 'n_estimators': 300, 'max_leaves': 128, 'random_state': 42, 'seed': 42}
+2025-01-06 15:38:08,505 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.09, 'n_estimators': 275, 'max_leaves': 128, 'random_state': 42, 'seed': 42}
+2025-01-06 15:38:08,512 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.09, 'n_estimators': 325, 'max_leaves': 128, 'random_state': 42, 'seed': 42}
+2025-01-06 15:38:08,519 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.09, 'n_estimators': 325, 'max_leaves': 128, 'random_state': 42, 'seed': 42}
+2025-01-06 16:21:14,476 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-06 16:21:15,512 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-01-06 16:21:15,550 - classification_pipeline - INFO - Début optimisation xgboost à 16:21:15
+2025-01-06 16:21:15,550 - classification_pipeline - INFO - Nombre d'essais: 48, n_jobs: 6
+2025-01-06 16:21:15,553 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.08, 'n_estimators': 325, 'random_state': 42, 'seed': 42}
+2025-01-06 16:21:15,556 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.075, 'n_estimators': 275, 'random_state': 42, 'seed': 42}
+2025-01-06 16:21:15,563 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.07, 'n_estimators': 300, 'random_state': 42, 'seed': 42}
+2025-01-06 16:21:15,569 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.075, 'n_estimators': 325, 'random_state': 42, 'seed': 42}
+2025-01-06 16:24:19,288 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-06 16:24:20,498 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-01-06 16:24:20,532 - classification_pipeline - INFO - Début optimisation xgboost à 16:24:20
+2025-01-06 16:24:20,532 - classification_pipeline - INFO - Nombre d'essais: 48, n_jobs: 6
+2025-01-06 16:24:20,536 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.08, 'n_estimators': 300, 'random_state': 42, 'seed': 42}
+2025-01-06 16:24:20,538 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.075, 'n_estimators': 275, 'random_state': 42, 'seed': 42}
+2025-01-06 16:24:20,543 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.085, 'n_estimators': 325, 'random_state': 42, 'seed': 42}
+2025-01-06 16:24:20,549 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.07, 'n_estimators': 275, 'random_state': 42, 'seed': 42}
+2025-01-06 19:05:13,126 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-06 19:05:14,113 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-01-06 19:05:14,165 - classification_pipeline - INFO - Début optimisation xgboost à 19:05:14
+2025-01-06 19:05:14,165 - classification_pipeline - INFO - Nombre d'essais: 48, n_jobs: 4
+2025-01-06 19:05:14,219 - classification_pipeline - INFO - Essai 1, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.09, 'n_estimators': 325, 'random_state': 42, 'seed': 42}
+2025-01-06 19:05:14,224 - classification_pipeline - INFO - Essai 3, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.085, 'n_estimators': 275, 'random_state': 42, 'seed': 42}
+2025-01-06 19:05:14,224 - classification_pipeline - INFO - Essai 2, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.085, 'n_estimators': 325, 'random_state': 42, 'seed': 42}
+2025-01-06 19:05:14,226 - classification_pipeline - INFO - Essai 4, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.09, 'n_estimators': 275, 'random_state': 42, 'seed': 42}
+2025-01-06 20:06:30,220 - classification_pipeline - INFO - Essai 4, Fold 1: Score = 0.5675
+2025-01-06 20:06:30,228 - classification_pipeline - INFO - Essai 4, Fold 2: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.09, 'n_estimators': 275, 'random_state': 42, 'seed': 42}
+2025-01-06 20:07:47,218 - classification_pipeline - INFO - Essai 3, Fold 1: Score = 0.5678
+2025-01-06 20:07:47,223 - classification_pipeline - INFO - Essai 3, Fold 2: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.085, 'n_estimators': 275, 'random_state': 42, 'seed': 42}
+2025-01-06 20:13:49,911 - classification_pipeline - INFO - Essai 1, Fold 1: Score = 0.5687
+2025-01-06 20:13:49,918 - classification_pipeline - INFO - Essai 1, Fold 2: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.09, 'n_estimators': 325, 'random_state': 42, 'seed': 42}
+2025-01-06 20:14:10,873 - classification_pipeline - INFO - Essai 2, Fold 1: Score = 0.5696
+2025-01-06 20:14:10,889 - classification_pipeline - INFO - Essai 2, Fold 2: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.085, 'n_estimators': 325, 'random_state': 42, 'seed': 42}
+2025-01-06 21:05:23,997 - classification_pipeline - INFO - Essai 4, Fold 2: Score = 0.5470
+2025-01-06 21:05:24,004 - classification_pipeline - INFO - Essai 4, Fold 3: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.09, 'n_estimators': 275, 'random_state': 42, 'seed': 42}
+2025-01-06 21:07:48,436 - classification_pipeline - INFO - Essai 3, Fold 2: Score = 0.5479
+2025-01-06 21:07:48,446 - classification_pipeline - INFO - Essai 3, Fold 3: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.085, 'n_estimators': 275, 'random_state': 42, 'seed': 42}
+2025-01-06 21:19:19,667 - classification_pipeline - INFO - Essai 1, Fold 2: Score = 0.5500
+2025-01-06 21:19:19,672 - classification_pipeline - INFO - Essai 1, Fold 3: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.09, 'n_estimators': 325, 'random_state': 42, 'seed': 42}
+2025-01-06 21:20:00,993 - classification_pipeline - INFO - Essai 2, Fold 2: Score = 0.5509
+2025-01-06 21:20:01,007 - classification_pipeline - INFO - Essai 2, Fold 3: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.085, 'n_estimators': 325, 'random_state': 42, 'seed': 42}
+2025-01-06 22:03:34,535 - classification_pipeline - INFO - Essai 4, Fold 3: Score = 0.5557
+2025-01-06 22:03:34,536 - classification_pipeline - INFO - Essai 4: Score moyen = 0.5567
+[I 2025-01-06 22:03:34,545] Trial 3 finished with value: 0.5566989212418543 and parameters: {'max_depth': 8, 'learning_rate': 0.09, 'n_estimators': 275}. Best is trial 3 with value: 0.5566989212418543.
+2025-01-06 22:03:34,558 - classification_pipeline - INFO - Essai 5, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.09, 'n_estimators': 325, 'random_state': 42, 'seed': 42}
+2025-01-06 22:07:16,668 - classification_pipeline - INFO - Essai 3, Fold 3: Score = 0.5518
+2025-01-06 22:07:16,668 - classification_pipeline - INFO - Essai 3: Score moyen = 0.5558
+[I 2025-01-06 22:07:16,678] Trial 2 finished with value: 0.5557988012358525 and parameters: {'max_depth': 8, 'learning_rate': 0.085, 'n_estimators': 275}. Best is trial 3 with value: 0.5566989212418543.
+2025-01-06 22:07:16,696 - classification_pipeline - INFO - Essai 6, Fold 1: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.085, 'n_estimators': 300, 'random_state': 42, 'seed': 42}
+2025-01-06 22:24:39,928 - classification_pipeline - INFO - Essai 1, Fold 3: Score = 0.5626
+2025-01-06 22:24:39,931 - classification_pipeline - INFO - Essai 1: Score moyen = 0.5604
+[I 2025-01-06 22:24:39,939] Trial 0 finished with value: 0.5603991712908544 and parameters: {'max_depth': 9, 'learning_rate': 0.09, 'n_estimators': 325}. Best is trial 0 with value: 0.5603991712908544.
+2025-01-06 22:24:39,949 - classification_pipeline - INFO - Essai 7, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.09, 'n_estimators': 275, 'random_state': 42, 'seed': 42}
+2025-01-06 22:25:42,457 - classification_pipeline - INFO - Essai 2, Fold 3: Score = 0.5551
+2025-01-06 22:25:42,458 - classification_pipeline - INFO - Essai 2: Score moyen = 0.5585
+[I 2025-01-06 22:25:42,466] Trial 1 finished with value: 0.5584988912808497 and parameters: {'max_depth': 8, 'learning_rate': 0.085, 'n_estimators': 325}. Best is trial 0 with value: 0.5603991712908544.
+2025-01-06 22:25:42,477 - classification_pipeline - INFO - Essai 8, Fold 1: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.07, 'n_estimators': 300, 'random_state': 42, 'seed': 42}
+2025-01-06 23:09:31,715 - classification_pipeline - INFO - Essai 5, Fold 1: Score = 0.5672
+2025-01-06 23:09:31,726 - classification_pipeline - INFO - Essai 5, Fold 2: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.09, 'n_estimators': 325, 'random_state': 42, 'seed': 42}
+2025-01-06 23:09:57,204 - classification_pipeline - INFO - Essai 6, Fold 1: Score = 0.5675
+2025-01-06 23:09:57,212 - classification_pipeline - INFO - Essai 6, Fold 2: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.085, 'n_estimators': 300, 'random_state': 42, 'seed': 42}
+2025-01-06 23:26:19,566 - classification_pipeline - INFO - Essai 7, Fold 1: Score = 0.5675
+2025-01-06 23:26:19,570 - classification_pipeline - INFO - Essai 7, Fold 2: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.09, 'n_estimators': 275, 'random_state': 42, 'seed': 42}
+2025-01-06 23:33:30,713 - classification_pipeline - INFO - Essai 8, Fold 1: Score = 0.5684
+2025-01-06 23:33:30,718 - classification_pipeline - INFO - Essai 8, Fold 2: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.07, 'n_estimators': 300, 'random_state': 42, 'seed': 42}
+2025-01-07 00:12:53,963 - classification_pipeline - INFO - Essai 6, Fold 2: Score = 0.5542
+2025-01-07 00:12:53,970 - classification_pipeline - INFO - Essai 6, Fold 3: Début de l'entraînement avec {'max_depth': 7, 'learning_rate': 0.085, 'n_estimators': 300, 'random_state': 42, 'seed': 42}
+2025-01-07 09:55:22,836 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-07 09:55:23,875 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-01-07 09:55:23,934 - classification_pipeline - INFO - Début optimisation xgboost à 09:55:23
+2025-01-07 09:55:23,935 - classification_pipeline - INFO - Nombre d'essais: 48, n_jobs: 4
+2025-01-07 09:55:24,001 - classification_pipeline - INFO - Essai 1, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.083, 'n_estimators': 300, 'min_child_weight': 6, 'gamma': 0.15, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}
+2025-01-07 09:55:24,008 - classification_pipeline - INFO - Essai 3, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.087, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.15, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}
+2025-01-07 09:55:24,009 - classification_pipeline - INFO - Essai 2, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.082, 'n_estimators': 300, 'min_child_weight': 6, 'gamma': 0.12, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}
+2025-01-07 09:55:24,011 - classification_pipeline - INFO - Essai 4, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.085, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.13, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}
+2025-01-07 11:00:10,917 - classification_pipeline - INFO - Essai 3, Fold 1: Score = 0.5705
+2025-01-07 11:00:10,934 - classification_pipeline - INFO - Essai 3, Fold 2: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.087, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.15, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}
+2025-01-07 11:00:40,025 - classification_pipeline - INFO - Essai 4, Fold 1: Score = 0.5666
+2025-01-07 11:00:40,040 - classification_pipeline - INFO - Essai 4, Fold 2: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.085, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.13, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}
+2025-01-07 11:00:46,904 - classification_pipeline - INFO - Essai 1, Fold 1: Score = 0.5675
+2025-01-07 11:00:46,911 - classification_pipeline - INFO - Essai 1, Fold 2: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.083, 'n_estimators': 300, 'min_child_weight': 6, 'gamma': 0.15, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}
+2025-01-07 11:01:16,246 - classification_pipeline - INFO - Essai 2, Fold 1: Score = 0.5684
+2025-01-07 11:01:16,255 - classification_pipeline - INFO - Essai 2, Fold 2: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.082, 'n_estimators': 300, 'min_child_weight': 6, 'gamma': 0.12, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'tree_method': 'hist', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}
+2025-01-07 12:18:06,390 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-07 12:18:07,065 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-01-07 12:18:07,112 - classification_pipeline - INFO - Début optimisation xgboost à 12:18:07
+2025-01-07 12:18:07,112 - classification_pipeline - INFO - Nombre d'essais: 48, n_jobs: 4
+2025-01-07 12:18:07,164 - classification_pipeline - INFO - Essai 1, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.081, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.14, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'predictor': 'gpu_predictor', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}
+2025-01-07 12:18:07,165 - classification_pipeline - INFO - Essai 2, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.081, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'predictor': 'gpu_predictor', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}
+2025-01-07 12:18:07,167 - classification_pipeline - INFO - Essai 3, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.085, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.14, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'predictor': 'gpu_predictor', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}
+2025-01-07 12:18:07,167 - classification_pipeline - INFO - Essai 4, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.086, 'n_estimators': 300, 'min_child_weight': 5, 'gamma': 0.14, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'predictor': 'gpu_predictor', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}
+2025-01-07 12:22:25,525 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-07 12:22:26,215 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-01-07 12:22:26,264 - classification_pipeline - INFO - Début optimisation xgboost à 12:22:26
+2025-01-07 12:22:26,264 - classification_pipeline - INFO - Nombre d'essais: 48, n_jobs: 4
+2025-01-07 12:22:26,625 - classification_pipeline - INFO - Essai 1, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.087, 'n_estimators': 300, 'min_child_weight': 6, 'gamma': 0.15, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}
+2025-01-07 12:22:26,652 - classification_pipeline - INFO - Essai 2, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.087, 'n_estimators': 300, 'min_child_weight': 4, 'gamma': 0.15, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}
+2025-01-07 12:22:26,653 - classification_pipeline - INFO - Essai 3, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'learning_rate': 0.08, 'n_estimators': 300, 'min_child_weight': 4, 'gamma': 0.15, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}
+2025-01-07 12:22:26,670 - classification_pipeline - INFO - Essai 4, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'learning_rate': 0.088, 'n_estimators': 300, 'min_child_weight': 6, 'gamma': 0.14, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}
+2025-01-07 12:26:54,115 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-07 12:26:54,755 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-01-07 12:26:54,801 - classification_pipeline - INFO - Début optimisation xgboost à 12:26:54
+2025-01-07 12:26:54,802 - classification_pipeline - INFO - Nombre d'essais: 48, n_jobs: 4
+2025-01-07 12:26:55,117 - classification_pipeline - INFO - Essai 1, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.086, 'min_child_weight': 5, 'gamma': 0.13, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-01-07 12:26:55,162 - classification_pipeline - INFO - Essai 2, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.088, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-01-07 12:26:55,168 - classification_pipeline - INFO - Essai 4, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.081, 'min_child_weight': 6, 'gamma': 0.12, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-01-07 12:26:55,169 - classification_pipeline - INFO - Essai 3, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.084, 'min_child_weight': 6, 'gamma': 0.15, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-01-07 12:49:07,089 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-07 12:49:08,146 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-01-07 12:49:08,197 - classification_pipeline - INFO - Début optimisation xgboost à 12:49:08
+2025-01-07 12:49:08,197 - classification_pipeline - INFO - Nombre d'essais: 24, n_jobs: 6
+2025-01-07 12:49:08,583 - classification_pipeline - INFO - Essai 1, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.084, 'min_child_weight': 5, 'gamma': 0.13, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-07 12:49:08,587 - classification_pipeline - INFO - Essai 3, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.082, 'min_child_weight': 6, 'gamma': 0.13, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-01-07 12:49:08,590 - classification_pipeline - INFO - Essai 4, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.086, 'min_child_weight': 6, 'gamma': 0.15, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-07 12:49:08,592 - classification_pipeline - INFO - Essai 2, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.088, 'min_child_weight': 4, 'gamma': 0.12, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-01-07 12:55:08,412 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-07 12:55:09,071 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-01-07 12:55:09,120 - classification_pipeline - INFO - Début optimisation xgboost à 12:55:09
+2025-01-07 12:55:09,120 - classification_pipeline - INFO - Nombre d'essais: 24, n_jobs: 6
+2025-01-07 12:55:09,749 - classification_pipeline - INFO - Essai 1, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.087, 'min_child_weight': 6, 'gamma': 0.12, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-07 12:55:09,757 - classification_pipeline - INFO - Essai 2, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.089, 'min_child_weight': 4, 'gamma': 0.14, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-07 12:55:09,764 - classification_pipeline - INFO - Essai 6, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.084, 'min_child_weight': 4, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-01-07 12:55:09,775 - classification_pipeline - INFO - Essai 5, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.08, 'min_child_weight': 6, 'gamma': 0.14, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-01-07 12:55:09,776 - classification_pipeline - INFO - Essai 3, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.08, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-01-07 12:55:09,786 - classification_pipeline - INFO - Essai 4, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.083, 'min_child_weight': 6, 'gamma': 0.15, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-07 12:56:33,673 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-07 12:56:34,358 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-01-07 12:56:34,407 - classification_pipeline - INFO - Début optimisation xgboost à 12:56:34
+2025-01-07 12:56:34,407 - classification_pipeline - INFO - Nombre d'essais: 32, n_jobs: 6
+2025-01-07 12:56:34,922 - classification_pipeline - INFO - Essai 1, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.086, 'min_child_weight': 5, 'gamma': 0.13, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-01-07 12:56:34,962 - classification_pipeline - INFO - Essai 2, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.082, 'min_child_weight': 6, 'gamma': 0.12, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-07 12:56:34,991 - classification_pipeline - INFO - Essai 8, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.089, 'min_child_weight': 5, 'gamma': 0.15, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-01-07 12:56:35,070 - classification_pipeline - INFO - Essai 5, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.084, 'min_child_weight': 5, 'gamma': 0.14, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-01-07 12:56:35,075 - classification_pipeline - INFO - Essai 7, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.086, 'min_child_weight': 6, 'gamma': 0.15, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-01-07 12:56:35,076 - classification_pipeline - INFO - Essai 3, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.088, 'min_child_weight': 6, 'gamma': 0.15, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-07 12:56:35,077 - classification_pipeline - INFO - Essai 4, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.087, 'min_child_weight': 6, 'gamma': 0.15, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-07 12:56:35,077 - classification_pipeline - INFO - Essai 6, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.088, 'min_child_weight': 6, 'gamma': 0.15, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-01-07 15:13:50,803 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-07 15:13:51,587 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-01-07 15:13:51,646 - classification_pipeline - INFO - Début optimisation xgboost à 15:13:51
+2025-01-07 15:13:51,647 - classification_pipeline - INFO - Nombre d'essais: 32, n_jobs: 6
+2025-01-07 15:13:52,134 - classification_pipeline - INFO - Essai 2, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.087, 'min_child_weight': 6, 'gamma': 0.15, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-01-07 15:13:52,225 - classification_pipeline - INFO - Essai 6, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.086, 'min_child_weight': 6, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-01-07 15:13:52,233 - classification_pipeline - INFO - Essai 1, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.087, 'min_child_weight': 6, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-01-07 15:13:52,245 - classification_pipeline - INFO - Essai 4, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.081, 'min_child_weight': 6, 'gamma': 0.13, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-01-07 15:13:52,270 - classification_pipeline - INFO - Essai 7, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.087, 'min_child_weight': 4, 'gamma': 0.15, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-01-07 15:13:52,283 - classification_pipeline - INFO - Essai 5, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.085, 'min_child_weight': 5, 'gamma': 0.14, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-07 15:13:52,303 - classification_pipeline - INFO - Essai 8, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.081, 'min_child_weight': 4, 'gamma': 0.14, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-07 15:13:52,322 - classification_pipeline - INFO - Essai 3, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.086, 'min_child_weight': 6, 'gamma': 0.14, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   2025-01-08 10:32:58,646 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-08 10:32:59,635 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-01-08 10:32:59,696 - classification_pipeline - INFO - Début optimisation xgboost à 10:32:59
+2025-01-08 10:32:59,696 - classification_pipeline - INFO - Nombre d'essais: 32, n_jobs: 6
+2025-01-08 10:33:00,817 - classification_pipeline - INFO - Essai 1, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.084, 'min_child_weight': 6, 'gamma': 0.13, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-01-08 10:33:00,834 - classification_pipeline - INFO - Essai 6, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.086, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-08 10:33:00,835 - classification_pipeline - INFO - Essai 2, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.081, 'min_child_weight': 6, 'gamma': 0.14, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-01-08 10:33:00,836 - classification_pipeline - INFO - Essai 4, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.086, 'min_child_weight': 6, 'gamma': 0.14, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-01-08 10:33:00,837 - classification_pipeline - INFO - Essai 3, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.09, 'min_child_weight': 5, 'gamma': 0.13, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-08 10:33:00,838 - classification_pipeline - INFO - Essai 5, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.09, 'min_child_weight': 6, 'gamma': 0.14, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-08 12:26:21,833 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-08 12:26:22,471 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-01-08 12:26:22,527 - classification_pipeline - INFO - Début optimisation xgboost à 12:26:22
+2025-01-08 12:26:22,527 - classification_pipeline - INFO - Nombre d'essais: 32, n_jobs: 6
+2025-01-08 12:26:23,540 - classification_pipeline - INFO - Essai 2, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.087, 'min_child_weight': 5, 'gamma': 0.14, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-01-08 12:26:23,705 - classification_pipeline - INFO - Essai 4, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.09, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-01-08 12:26:23,709 - classification_pipeline - INFO - Essai 5, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.081, 'min_child_weight': 5, 'gamma': 0.15, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-08 12:26:23,710 - classification_pipeline - INFO - Essai 1, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.083, 'min_child_weight': 4, 'gamma': 0.15, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-01-08 12:26:23,711 - classification_pipeline - INFO - Essai 6, Fold 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.087, 'min_child_weight': 5, 'gamma': 0.15, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-08 12:26:23,713 - classification_pipeline - INFO - Essai 3, Fold 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.086, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-08 13:18:45,190 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-08 13:18:45,824 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-01-08 13:18:45,875 - classification_pipeline - INFO - Début optimisation xgboost à 13:18:45
+2025-01-08 13:18:45,875 - classification_pipeline - INFO - Nombre d'essais: 32, n_jobs: 6
+2025-01-08 13:18:46,290 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.09, 'min_child_weight': 5, 'gamma': 0.15, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-01-08 13:18:46,297 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.081, 'min_child_weight': 4, 'gamma': 0.13, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-01-08 13:18:46,330 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.09, 'min_child_weight': 4, 'gamma': 0.14, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-01-08 13:18:46,349 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.089, 'min_child_weight': 4, 'gamma': 0.15, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-08 13:18:46,352 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.08, 'min_child_weight': 4, 'gamma': 0.15, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-01-08 13:18:46,362 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.081, 'min_child_weight': 5, 'gamma': 0.15, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-01-08 13:25:13,810 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-08 13:25:14,424 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-01-08 13:25:14,472 - classification_pipeline - INFO - Début optimisation xgboost à 13:25:14
+2025-01-08 13:25:14,472 - classification_pipeline - INFO - Nombre d'essais: 32, n_jobs: 6
+2025-01-08 13:25:14,782 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.086, 'min_child_weight': 6, 'gamma': 0.14, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-01-08 13:25:14,782 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.089, 'min_child_weight': 5, 'gamma': 0.15, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-08 13:25:14,805 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.084, 'min_child_weight': 4, 'gamma': 0.15, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-08 13:25:14,821 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.082, 'min_child_weight': 4, 'gamma': 0.15, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-01-08 15:25:19,090 - classification_pipeline - INFO - Essai 2: Score = 0.5985
+2025-01-08 15:25:19,327 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.081, 'min_child_weight': 4, 'gamma': 0.14, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-01-08 15:25:49,602 - classification_pipeline - INFO - Essai 3: Score = 0.5960
+2025-01-08 15:25:50,076 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.088, 'min_child_weight': 6, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-01-08 15:26:41,177 - classification_pipeline - INFO - Essai 4: Score = 0.5965
+2025-01-08 15:26:41,536 - classification_pipeline - INFO - Essai 7: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.085, 'min_child_weight': 6, 'gamma': 0.13, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-01-08 15:26:59,416 - classification_pipeline - INFO - Essai 1: Score = 0.6000
+2025-01-08 15:26:59,627 - classification_pipeline - INFO - Essai 8: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.083, 'min_child_weight': 5, 'gamma': 0.13, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-08 15:43:17,750 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-01-08 15:43:18,562 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-01-08 15:43:18,636 - classification_pipeline - INFO - Début optimisation xgboost à 15:43:18
+2025-01-08 15:43:18,636 - classification_pipeline - INFO - Nombre d'essais: 32, n_jobs: 6
+2025-01-08 15:43:18,983 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.08, 'min_child_weight': 5, 'gamma': 0.14, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-01-08 15:43:19,000 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.085, 'min_child_weight': 6, 'gamma': 0.14, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-01-08 15:43:19,018 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.084, 'min_child_weight': 6, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-01-08 15:43:19,046 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.085, 'min_child_weight': 6, 'gamma': 0.13, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-05-14 12:02:27,499 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-14 12:02:28,496 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-14 12:02:28,549 - classification_pipeline - INFO - Début optimisation xgboost à 12:02:28
+2025-05-14 12:02:28,550 - classification_pipeline - INFO - Nombre d'essais: 32, n_jobs: 6
+2025-05-14 12:02:28,872 - classification_pipeline - INFO - Essai 2: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.083, 'min_child_weight': 6, 'gamma': 0.14, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-05-14 12:02:28,879 - classification_pipeline - INFO - Essai 1: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.09, 'min_child_weight': 6, 'gamma': 0.14, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-05-14 12:02:28,880 - classification_pipeline - INFO - Essai 3: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.085, 'min_child_weight': 5, 'gamma': 0.13, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-05-14 12:02:28,884 - classification_pipeline - INFO - Essai 4: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.088, 'min_child_weight': 4, 'gamma': 0.14, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-05-14 13:16:22,080 - classification_pipeline - INFO - Essai 4: Score = 0.5940
+2025-05-14 13:16:22,423 - classification_pipeline - INFO - Essai 5: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.083, 'min_child_weight': 6, 'gamma': 0.13, 'subsample': 0.8, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-05-14 13:19:03,906 - classification_pipeline - INFO - Essai 3: Score = 0.5995
+2025-05-14 13:19:04,168 - classification_pipeline - INFO - Essai 6: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.088, 'min_child_weight': 6, 'gamma': 0.15, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-05-14 13:19:45,242 - classification_pipeline - INFO - Essai 1: Score = 0.5940
+2025-05-14 13:19:45,447 - classification_pipeline - INFO - Essai 7: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.085, 'min_child_weight': 5, 'gamma': 0.13, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-05-14 13:23:29,544 - classification_pipeline - INFO - Essai 2: Score = 0.5905
+2025-05-14 13:23:29,744 - classification_pipeline - INFO - Essai 8: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.086, 'min_child_weight': 6, 'gamma': 0.14, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-05-14 13:47:05,384 - classification_pipeline - INFO - Essai 7: Score = 0.6050
+2025-05-14 13:47:05,539 - classification_pipeline - INFO - Essai 9: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.086, 'min_child_weight': 4, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-05-14 13:48:08,165 - classification_pipeline - INFO - Essai 6: Score = 0.5980
+2025-05-14 13:48:08,341 - classification_pipeline - INFO - Essai 10: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.089, 'min_child_weight': 6, 'gamma': 0.12, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-05-14 13:56:26,148 - classification_pipeline - INFO - Essai 8: Score = 0.5940
+2025-05-14 13:56:26,358 - classification_pipeline - INFO - Essai 11: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.081, 'min_child_weight': 4, 'gamma': 0.13, 'subsample': 0.75, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-05-14 14:18:59,001 - classification_pipeline - INFO - Essai 10: Score = 0.5980
+2025-05-14 14:18:59,202 - classification_pipeline - INFO - Essai 12: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.083, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-05-14 14:20:37,290 - classification_pipeline - INFO - Essai 9: Score = 0.6005
+2025-05-14 14:20:37,457 - classification_pipeline - INFO - Essai 13: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.088, 'min_child_weight': 6, 'gamma': 0.12, 'subsample': 0.75, 'colsample_bytree': 0.75, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=275
+2025-05-14 14:28:16,509 - classification_pipeline - INFO - Essai 11: Score = 0.5925
+2025-05-14 14:28:16,756 - classification_pipeline - INFO - Essai 14: Début de l'entraînement avec {'max_depth': 9, 'eta': 0.082, 'min_child_weight': 5, 'gamma': 0.15, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-05-14 14:48:15,658 - classification_pipeline - INFO - Essai 13: Score = 0.5890
+2025-05-14 14:48:15,872 - classification_pipeline - INFO - Essai 15: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.083, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-05-14 14:52:11,027 - classification_pipeline - INFO - Essai 12: Score = 0.5995
+2025-05-14 14:52:11,257 - classification_pipeline - INFO - Essai 16: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.086, 'min_child_weight': 4, 'gamma': 0.13, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-05-14 15:06:54,732 - classification_pipeline - INFO - Essai 14: Score = 0.5980
+2025-05-14 15:06:55,006 - classification_pipeline - INFO - Essai 17: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.086, 'min_child_weight': 4, 'gamma': 0.13, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=300
+2025-05-14 15:25:08,314 - classification_pipeline - INFO - Essai 15: Score = 0.6075
+2025-05-14 15:25:08,526 - classification_pipeline - INFO - Essai 18: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.08, 'min_child_weight': 5, 'gamma': 0.13, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-05-14 15:27:20,938 - classification_pipeline - INFO - Essai 16: Score = 0.6060
+2025-05-14 15:27:21,181 - classification_pipeline - INFO - Essai 19: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.083, 'min_child_weight': 4, 'gamma': 0.13, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-05-14 15:42:42,650 - classification_pipeline - INFO - Essai 17: Score = 0.6060
+2025-05-14 15:42:42,910 - classification_pipeline - INFO - Essai 20: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.08, 'min_child_weight': 4, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-05-14 16:01:25,336 - classification_pipeline - INFO - Essai 19: Score = 0.5940
+2025-05-14 16:01:25,546 - classification_pipeline - INFO - Essai 21: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.08, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-05-14 16:02:49,613 - classification_pipeline - INFO - Essai 18: Score = 0.5985
+2025-05-14 16:02:49,841 - classification_pipeline - INFO - Essai 22: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.084, 'min_child_weight': 4, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-05-14 16:17:37,138 - classification_pipeline - INFO - Essai 20: Score = 0.6035
+2025-05-14 16:17:37,388 - classification_pipeline - INFO - Essai 23: Début de l'entraînement avec {'max_depth': 8, 'eta': 0.084, 'min_child_weight': 5, 'gamma': 0.12, 'subsample': 0.8, 'colsample_bytree': 0.8, 'objective': 'multi:softprob', 'device': 'cuda', 'eval_metric': 'mlogloss', 'num_class': 27, 'random_state': 42, 'seed': 42}, num_boost_round=325
+2025-05-15 10:09:28,227 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-15 10:09:29,249 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-15 10:09:29,556 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-15 10:09:29,619 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-05-15 10:09:43,147 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-05-15 10:10:49,704 - classification_pipeline - ERROR - Erreur chargement modèle neural_net: NeuralClassifier.__init__() got an unexpected keyword argument 'config'
+2025-05-15 10:17:50,866 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-15 10:17:51,511 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-15 10:17:51,825 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-15 10:17:51,893 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-05-15 10:18:05,161 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-05-15 10:18:20,552 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-15 10:28:54,182 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-15 10:28:54,904 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-15 10:28:55,278 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-15 10:28:55,370 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-05-15 10:29:09,078 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-05-15 10:29:24,540 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-15 10:46:48,561 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-15 10:46:49,179 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-15 10:46:49,476 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-15 10:46:49,541 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-05-15 10:47:02,913 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-05-15 10:47:17,197 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-15 10:56:38,587 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-15 10:56:39,288 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-15 10:56:39,630 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-15 10:56:39,684 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-05-15 10:56:53,443 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-05-15 10:57:08,253 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-15 16:03:22,865 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-15 16:03:24,058 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-15 16:03:24,431 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-15 16:03:25,496 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-15 16:51:38,061 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-15 16:51:39,036 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-15 16:51:39,415 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-15 16:52:41,299 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-15 16:52:42,336 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-15 16:52:42,685 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-15 16:54:33,685 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-15 16:54:35,202 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-15 16:54:35,573 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-15 16:54:35,708 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-15 16:55:04,008 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-15 16:55:04,958 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-15 16:55:05,146 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-15 16:55:05,275 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-15 17:00:47,981 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-15 17:00:48,662 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-15 17:00:48,836 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-15 17:00:48,971 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-16 12:26:36,017 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-16 12:26:37,167 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-16 12:26:37,336 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-16 12:26:37,469 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-16 17:11:20,380 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-16 17:11:21,231 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-16 17:11:21,399 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-16 17:11:21,540 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-16 17:32:35,563 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-16 17:32:36,395 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-16 17:32:36,556 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-16 17:32:36,706 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-21 16:23:19,104 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-21 16:23:20,323 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-21 16:23:20,721 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-21 16:23:23,110 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-21 16:29:21,267 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-21 16:29:22,012 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-21 16:29:22,365 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-21 16:29:22,491 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-21 16:41:53,195 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-21 16:41:53,918 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-21 16:41:54,067 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-21 16:41:54,213 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-21 16:50:01,922 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-21 16:50:02,759 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-21 16:50:02,944 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-21 16:50:03,058 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-21 16:53:02,629 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-21 16:53:03,362 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-21 16:53:03,513 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-21 16:53:03,621 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-21 16:55:21,205 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-21 16:55:21,978 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-21 16:55:22,124 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-21 16:55:22,242 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-21 17:05:50,537 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-21 17:05:51,265 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-21 17:05:51,421 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-21 17:05:51,554 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-21 18:37:22,214 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-21 18:37:23,620 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-21 18:37:24,067 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-21 18:37:26,805 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-21 18:43:07,915 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-21 18:43:08,929 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-21 18:43:08,944 - classification_pipeline - INFO - Prétraitement du texte en cours...
+2025-05-21 18:43:09,070 - classification_pipeline - INFO - Entraînement du modèle texte sur 67932 exemples...
+2025-05-21 19:17:43,794 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-21 19:17:44,553 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-21 19:17:44,571 - classification_pipeline - INFO - Prétraitement du texte en cours...
+2025-05-21 19:17:44,611 - classification_pipeline - INFO - Données texte préparées: 44050 exemples d'entraînement, 16984 exemples de test
+2025-05-21 19:17:44,674 - classification_pipeline - INFO - Entraînement du modèle texte sur 44050 exemples...
+2025-05-21 19:26:14,319 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-21 19:26:15,056 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-21 19:26:15,080 - classification_pipeline - INFO - Prétraitement du texte en cours...
+2025-05-21 19:26:15,128 - classification_pipeline - INFO - Données texte préparées: 44050 exemples d'entraînement, 16984 exemples de test
+2025-05-21 19:26:15,194 - classification_pipeline - INFO - Entraînement du modèle texte sur 44050 exemples...
+2025-05-21 21:36:57,931 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-21 21:36:59,132 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-21 21:36:59,153 - classification_pipeline - INFO - Prétraitement du texte en cours...
+2025-05-21 21:36:59,193 - classification_pipeline - INFO - Données texte préparées: 44050 exemples d'entraînement, 16984 exemples de test
+2025-05-21 21:36:59,263 - classification_pipeline - INFO - Entraînement du modèle texte sur 44050 exemples...
+2025-05-21 23:04:29,186 - classification_pipeline - INFO - Précision du modèle texte: 0.8116
+2025-05-21 23:04:30,720 - classification_pipeline - INFO - Modèle texte sauvegardé dans data/models/SVM/model.pkl
+2025-05-21 23:04:31,367 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-21 23:04:31,369 - classification_pipeline - INFO - Distribution des indices: 54000 train, 16984 test, 23882 ignorés
+2025-05-21 23:04:31,666 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-21 23:04:33,950 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-21 23:29:12,580 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-21 23:29:14,038 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-21 23:29:14,772 - classification_pipeline - WARNING - Incohérence dans les indices: 94866 calculés vs 84916 total
+2025-05-21 23:29:15,107 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-21 23:29:15,108 - classification_pipeline - INFO - Distribution des indices:
+2025-05-21 23:29:15,110 - classification_pipeline - INFO -   - Total: 84916
+2025-05-21 23:29:15,112 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-21 23:29:15,115 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-21 23:29:15,116 - classification_pipeline - INFO -   - Train après balancing: 54000 (63.6%)
+2025-05-21 23:29:15,118 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-21 23:29:15,479 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-21 23:29:16,930 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-21 23:48:20,087 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-21 23:48:20,740 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-21 23:48:21,253 - classification_pipeline - WARNING - Incohérence dans les indices: 94866 calculés vs 84916 total
+2025-05-21 23:48:21,571 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-21 23:48:21,573 - classification_pipeline - INFO - Distribution des indices:
+2025-05-21 23:48:21,574 - classification_pipeline - INFO -   - Total: 84916
+2025-05-21 23:48:21,576 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-21 23:48:21,577 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-21 23:48:21,578 - classification_pipeline - INFO -   - Train après balancing: 54000 (63.6%)
+2025-05-21 23:48:21,579 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-21 23:48:21,907 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-21 23:48:22,038 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-21 23:48:23,367 - classification_pipeline - ERROR - Erreur prédiction: 'Series' object has no attribute 'reshape'
+2025-05-21 23:55:52,900 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-21 23:55:53,599 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-21 23:55:54,167 - classification_pipeline - WARNING - Incohérence dans les indices: 94866 calculés vs 84916 total
+2025-05-21 23:55:54,594 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-21 23:55:54,596 - classification_pipeline - INFO - Distribution des indices:
+2025-05-21 23:55:54,599 - classification_pipeline - INFO -   - Total: 84916
+2025-05-21 23:55:54,601 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-21 23:55:54,603 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-21 23:55:54,605 - classification_pipeline - INFO -   - Train après balancing: 54000 (63.6%)
+2025-05-21 23:55:54,607 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-21 23:55:54,838 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-21 23:55:54,990 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-21 23:58:50,839 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-21 23:58:51,703 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-21 23:58:52,240 - classification_pipeline - WARNING - Incohérence dans les indices: 94866 calculés vs 84916 total
+2025-05-21 23:58:52,567 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-21 23:58:52,569 - classification_pipeline - INFO - Distribution des indices:
+2025-05-21 23:58:52,571 - classification_pipeline - INFO -   - Total: 84916
+2025-05-21 23:58:52,574 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-21 23:58:52,576 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-21 23:58:52,578 - classification_pipeline - INFO -   - Train après balancing: 54000 (63.6%)
+2025-05-21 23:58:52,580 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-21 23:58:52,908 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-21 23:58:54,174 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-22 00:01:28,838 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-22 00:01:29,600 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-22 00:01:30,142 - classification_pipeline - WARNING - Incohérence dans les indices: 94866 calculés vs 84916 total
+2025-05-22 00:01:30,450 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-22 00:01:30,452 - classification_pipeline - INFO - Distribution des indices:
+2025-05-22 00:01:30,453 - classification_pipeline - INFO -   - Total: 84916
+2025-05-22 00:01:30,455 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-22 00:01:30,456 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-22 00:01:30,459 - classification_pipeline - INFO -   - Train après balancing: 54000 (63.6%)
+2025-05-22 00:01:30,460 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-22 00:01:30,791 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-22 00:01:32,108 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-22 00:02:48,198 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-22 00:02:48,936 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-22 00:02:49,523 - classification_pipeline - WARNING - Incohérence dans les indices: 94866 calculés vs 84916 total
+2025-05-22 00:02:49,846 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-22 00:02:49,849 - classification_pipeline - INFO - Distribution des indices:
+2025-05-22 00:02:49,850 - classification_pipeline - INFO -   - Total: 84916
+2025-05-22 00:02:49,852 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-22 00:02:49,853 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-22 00:02:49,854 - classification_pipeline - INFO -   - Train après balancing: 54000 (63.6%)
+2025-05-22 00:02:49,856 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-22 00:02:50,198 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-22 00:02:51,513 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-22 00:12:06,677 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-05-22 10:24:28,813 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-22 10:24:29,880 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-22 10:24:30,843 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-22 10:24:30,845 - classification_pipeline - INFO - Distribution des indices:
+2025-05-22 10:24:30,847 - classification_pipeline - INFO -   - Total: 84916
+2025-05-22 10:24:30,849 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-22 10:24:30,850 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-22 10:24:30,853 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-05-22 11:51:56,383 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-22 11:51:57,437 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-22 11:51:58,319 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-22 11:51:58,320 - classification_pipeline - INFO - Distribution des indices:
+2025-05-22 11:51:58,322 - classification_pipeline - INFO -   - Total: 84916
+2025-05-22 11:51:58,323 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-22 11:51:58,324 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-22 11:51:58,325 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-05-22 11:55:29,365 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-22 11:55:30,084 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-22 11:55:31,159 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-22 11:55:31,161 - classification_pipeline - INFO - Distribution des indices:
+2025-05-22 11:55:31,163 - classification_pipeline - INFO -   - Total: 84916
+2025-05-22 11:55:31,164 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-22 11:55:31,165 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-22 11:55:31,167 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-05-22 12:00:21,871 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-22 12:00:22,591 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-22 12:00:23,506 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-22 12:00:23,508 - classification_pipeline - INFO - Distribution des indices:
+2025-05-22 12:00:23,509 - classification_pipeline - INFO -   - Total: 84916
+2025-05-22 12:00:23,511 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-22 12:00:23,512 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-22 12:00:23,514 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-05-22 12:01:27,076 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-22 12:01:27,773 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-22 12:01:28,685 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-22 12:01:28,687 - classification_pipeline - INFO - Distribution des indices:
+2025-05-22 12:01:28,689 - classification_pipeline - INFO -   - Total: 84916
+2025-05-22 12:01:28,690 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-22 12:01:28,691 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-22 12:01:28,693 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-05-22 12:01:28,694 - classification_pipeline - INFO -   - Train balanced (total): 54000 (avec 9950 doublons                                                         (18.4%)
+2025-05-22 12:01:28,696 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-22 12:01:28,697 - classification_pipeline - INFO -   - Vérification: 84916 = 84916 ✓
+2025-05-22 12:03:35,503 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-22 12:03:36,139 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-22 12:03:37,062 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-22 12:03:37,065 - classification_pipeline - INFO - Distribution des indices:
+2025-05-22 12:03:37,067 - classification_pipeline - INFO -   - Total: 84916
+2025-05-22 12:03:37,070 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-22 12:03:37,071 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-22 12:03:37,075 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-05-22 12:03:37,076 - classification_pipeline - INFO -   - Train balanced (total): 54000 (avec 9950 doublons                                                         (18.4%)
+2025-05-22 12:03:37,079 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-22 12:03:37,080 - classification_pipeline - INFO -   - Vérification: 84916 = 84916 ✓
+2025-05-22 12:03:51,844 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-22 12:03:52,570 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-22 12:03:53,481 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-22 12:03:53,482 - classification_pipeline - INFO - Distribution des indices:
+2025-05-22 12:03:53,483 - classification_pipeline - INFO -   - Total: 84916
+2025-05-22 12:03:53,485 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-22 12:03:53,488 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-22 12:03:53,489 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-05-22 12:03:53,490 - classification_pipeline - INFO -   - Train balanced (total): 54000 (avec 9950 doublons                                                         (18.4%))
+2025-05-22 12:03:53,491 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-22 12:03:53,492 - classification_pipeline - INFO -   - Vérification: 84916 = 84916 ✓
+2025-05-22 12:05:56,297 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-22 12:05:56,923 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-22 12:05:57,932 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-22 12:05:57,933 - classification_pipeline - INFO - Distribution des indices:
+2025-05-22 12:05:57,934 - classification_pipeline - INFO -   - Total: 84916
+2025-05-22 12:05:57,936 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-22 12:05:57,937 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-22 12:05:57,938 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-05-22 12:05:57,940 - classification_pipeline - INFO -   - Train balanced (total): 54000 (avec 9950 doublons                                                         (18.4%))
+2025-05-22 12:05:57,942 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-22 12:05:57,943 - classification_pipeline - INFO -   - Vérification: 84916 = 84916 ✓
+2025-05-22 12:06:11,053 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-22 12:06:11,857 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-22 12:06:12,841 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-22 12:06:12,842 - classification_pipeline - INFO - Distribution des indices:
+2025-05-22 12:06:12,844 - classification_pipeline - INFO -   - Total: 84916
+2025-05-22 12:06:12,846 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-22 12:06:12,847 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-22 12:06:12,848 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-05-22 12:06:12,850 - classification_pipeline - INFO -   - Train balanced (total): 54000 (avec 9950 doublons                                                         (18.425925925925927:.1f%))
+2025-05-22 12:06:12,852 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-22 12:06:12,854 - classification_pipeline - INFO -   - Vérification: 84916 = 84916 ✓
+2025-05-22 12:06:36,298 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-22 12:06:36,926 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-22 12:06:37,858 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-22 12:06:37,859 - classification_pipeline - INFO - Distribution des indices:
+2025-05-22 12:06:37,861 - classification_pipeline - INFO -   - Total: 84916
+2025-05-22 12:06:37,862 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-22 12:06:37,864 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-22 12:06:37,866 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-05-22 12:06:37,868 - classification_pipeline - INFO -   - Train balanced (total): 54000 (avec 9950 doublons                                                         (18.425925925925927:.1f%))
+2025-05-22 12:06:37,869 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-22 12:06:37,870 - classification_pipeline - INFO -   - Vérification: 84916 = 84916 ✓
+2025-05-22 12:06:50,473 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-22 12:06:51,270 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-22 12:06:52,187 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-22 12:06:52,188 - classification_pipeline - INFO - Distribution des indices:
+2025-05-22 12:06:52,190 - classification_pipeline - INFO -   - Total: 84916
+2025-05-22 12:06:52,192 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-22 12:06:52,194 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-22 12:06:52,195 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-05-22 12:06:52,196 - classification_pipeline - INFO -   - Train balanced (total): 54000 (avec 9950 doublons (18.425925925925927:.1f%))
+2025-05-22 12:06:52,199 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-22 12:06:52,200 - classification_pipeline - INFO -   - Vérification: 84916 = 84916 ✓
+2025-05-22 12:08:38,411 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-22 12:08:39,122 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-22 12:08:40,075 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-22 12:08:40,077 - classification_pipeline - INFO - Distribution des indices:
+2025-05-22 12:08:40,078 - classification_pipeline - INFO -   - Total: 84916
+2025-05-22 12:08:40,080 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-22 12:08:40,081 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-22 12:08:40,083 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-05-22 12:08:40,085 - classification_pipeline - INFO -   - Train balanced (total): 54000 (avec 9950 doublons (18.4%))
+2025-05-22 12:08:40,085 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-22 12:08:40,086 - classification_pipeline - INFO -   - Vérification: 84916 = 84916 ✓
+2025-05-23 18:16:48,702 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-23 18:16:49,844 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-23 18:16:50,768 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-23 18:16:50,769 - classification_pipeline - INFO - Distribution des indices:
+2025-05-23 18:16:50,771 - classification_pipeline - INFO -   - Total: 84916
+2025-05-23 18:16:50,772 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-23 18:16:50,774 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-23 18:16:50,776 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-05-23 18:16:50,778 - classification_pipeline - INFO -   - Train balanced (total): 54000 (avec 9950 doublons (18.4%))
+2025-05-23 18:16:50,780 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-23 18:16:50,781 - classification_pipeline - INFO -   - Vérification: 84916 = 84916 ✓
+2025-05-23 19:04:29,538 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-23 19:04:30,628 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-23 19:04:31,467 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-23 19:04:31,468 - classification_pipeline - INFO - Distribution des indices:
+2025-05-23 19:04:31,469 - classification_pipeline - INFO -   - Total: 84916
+2025-05-23 19:04:31,470 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-23 19:04:31,472 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-23 19:04:31,473 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-05-23 19:04:31,473 - classification_pipeline - INFO -   - Train balanced (total): 54000 (avec 9950 doublons (18.4%))
+2025-05-23 19:04:31,475 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-23 19:04:31,476 - classification_pipeline - INFO -   - Vérification: 84916 = 84916 ✓
+2025-05-23 19:04:31,799 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-23 19:04:35,531 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-23 19:13:34,939 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-05-26 09:43:35,429 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-26 09:43:36,442 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-26 09:43:37,266 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-26 09:43:37,267 - classification_pipeline - INFO - Distribution des indices:
+2025-05-26 09:43:37,269 - classification_pipeline - INFO -   - Total: 84916
+2025-05-26 09:43:37,271 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-26 09:43:37,272 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-26 09:43:37,273 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-05-26 09:43:37,275 - classification_pipeline - INFO -   - Train balanced (total): 54000 (avec 9950 doublons (18.4%))
+2025-05-26 09:43:37,277 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-26 09:43:37,278 - classification_pipeline - INFO -   - Vérification: 84916 = 84916 ✓
+2025-05-26 09:43:54,103 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-26 09:43:54,703 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-26 09:43:55,503 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-26 09:43:55,504 - classification_pipeline - INFO - Distribution des indices:
+2025-05-26 09:43:55,505 - classification_pipeline - INFO -   - Total: 84916
+2025-05-26 09:43:55,507 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-26 09:43:55,508 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-26 09:43:55,509 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-05-26 09:43:55,510 - classification_pipeline - INFO -   - Train balanced (total): 54000 (avec 9950 doublons (18.4%))
+2025-05-26 09:43:55,511 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-26 09:43:55,512 - classification_pipeline - INFO -   - Vérification: 84916 = 84916 ✓
+2025-05-26 09:43:55,801 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-26 09:43:58,124 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-26 10:52:02,061 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-26 10:52:02,821 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-26 10:52:03,705 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-26 10:52:03,707 - classification_pipeline - INFO - Distribution des indices:
+2025-05-26 10:52:03,709 - classification_pipeline - INFO -   - Total: 84916
+2025-05-26 10:52:03,710 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-26 10:52:03,712 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-26 10:52:03,713 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-05-26 10:52:03,714 - classification_pipeline - INFO -   - Train balanced (total): 54000 (avec 9950 doublons (18.4%))
+2025-05-26 10:52:03,715 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-26 10:52:03,718 - classification_pipeline - INFO -   - Vérification: 84916 = 84916 ✓
+2025-05-26 10:54:48,984 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-26 10:54:50,001 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-26 10:56:23,790 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-26 10:56:24,669 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-26 10:56:25,812 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-26 10:56:25,815 - classification_pipeline - INFO - Distribution des indices:
+2025-05-26 10:56:25,817 - classification_pipeline - INFO -   - Total: 84916
+2025-05-26 10:56:25,820 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-26 10:56:25,822 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-26 10:56:25,825 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-05-26 10:56:25,827 - classification_pipeline - INFO -   - Train balanced (total): 54000 (avec 9950 doublons (18.4%))
+2025-05-26 10:56:25,834 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-26 10:56:25,835 - classification_pipeline - INFO -   - Vérification: 84916 = 84916 ✓
+2025-05-26 10:56:38,902 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-26 10:56:39,038 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-26 10:57:08,147 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-26 10:57:08,864 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-26 10:57:09,717 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-26 10:57:09,719 - classification_pipeline - INFO - Distribution des indices:
+2025-05-26 10:57:09,720 - classification_pipeline - INFO -   - Total: 84916
+2025-05-26 10:57:09,721 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-26 10:57:09,722 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-26 10:57:09,724 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-05-26 10:57:09,725 - classification_pipeline - INFO -   - Train balanced (total): 54000 (avec 9950 doublons (18.4%))
+2025-05-26 10:57:09,726 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-26 10:57:09,729 - classification_pipeline - INFO -   - Vérification: 84916 = 84916 ✓
+2025-05-26 10:57:11,403 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-26 10:57:12,446 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-26 10:57:13,071 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-05-26 10:57:13,607 - classification_pipeline - INFO - Données texte préparées: 16984 échantillons
+2025-05-26 11:28:51,623 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-26 11:28:51,756 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-26 11:28:52,504 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-05-26 11:28:53,171 - classification_pipeline - INFO - Données texte préparées: 16984 échantillons
+2025-05-26 12:22:29,131 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-05-26 12:22:30,198 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-05-26 12:22:31,232 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-05-26 12:22:31,233 - classification_pipeline - INFO - Distribution des indices:
+2025-05-26 12:22:31,235 - classification_pipeline - INFO -   - Total: 84916
+2025-05-26 12:22:31,237 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-05-26 12:22:31,238 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-05-26 12:22:31,239 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-05-26 12:22:31,241 - classification_pipeline - INFO -   - Train balanced (total): 54000 (avec 9950 doublons (18.4%))
+2025-05-26 12:22:31,244 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-05-26 12:22:31,246 - classification_pipeline - INFO -   - Vérification: 84916 = 84916 ✓
+2025-05-26 12:24:17,064 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-05-26 12:24:18,192 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-05-26 12:24:18,789 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-05-26 12:24:19,277 - classification_pipeline - INFO - Données texte préparées: 16984 échantillons
+2025-06-11 11:39:02,844 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-06-11 11:39:05,018 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-06-11 11:39:05,629 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-06-11 11:39:05,630 - classification_pipeline - INFO - Distribution des indices:
+2025-06-11 11:39:05,631 - classification_pipeline - INFO -   - Total: 84916
+2025-06-11 11:39:05,633 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-06-11 11:39:05,634 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-06-11 11:39:05,635 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-06-11 11:39:05,636 - classification_pipeline - INFO -   - Train balanced (total): 54000 (avec 9950 doublons (18.4%))
+2025-06-11 11:39:05,637 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-06-11 11:39:05,637 - classification_pipeline - INFO -   - Vérification: 84916 = 84916 ✓
+2025-06-11 11:42:46,813 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-06-11 11:42:49,340 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-06-11 11:42:50,034 - classification_pipeline - INFO - Indices sauvegardés dans data/indices
+2025-06-11 11:42:50,035 - classification_pipeline - INFO - Distribution des indices:
+2025-06-11 11:42:50,036 - classification_pipeline - INFO -   - Total: 84916
+2025-06-11 11:42:50,037 - classification_pipeline - INFO -   - Test: 16984 (20.0%)
+2025-06-11 11:42:50,038 - classification_pipeline - INFO -   - Train original: 67932 (80.0%)
+2025-06-11 11:42:50,039 - classification_pipeline - INFO -   - Train balanced (unique): 44050 (51.9%)
+2025-06-11 11:42:50,039 - classification_pipeline - INFO -   - Train balanced (total): 54000 (avec 9950 doublons (18.4%))
+2025-06-11 11:42:50,040 - classification_pipeline - INFO -   - Ignorés: 23882 (28.1%)
+2025-06-11 11:42:50,041 - classification_pipeline - INFO -   - Vérification: 84916 = 84916 ✓
+2025-06-11 11:43:19,825 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-06-11 11:43:19,929 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-06-11 11:43:19,886 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-06-11 11:43:20,333 - classification_pipeline - INFO - Données texte préparées: 16984 échantillons
+2025-07-17 13:32:25,906 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-17 13:32:32,181 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-17 13:33:15,258 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-17 13:33:18,156 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-17 13:33:18,476 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-17 13:33:18,586 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-07-17 13:33:19,066 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-17 13:39:41,977 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-17 13:39:41,978 - classification_pipeline - INFO - Prétraitement des données streamlit..
+2025-07-17 13:40:28,012 - classification_pipeline - INFO - Prétraitement du texte...
+2025-07-17 13:40:28,021 - classification_pipeline - INFO - Texte transformé avec TF-IDF: (1, 45000)
+2025-07-17 13:40:28,021 - classification_pipeline - INFO - Prétraitement terminé avec succès.
+2025-07-17 13:40:28,023 - classification_pipeline - ERROR - Erreur lors de la prédiction multimodale: 'numpy.ndarray' object has no attribute 'lower'
+2025-07-17 14:13:56,603 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-17 14:14:02,275 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-17 14:14:02,555 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-17 14:14:02,667 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-07-17 14:14:03,121 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-17 14:16:31,464 - classification_pipeline - INFO - Prétraitement des données streamlit..
+2025-07-17 14:16:33,192 - classification_pipeline - INFO - Prétraitement du texte...
+2025-07-17 14:16:33,196 - classification_pipeline - INFO - Texte transformé avec TF-IDF: (1, 45000)
+2025-07-17 14:16:33,196 - classification_pipeline - INFO - Prétraitement terminé avec succès.
+2025-07-17 14:16:33,225 - classification_pipeline - ERROR - Erreur lors de la génération des explications: 'numpy.ndarray' object has no attribute 'lower'
+2025-07-17 14:16:33,230 - classification_pipeline - ERROR - Traceback (most recent call last):
+  File "/home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/app/preprocess.py", line 2338, in get_model_explanations
+    text_explainer = shap.KernelExplainer(text_predict, features['text_features'])
+  File "/home/elion/.pyenv/versions/myenvrakuten/lib/python3.10/site-packages/shap/explainers/_kernel.py", line 97, in __init__
+    model_null = match_model_to_data(self.model, self.data)
+  File "/home/elion/.pyenv/versions/myenvrakuten/lib/python3.10/site-packages/shap/utils/_legacy.py", line 139, in match_model_to_data
+    out_val = model.f(data.data)
+  File "/home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/app/preprocess.py", line 2310, in text_predict
+    return self.text_model.predict_proba(x)
+  File "/home/elion/.pyenv/versions/myenvrakuten/lib/python3.10/site-packages/sklearn/pipeline.py", line 546, in predict_proba
+    Xt = transform.transform(Xt)
+  File "/home/elion/.pyenv/versions/myenvrakuten/lib/python3.10/site-packages/sklearn/feature_extraction/text.py", line 2157, in transform
+    X = super().transform(raw_documents)
+  File "/home/elion/.pyenv/versions/myenvrakuten/lib/python3.10/site-packages/sklearn/feature_extraction/text.py", line 1433, in transform
+    _, X = self._count_vocab(raw_documents, fixed_vocab=True)
+  File "/home/elion/.pyenv/versions/myenvrakuten/lib/python3.10/site-packages/sklearn/feature_extraction/text.py", line 1275, in _count_vocab
+    for feature in analyze(doc):
+  File "/home/elion/.pyenv/versions/myenvrakuten/lib/python3.10/site-packages/sklearn/feature_extraction/text.py", line 111, in _analyze
+    doc = preprocessor(doc)
+  File "/home/elion/.pyenv/versions/myenvrakuten/lib/python3.10/site-packages/sklearn/feature_extraction/text.py", line 69, in _preprocess
+    doc = doc.lower()
+AttributeError: 'numpy.ndarray' object has no attribute 'lower'
+
+2025-07-17 14:21:30,854 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-17 14:21:32,884 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-17 14:21:33,143 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-17 14:21:33,213 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-07-17 14:21:33,627 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-17 14:36:07,603 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-17 14:36:09,598 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-17 14:36:09,883 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-17 14:36:09,979 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-07-17 14:36:10,385 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-17 14:47:01,121 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-17 14:47:01,122 - classification_pipeline - INFO - Prétraitement des données streamlit..
+2025-07-17 14:47:01,642 - classification_pipeline - INFO - Prétraitement du texte...
+2025-07-17 14:47:01,645 - classification_pipeline - INFO - Texte transformé avec TF-IDF: (1, 45000)
+2025-07-17 14:47:01,646 - classification_pipeline - INFO - Prétraitement terminé avec succès.
+2025-07-17 14:47:01,647 - classification_pipeline - ERROR - Erreur lors de la prédiction multimodale: 'numpy.ndarray' object has no attribute 'lower'
+2025-07-17 15:29:15,888 - classification_pipeline - INFO - Génération des explications simplifiées...
+2025-07-17 15:29:15,888 - classification_pipeline - INFO - Prétraitement des données streamlit..
+2025-07-17 15:29:16,705 - classification_pipeline - INFO - Prétraitement du texte...
+2025-07-17 15:29:16,713 - classification_pipeline - INFO - Texte transformé avec TF-IDF: (1, 45000)
+2025-07-17 15:29:16,713 - classification_pipeline - INFO - Prétraitement terminé avec succès.
+2025-07-17 15:29:17,003 - classification_pipeline - INFO - Explications simplifiées générées avec succès
+2025-07-17 15:32:15,860 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-17 15:32:15,860 - classification_pipeline - INFO - Prétraitement des données streamlit..
+2025-07-17 15:32:16,358 - classification_pipeline - INFO - Prétraitement du texte...
+2025-07-17 15:32:16,363 - classification_pipeline - INFO - Texte transformé avec TF-IDF: (1, 45000)
+2025-07-17 15:32:16,363 - classification_pipeline - INFO - Prétraitement terminé avec succès.
+2025-07-17 15:32:16,366 - classification_pipeline - ERROR - Erreur lors de la prédiction multimodale: 'numpy.ndarray' object has no attribute 'lower'
+2025-07-17 15:40:30,073 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-17 15:40:30,074 - classification_pipeline - INFO - Prétraitement des données streamlit..
+2025-07-17 15:40:30,627 - classification_pipeline - INFO - Prétraitement du texte...
+2025-07-17 15:40:30,630 - classification_pipeline - INFO - Texte transformé avec TF-IDF: (1, 45000)
+2025-07-17 15:40:30,631 - classification_pipeline - INFO - Prétraitement terminé avec succès.
+2025-07-17 15:40:30,634 - classification_pipeline - ERROR - Erreur lors de la prédiction multimodale: 'numpy.ndarray' object has no attribute 'lower'
+2025-07-17 16:12:36,432 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-17 16:12:44,702 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-17 16:30:24,820 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-17 16:30:26,908 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-17 16:32:45,166 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-17 16:32:47,569 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-17 16:32:47,989 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-17 16:32:48,146 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-07-17 16:32:48,758 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-18 10:50:49,234 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-18 10:50:51,889 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-18 10:50:52,194 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-18 10:50:52,302 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-07-18 10:50:52,775 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-18 10:53:14,607 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-18 10:53:17,303 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-18 10:53:17,558 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-18 10:53:17,635 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-07-18 10:53:18,136 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-18 11:35:56,515 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-18 11:35:59,020 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-18 11:35:59,297 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-18 11:35:59,382 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-07-18 11:35:59,832 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-18 11:48:56,332 - classification_pipeline - INFO - Génération des explications simplifiées...
+2025-07-18 11:48:56,334 - classification_pipeline - INFO - Prétraitement des données streamlit..
+2025-07-18 11:48:56,999 - classification_pipeline - INFO - Prétraitement du texte...
+2025-07-18 11:48:57,008 - classification_pipeline - INFO - Texte transformé avec TF-IDF: (1, 45000)
+2025-07-18 11:48:57,008 - classification_pipeline - INFO - Prétraitement terminé avec succès.
+2025-07-18 11:48:57,060 - classification_pipeline - INFO - Explications simplifiées générées avec succès
+2025-07-18 12:09:59,835 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-18 12:10:02,299 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-18 12:10:02,570 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-18 12:10:02,654 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-07-18 12:10:03,119 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-18 12:14:40,082 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-18 12:14:42,433 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-18 12:14:42,694 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-18 12:14:42,768 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-07-18 12:14:43,147 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-18 13:10:26,963 - classification_pipeline - ERROR - Erreur préparation données: safe_read_csv() missing 1 required positional argument: 'path'
+2025-07-18 13:11:40,232 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-18 13:11:43,066 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-18 13:11:43,380 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-18 13:11:43,507 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-07-18 13:11:44,008 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-18 13:14:48,430 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-18 13:14:50,401 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-18 13:14:50,644 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-18 13:14:50,715 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-07-18 13:14:51,106 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-18 13:16:58,954 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-18 13:17:00,837 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-18 13:17:01,079 - classification_pipeline - INFO - Modèle xgboost chargé depuis ./data/models/xgboost
+2025-07-18 13:17:01,145 - classification_pipeline - INFO - Modèle neural_net chargé depuis ./data/models/neural_net
+2025-07-18 13:17:01,565 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-21 11:38:13,886 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-21 11:38:16,537 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-21 11:38:16,813 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/app/data/models/xgboost
+2025-07-21 11:38:16,930 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/app/data/models/neural_net
+2025-07-21 11:38:17,402 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-21 12:00:33,473 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-21 12:00:36,308 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-21 12:00:36,608 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-21 12:00:36,721 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
+2025-07-21 12:00:37,195 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-21 12:37:50,391 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-21 12:37:53,184 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-21 12:37:53,462 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-21 12:37:53,544 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
+2025-07-21 12:37:53,999 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-21 12:50:02,387 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-21 12:50:05,125 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-21 12:50:05,403 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-21 12:50:05,496 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
+2025-07-21 12:50:05,975 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-21 12:57:24,099 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-21 12:57:26,849 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-21 12:57:27,127 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-21 12:57:27,213 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
+2025-07-21 12:57:27,707 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-21 12:58:20,895 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-21 12:58:23,630 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-21 12:58:23,929 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-21 12:58:24,007 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
+2025-07-21 12:58:24,475 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-21 13:00:58,943 - classification_pipeline - INFO - Génération des explications simplifiées...
+2025-07-21 13:00:58,945 - classification_pipeline - INFO - Prétraitement des données streamlit..
+2025-07-21 13:00:59,652 - classification_pipeline - INFO - Prétraitement du texte...
+2025-07-21 13:00:59,659 - classification_pipeline - INFO - Texte transformé avec TF-IDF: (1, 45000)
+2025-07-21 13:00:59,660 - classification_pipeline - INFO - Prétraitement terminé avec succès.
+2025-07-21 13:00:59,726 - classification_pipeline - INFO - Explications simplifiées générées avec succès
+2025-07-21 13:10:27,490 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-21 13:10:30,137 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-21 13:10:30,409 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-21 13:10:30,490 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
+2025-07-21 13:10:30,956 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-21 13:27:00,582 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-21 13:27:03,242 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-21 13:27:03,527 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-21 13:27:03,601 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
+2025-07-21 13:27:04,054 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-21 16:30:13,808 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-21 16:30:16,798 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-21 16:30:17,078 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-21 16:30:17,169 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
+2025-07-21 16:30:17,642 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-21 17:17:38,301 - classification_pipeline - INFO - 📁 Chargement des données pré-traitées...
+2025-07-21 17:17:38,870 - classification_pipeline - INFO - ✅ Données test_split chargées
+2025-07-21 17:17:39,275 - classification_pipeline - INFO - ✅ Données X_test chargées
+2025-07-21 17:17:39,275 - classification_pipeline - INFO - 📊 Données chargées: ['X_test_split', 'y_test_split', 'test_split_indices', 'X_test']
+2025-07-21 17:17:39,275 - classification_pipeline - INFO - ✅ Données chargées pour Streamlit
+2025-07-21 17:17:39,736 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-21 17:17:40,243 - classification_pipeline - INFO - Données texte préparées: 16984 échantillons
+2025-07-21 17:21:55,087 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
+2025-07-21 17:21:57,598 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-21 17:28:28,341 - classification_pipeline - INFO - 📁 Chargement des données pré-traitées...
+2025-07-21 17:28:28,839 - classification_pipeline - INFO - ✅ Données test_split chargées
+2025-07-21 17:28:29,164 - classification_pipeline - INFO - ✅ Données X_test chargées
+2025-07-21 17:28:29,165 - classification_pipeline - INFO - 📊 Données chargées: ['X_test_split', 'y_test_split', 'test_split_indices', 'X_test']
+2025-07-21 17:28:29,165 - classification_pipeline - INFO - ✅ Données chargées pour Streamlit
+2025-07-21 17:28:29,529 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-21 17:28:29,973 - classification_pipeline - INFO - Données texte préparées: 16984 échantillons
+2025-07-21 17:29:56,314 - classification_pipeline - INFO - 📁 Chargement des données pré-traitées...
+2025-07-21 17:29:56,773 - classification_pipeline - INFO - ✅ Données test_split chargées
+2025-07-21 17:29:57,087 - classification_pipeline - INFO - ✅ Données X_test chargées
+2025-07-21 17:29:57,087 - classification_pipeline - INFO - 📊 Données chargées: ['X_test_split', 'y_test_split', 'test_split_indices', 'X_test']
+2025-07-21 17:29:57,087 - classification_pipeline - INFO - ✅ Données chargées pour Streamlit
+2025-07-21 17:29:57,470 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-21 17:29:57,916 - classification_pipeline - INFO - Données texte préparées: 16984 échantillons
+2025-07-21 18:06:48,289 - classification_pipeline - INFO - 📁 Chargement des données pré-traitées...
+2025-07-21 18:06:48,871 - classification_pipeline - INFO - ✅ Données test_split chargées
+2025-07-21 18:06:49,287 - classification_pipeline - INFO - ✅ Données X_test chargées
+2025-07-21 18:06:49,288 - classification_pipeline - INFO - 📊 Données chargées: ['X_test_split', 'y_test_split', 'test_split_indices', 'X_test']
+2025-07-21 18:06:49,288 - classification_pipeline - INFO - ✅ Données chargées pour Streamlit
+2025-07-21 18:06:49,785 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-21 18:06:50,341 - classification_pipeline - INFO - Données texte préparées: 16984 échantillons
+2025-07-21 18:10:55,241 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
+2025-07-21 18:10:57,833 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
