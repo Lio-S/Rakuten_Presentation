@@ -15,6 +15,13 @@ from utils_path import *
 import main #(chargement des données)
 from utils import safe_read_csv
 
+# Constantes de chemins additionnelles
+TRAIN_IMAGES_DIR = DATA_DIR / "images" / "image_train"
+TEST_IMAGES_DIR = DATA_DIR / "images" / "image_test"
+X_TRAIN_FILE = DATA_DIR / "X_train_update.csv"
+Y_TRAIN_FILE = DATA_DIR / "Y_train_CVw08PX.csv"
+TEST_FILE = DATA_DIR / "X_test_update.csv"
+
 # Configuration de la page
 st.set_page_config(
     page_title="Challenge Rakuten - Classification Multimodale",
@@ -813,6 +820,40 @@ elif page == "🧪 Test Nouvelles Données":
     with col1:
         model_type = st.selectbox("Modèle Image", ["xgboost", "neural_net"])
     
+    # Fonction pour extraire infos d'une image sélectionnée
+    def extract_info_from_image(image_name):
+        """Extrait les informations produit à partir du nom d'image"""
+        try:
+            # Format: image_{imageid}_product_{productid}.jpg
+            parts = image_name.replace('.jpg', '').replace('.jpeg', '').replace('.png', '')
+            if 'image_' in parts and '_product_' in parts:
+                imageid = parts.split('image_')[1].split('_product_')[0]
+                productid = parts.split('_product_')[1]
+                
+                # Charger les données
+                X_test_df = safe_read_csv(str(TEST_FILE))  
+                
+                # Chercher la ligne correspondante
+                matching_row = X_test_df[
+                    (X_test_df['imageid'].astype(str) == str(imageid)) & 
+                    (X_test_df['productid'].astype(str) == str(productid))
+                ]
+                
+                if not matching_row.empty:
+                    row = matching_row.iloc[0]
+                    text = f"{row.get('designation', '')} {row.get('description', '')}".strip()
+                    return {
+                        'text': text,
+                        'imageid': imageid,
+                        'productid': productid,
+                        'designation': row.get('designation', ''),
+                        'description': row.get('description', '')
+                    }
+            return None
+        except Exception as e:
+            st.error(f"Erreur extraction info image: {e}")
+            return None
+
     with col2:
         fusion_strategy = st.selectbox("Stratégie de Fusion", 
                                       ["mean", "product", "weighted", "confidence_weighted"])
@@ -820,30 +861,191 @@ elif page == "🧪 Test Nouvelles Données":
     # Interface de test
     st.subheader("📝 Saisie des Données")
     
-    col1, col2 = st.columns(2)
+    # Modes de test
+    test_mode = st.radio("Mode de test", 
+                        ["🎲 Exemple test_split", "🏆 Exemple challenge", "✍️ Saisie manuelle"])
     
-    with col1:
-        st.write("**Texte du produit:**")
-        text_input = st.text_area("Description + Désignation", 
-                                 value="Smartphone Samsung Galaxy dernière génération avec écran OLED",
-                                 height=100)
-    
-    with col2:
-        st.write("**Image du produit:**")
-        uploaded_file = st.file_uploader("Choisir une image...", type=["jpg", "jpeg", "png"])
+    if test_mode == "🎲 Exemple test_split":
+        st.info("📊 **Données test_split** : Échantillons non vus pendant l'entraînement (labels connus)")
         
-        if uploaded_file is not None:
-            image = Image.open(uploaded_file)
-            st.image(image, caption="Image téléchargée", use_container_width=True)
+        # Bouton pour générer un nouvel exemple
+        if st.button("🎲 Générer nouvel exemple test_split"):
+            # Charger des exemples diversifiés comme dans la page explicabilité
+            try:
+                X_train_df = safe_read_csv(str(X_TRAIN_FILE))
+                Y_train_df = safe_read_csv(str(Y_TRAIN_FILE))
+                
+                if hasattr(pipeline, 'preprocessed_data') and 'test_split_indices' in pipeline.preprocessed_data:
+                    test_split_indices = pipeline.preprocessed_data['test_split_indices']
+                else:
+                    n_total = len(X_train_df)
+                    test_split_indices = X_train_df.index[-int(0.2 * n_total):]
+                
+                available_indices = [idx for idx in test_split_indices if idx in X_train_df.index and idx in Y_train_df.index]
+                sample_idx = np.random.choice(available_indices)
+                
+                row = X_train_df.loc[sample_idx]
+                label = Y_train_df.loc[sample_idx]
+                
+                text = f"{row.get('designation', '')} {row.get('description', '')}".strip()
+                image_file = f"image_{row['imageid']}_product_{row['productid']}.jpg"
+                image_path = TRAIN_IMAGES_DIR / image_file
+                
+                if image_path.exists() and len(text) > 10:
+                    st.session_state.test_example = {
+                        'text': text,
+                        'image_path': str(image_path),
+                        'class_name': pipeline.category_names.get(label['prdtypecode'], 'Unknown'),
+                        'class_code': label['prdtypecode'],
+                        'imageid': row['imageid'],
+                        'productid': row['productid'],
+                        'mode': 'test_split'
+                    }
+                else:
+                    st.error("Exemple non valide, réessayez")
+                    
+            except Exception as e:
+                st.error(f"Erreur génération exemple: {e}")
+        
+        # Afficher l'exemple actuel
+        if 'test_example' not in st.session_state:
+            # Exemple par défaut
+            st.session_state.test_example = {
+                'text': "Console de jeu PlayStation 5 dernière génération avec écran OLED",
+                'image_path': None,
+                'class_name': 'Exemple',
+                'mode': 'manual'
+            }
+        
+        if st.session_state.test_example['mode'] == 'test_split':
+            example = st.session_state.test_example
             
-            # Sauvegarder temporairement
-            temp_dir = APP_DIR / "temp_uploads"
-            temp_dir.mkdir(exist_ok=True)
-            temp_image_path = temp_dir / uploaded_file.name
-            image.save(str(temp_image_path))
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                st.write("**Texte du produit:**")
+                text_input = st.text_area("Description + Désignation", 
+                                         value=example['text'], height=120, key="text_test_split")
+                st.success(f"**Classe réelle:** {example['class_name']} ({example['class_code']})")
+            
+            with col2:
+                st.write("**Image du produit:**")
+                if example['image_path'] and os.path.exists(example['image_path']):
+                    image = Image.open(example['image_path'])
+                    st.image(image, caption=f"Image ID: {example['imageid']}", use_container_width=True)
+                    temp_image_path = example['image_path']
+                else:
+                    st.error("Image non trouvée")
+                    temp_image_path = None
         else:
+            text_input = st.text_input("Texte du produit", "Console de jeu PlayStation 5", key="text_default")
             temp_image_path = None
     
+    elif test_mode == "🏆 Exemple challenge":
+        st.info("🏆 **Données challenge** : Vraies données de test (labels inconnus)")
+        
+        if st.button("🏆 Générer exemple challenge"):
+            try:
+                X_test_df = safe_read_csv(str(TEST_FILE))
+                sample_idx = np.random.choice(X_test_df.index)
+                row = X_test_df.loc[sample_idx]
+                
+                text = f"{row.get('designation', '')} {row.get('description', '')}".strip()
+                image_file = f"image_{row['imageid']}_product_{row['productid']}.jpg"
+                image_path = TEST_IMAGES_DIR / image_file
+                
+                if image_path.exists() and len(text) > 10:
+                    st.session_state.test_example = {
+                        'text': text,
+                        'image_path': str(image_path),
+                        'imageid': row['imageid'],
+                        'productid': row['productid'],
+                        'mode': 'challenge'
+                    }
+                else:
+                    st.error("Exemple non valide, réessayez")
+            except Exception as e:
+                st.error(f"Erreur génération exemple challenge: {e}")
+        
+        if 'test_example' in st.session_state and st.session_state.test_example['mode'] == 'challenge':
+            example = st.session_state.test_example
+            
+            col1, col2 = st.columns(2)
+            
+            with col1:
+                st.write("**Texte du produit:**")
+                text_input = st.text_area("Description + Désignation", 
+                                         value=example['text'], height=120, key="text_challenge")
+            
+            with col2:
+                st.write("**Image du produit:**")
+                if example['image_path'] and os.path.exists(example['image_path']):
+                    image = Image.open(example['image_path'])
+                    st.image(image, caption=f"Image ID: {example['imageid']}", use_container_width=True)
+                    temp_image_path = example['image_path']
+                else:
+                    st.error("Image non trouvée")
+                    temp_image_path = None
+        else:
+            text_input = st.text_input("Texte du produit", "Console de jeu PlayStation 5", key="text_challenge_default")
+            temp_image_path = None
+    
+    else:  # Saisie manuelle
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.write("**Texte du produit:**")
+            # Initialisation du texte par défaut
+            default_text = "Smartphone Samsung Galaxy dernière génération avec écran OLED"
+            
+            # Si une image a été sélectionnée et qu'on a extrait le texte
+            if 'extracted_text' in st.session_state:
+                default_text = st.session_state.extracted_text
+            
+            text_input = st.text_area("Description + Désignation", 
+                                     value=default_text, height=120, key="text_manual")
+        
+        with col2:
+            st.write("**Image du produit:**")
+            
+            # Indiquer le chemin par défaut
+            st.info("💡 Sélectionnez une image du dossier `image_test` pour détecter automatiquement le texte")
+            
+            uploaded_file = st.file_uploader(
+                "Choisir une image du dossier image_test...", 
+                type=["jpg", "jpeg", "png"],
+                help="Naviguez vers le dossier data/images/image_test pour sélectionner une image"
+            )
+            
+            if uploaded_file is not None:
+                image = Image.open(uploaded_file)
+                st.image(image, caption="Image sélectionnée", use_container_width=True)
+                
+                # Sauvegarder temporairement
+                temp_dir = APP_DIR / "temp_uploads"
+                temp_dir.mkdir(exist_ok=True)
+                temp_image_path = temp_dir / uploaded_file.name
+                image.save(str(temp_image_path))
+                
+                # Essayer d'extraire les infos automatiquement
+                extracted_info = extract_info_from_image(uploaded_file.name)
+                if extracted_info:
+                    st.success("✅ Texte détecté automatiquement !")
+                    st.session_state.extracted_text = extracted_info['text']
+                    
+                    with st.expander("📋 Infos extraites"):
+                        st.write(f"**Image ID:** {extracted_info['imageid']}")
+                        st.write(f"**Product ID:** {extracted_info['productid']}")
+                        st.write(f"**Désignation:** {extracted_info['designation']}")
+                        st.write(f"**Description:** {extracted_info['description']}")
+                    
+                    # Rerun pour mettre à jour le text_area
+                    st.rerun()
+                else:
+                    st.warning("⚠️ Impossible d'extraire le texte automatiquement. Vérifiez le format du nom de fichier.")
+            else:
+                temp_image_path = None
+
     # Bouton de prédiction
     if st.button("🔍 Classifier le Produit", disabled=(temp_image_path is None)):
         try:
@@ -864,6 +1066,16 @@ elif page == "🧪 Test Nouvelles Données":
                 st.subheader("🎯 Résultat Principal")
                 st.success(f"**Classe prédite:** {results['predicted_class_name']}")
                 st.info(f"**Code classe:** {results['predicted_class']}")
+                
+                # Afficher la classe réelle si c'est un exemple test_split
+                if test_mode == "🎲 Exemple test_split" and 'test_example' in st.session_state:
+                    example = st.session_state.test_example
+                    if example['mode'] == 'test_split':
+                        is_correct = results['predicted_class'] == example['class_code']
+                        if is_correct:
+                            st.success(f"✅ **Correct !** Classe réelle: {example['class_name']}")
+                        else:
+                            st.error(f"❌ **Erreur !** Classe réelle: {example['class_name']}")
                 
                 # Probabilités top 5
                 st.subheader("📊 Top 5 des Probabilités")
@@ -908,311 +1120,393 @@ elif page == "🧪 Test Nouvelles Données":
                 st.write(f"**Chemin image:** {temp_image_path}")
                 st.write(f"**Modèle sélectionné:** {model_type}")
                 st.write(f"**Stratégie de fusion:** {fusion_strategy}")
+                st.write(f"**Mode de test:** {test_mode}")
 
 # ==================== PAGE EXPLICABILITÉ ====================
 elif page == "🎯 Explicabilité":
     st.title("🎯 Explicabilité des Modèles")
     st.markdown("---")
     
-    st.info("💡 Cette section fournit des explications simplifiées sur les prédictions multimodales en utilisant les données test_split.")
-    
-    # Fonction pour récupérer des exemples test_split
-    @st.cache_data
-    def get_test_split_examples():
-        """Récupère des exemples depuis les données test_split pour l'explicabilité"""
-        try:
-            # Charger les données originales
-            X_train_df = safe_read_csv(str(X_TRAIN_FILE))
-            Y_train_df = safe_read_csv(str(Y_TRAIN_FILE))
-            
-            # Récupérer les indices du test_split depuis le pipeline
-            if hasattr(pipeline, 'preprocessed_data') and 'test_split_indices' in pipeline.preprocessed_data:
-                test_split_indices = pipeline.preprocessed_data['test_split_indices']
-            else:
-                # Fallback
-                n_total = len(X_train_df)
-                test_split_indices = X_train_df.index[-int(0.2 * n_total):]
-                st.warning("⚠️ Indices test_split non trouvés, utilisation d'une approximation")
-            
-            # Prendre quelques exemples pour l'explicabilité
-            available_indices = [idx for idx in test_split_indices if idx in X_train_df.index and idx in Y_train_df.index]
-            sample_indices = np.random.choice(available_indices, size=min(10, len(available_indices)), replace=False)
-            
-            samples = []
-            for idx in sample_indices:
-                row = X_train_df.loc[idx]
-                label = Y_train_df.loc[idx]
-                
-                # Construire le texte
-                text = f"{row.get('designation', '')} {row.get('description', '')}".strip()
-                
-                # Construire le chemin image
-                image_file = f"image_{row['imageid']}_product_{row['productid']}.jpg"
-                image_path = TRAIN_IMAGES_DIR / image_file
-                
-                # Nom de la classe
-                class_name = pipeline.category_names.get(label['prdtypecode'], 'Unknown')
-                
-                if image_path.exists() and len(text) > 10:
-                    samples.append({
-                        'text': text,
-                        'image_path': image_path,
-                        'class_name': class_name,
-                        'class_code': label['prdtypecode'],
-                        'imageid': row['imageid'],
-                        'productid': row['productid'],
-                        'index': idx
-                    })
-            
-            return samples
-            
-        except Exception as e:
-            st.error(f"❌ Erreur chargement exemples test_split: {e}")
-            return []
-    
-    # Charger les exemples test_split
-    test_examples = get_test_split_examples()
-    
-    # Interface pour charger un exemple
-    st.subheader("📝 Sélection de l'Exemple")
-    
-    # Choix du mode
-    mode = st.radio("Source des données", 
-                   ["🎲 Exemple test_split", "✍️ Saisie manuelle"])
-    
-    if mode == "🎲 Exemple test_split" and test_examples:
-        st.info("📊 **Utilisation des données test_split** (non vues pendant l'entraînement)")
+    # Explication des deux types d'explicabilité
+    with st.expander("📖 Types d'explicabilité disponibles"):
+        st.markdown("""
+        **📊 SHAP XGBoost** : Explique comment le modèle XGBoost utilise les features ResNet50 (embeddings 2048D) pour classifier les images.
         
-        # Sélectionner un exemple
-        if st.button("🎲 Générer un exemple test_split"):
-            st.session_state.current_explainer_example = np.random.choice(test_examples)
+        **🔗 Explicabilité Multimodale** : Compare et explique la fusion entre le modèle texte (SVM) et le modèle image (XGBoost/Neural Net).
+        """)
+    
+    # Tabs pour séparer les deux types d'explicabilité
+    tab1, tab2 = st.tabs(["📊 SHAP XGBoost (Features Images)", "🔗 Explicabilité Multimodale (Fusion)"])
+    
+    # ==================== TAB 1: SHAP XGBOOST ====================
+    with tab1:
+        st.subheader("📊 Analyses SHAP - Modèle XGBoost sur Features ResNet50")
+        st.info("💡 **SHAP explique comment XGBoost** utilise les 2048 features extraites par ResNet50 pour classifier les images")
         
-        # Afficher l'exemple actuel
-        if 'current_explainer_example' not in st.session_state and test_examples:
-            st.session_state.current_explainer_example = test_examples[0]
+        # Vérifier l'existence des fichiers SHAP
+        shap_reports_dir = DATA_DIR / "reports"
+        shap_files = {
+            "Bar Plot": shap_reports_dir / "shap_bar_plot.png",
+            "Dot Plot": shap_reports_dir / "shap_dot_plot.png",
+            "Waterfall Exemple 1": shap_reports_dir / "shap_waterfall_exemple_1.png",
+            "Waterfall Exemple 2": shap_reports_dir / "shap_waterfall_exemple_2.png", 
+            "Waterfall Exemple 3": shap_reports_dir / "shap_waterfall_exemple_3.png",
+            "Force Plot Exemple 1": shap_reports_dir / "shap_force_exemple_1.png",
+            "Force Plot Exemple 2": shap_reports_dir / "shap_force_exemple_2.png",
+            "Force Plot Exemple 3": shap_reports_dir / "shap_force_exemple_3.png"
+        }
         
-        if 'current_explainer_example' in st.session_state:
-            example = st.session_state.current_explainer_example
+        # Organiser les graphiques
+        available_files = {name: path for name, path in shap_files.items() if path.exists()}
+        
+        if available_files:
+            # Séparer les graphiques agrégés des exemples individuels
+            aggregate_plots = {k: v for k, v in available_files.items() if k in ["Bar Plot", "Dot Plot"]}
+            individual_plots = {k: v for k, v in available_files.items() if k not in ["Bar Plot", "Dot Plot"]}
             
+            # Sub-tabs pour organiser l'affichage SHAP
+            shap_tab1, shap_tab2 = st.tabs(["📈 Graphiques Agrégés", "🔍 Exemples Individuels"])
+            
+            with shap_tab1:
+                st.info("📈 **Importance globale** : Quelles features ResNet50 XGBoost considère comme les plus importantes")
+                for name, path in aggregate_plots.items():
+                    st.subheader(f"📊 {name}")
+                    try:
+                        image = Image.open(path)
+                        st.image(image, caption=f"SHAP {name} - XGBoost sur features ResNet50", use_container_width=True)
+                    except Exception as e:
+                        st.error(f"Erreur chargement {name}: {e}")
+            
+            with shap_tab2:
+                st.info("🔍 **Explications individuelles** : Comment XGBoost prend sa décision pour des images spécifiques")
+                # Grouper par type
+                waterfall_plots = {k: v for k, v in individual_plots.items() if "Waterfall" in k}
+                force_plots = {k: v for k, v in individual_plots.items() if "Force" in k}
+                
+                if waterfall_plots:
+                    st.subheader("🌊 Waterfall Plots (Contribution de chaque feature)")
+                    cols = st.columns(min(3, len(waterfall_plots)))
+                    for i, (name, path) in enumerate(waterfall_plots.items()):
+                        with cols[i % 3]:
+                            try:
+                                image = Image.open(path)
+                                st.image(image, caption=name, use_container_width=True)
+                            except Exception as e:
+                                st.error(f"Erreur {name}: {e}")
+                
+                if force_plots:
+                    st.subheader("⚡ Force Plots (Vue d'ensemble des contributions)") 
+                    cols = st.columns(min(3, len(force_plots)))
+                    for i, (name, path) in enumerate(force_plots.items()):
+                        with cols[i % 3]:
+                            try:
+                                image = Image.open(path)
+                                st.image(image, caption=name, use_container_width=True)
+                            except Exception as e:
+                                st.error(f"Erreur {name}: {e}")
+        else:
+            st.warning("⚠️ Aucune image SHAP trouvée. Exécutez d'abord l'analyse SHAP dans main.py pour générer les graphiques.")
+            st.info("💡 Les fichiers SHAP devraient se trouver dans le dossier `data/reports/`")
+    
+    # ==================== TAB 2: EXPLICABILITÉ MULTIMODALE ====================
+    with tab2:
+        st.subheader("🔗 Explicabilité Multimodale - Fusion Texte + Image")
+        st.info("💡 **Compare et explique** comment la fusion entre modèle texte (SVM) et modèle image (XGBoost/Neural Net) prend ses décisions")
+        
+        # Fonction pour récupérer des exemples test_split
+        @st.cache_data
+        def get_test_split_examples():
+            """Récupère des exemples depuis les données test_split pour l'explicabilité"""
+            try:
+                # Charger les données originales
+                X_train_df = safe_read_csv(str(X_TRAIN_FILE))
+                Y_train_df = safe_read_csv(str(Y_TRAIN_FILE))
+                
+                # Récupérer les indices du test_split depuis le pipeline
+                if hasattr(pipeline, 'preprocessed_data') and 'test_split_indices' in pipeline.preprocessed_data:
+                    test_split_indices = pipeline.preprocessed_data['test_split_indices']
+                else:
+                    # Fallback
+                    n_total = len(X_train_df)
+                    test_split_indices = X_train_df.index[-int(0.2 * n_total):]
+                    st.warning("⚠️ Indices test_split non trouvés, utilisation d'une approximation")
+                
+                # Prendre quelques exemples pour l'explicabilité
+                available_indices = [idx for idx in test_split_indices if idx in X_train_df.index and idx in Y_train_df.index]
+                sample_indices = np.random.choice(available_indices, size=min(10, len(available_indices)), replace=False)
+                
+                samples = []
+                for idx in sample_indices:
+                    row = X_train_df.loc[idx]
+                    label = Y_train_df.loc[idx]
+                    
+                    # Construire le texte
+                    text = f"{row.get('designation', '')} {row.get('description', '')}".strip()
+                    
+                    # Construire le chemin image
+                    image_file = f"image_{row['imageid']}_product_{row['productid']}.jpg"
+                    image_path = TRAIN_IMAGES_DIR / image_file
+                    
+                    # Nom de la classe
+                    class_name = pipeline.category_names.get(label['prdtypecode'], 'Unknown')
+                    
+                    if image_path.exists() and len(text) > 10:
+                        samples.append({
+                            'text': text,
+                            'image_path': image_path,
+                            'class_name': class_name,
+                            'class_code': label['prdtypecode'],
+                            'imageid': row['imageid'],
+                            'productid': row['productid'],
+                            'index': idx
+                        })
+                
+                return samples
+                
+            except Exception as e:
+                st.error(f"❌ Erreur chargement exemples test_split: {e}")
+                return []
+        
+        # Charger les exemples test_split
+        test_examples = get_test_split_examples()
+        
+        # Interface pour charger un exemple
+        st.subheader("📝 Sélection de l'Exemple pour Fusion")
+        
+        # Choix du mode
+        mode = st.radio("Source des données", 
+                       ["🎲 Exemple test_split", "✍️ Saisie manuelle"], key="fusion_mode")
+        
+        if mode == "🎲 Exemple test_split" and test_examples:
+            st.info("📊 **Utilisation des données test_split** (non vues pendant l'entraînement)")
+            
+            # Sélectionner un exemple
+            if st.button("🎲 Générer un exemple test_split", key="fusion_generate"):
+                st.session_state.current_explainer_example = np.random.choice(test_examples)
+            
+            # Afficher l'exemple actuel
+            if 'current_explainer_example' not in st.session_state and test_examples:
+                st.session_state.current_explainer_example = test_examples[0]
+            
+            if 'current_explainer_example' in st.session_state:
+                example = st.session_state.current_explainer_example
+                
+                col1, col2 = st.columns(2)
+                
+                with col1:
+                    st.write("**Texte du produit:**")
+                    text_input = st.text_area("Description + Désignation", 
+                                             value=example['text'][:400] + "..." if len(example['text']) > 400 else example['text'],
+                                             height=120, key="fusion_text")
+                    st.success(f"**Classe réelle:** {example['class_name']} ({example['class_code']})")
+                
+                with col2:
+                    st.write("**Image du produit:**")
+                    if os.path.exists(example['image_path']):
+                        image = Image.open(example['image_path'])
+                        st.image(image, caption=f"Image ID: {example['imageid']}", use_container_width=True)
+                        temp_image_path = example['image_path']
+                    else:
+                        st.error("Image non trouvée")
+                        temp_image_path = None
+        
+        else:  # Saisie manuelle
             col1, col2 = st.columns(2)
             
             with col1:
-                st.write("**Texte du produit:**")
-                text_input = st.text_area("Description + Désignation", 
-                                         value=example['text'][:400] + "..." if len(example['text']) > 400 else example['text'],
-                                         height=120)
-                st.success(f"**Classe réelle:** {example['class_name']} ({example['class_code']})")
+                text_input = st.text_area("Texte", "Console de jeu PlayStation 5 dernière génération", key="fusion_manual_text")
             
             with col2:
-                st.write("**Image du produit:**")
-                if os.path.exists(example['image_path']):
-                    image = Image.open(example['image_path'])
-                    st.image(image, caption=f"Image ID: {example['imageid']}", use_container_width=True)
-                    temp_image_path = example['image_path']
+                uploaded_file = st.file_uploader("Image", type=["jpg", "jpeg", "png"], key="fusion_upload")
+                
+                if uploaded_file is not None:
+                    image = Image.open(uploaded_file)
+                    st.image(image, caption="Image pour analyse", use_container_width=True)
+                    
+                    temp_dir = "temp_uploads"
+                    os.makedirs(temp_dir, exist_ok=True)
+                    temp_image_path = os.path.join(temp_dir, uploaded_file.name)
+                    image.save(temp_image_path)
                 else:
-                    st.error("Image non trouvée")
                     temp_image_path = None
-    
-    else:  # Saisie manuelle
-        col1, col2 = st.columns(2)
         
-        with col1:
-            text_input = st.text_area("Texte", "Console de jeu PlayStation 5 dernière génération")
+        fusion_strategy = st.selectbox("Stratégie de fusion", ["mean", "product", "weighted", "confidence_weighted"], key="fusion_strategy")
         
-        with col2:
-            uploaded_file = st.file_uploader("Image", type=["jpg", "jpeg", "png"])
-            
-            if uploaded_file is not None:
-                image = Image.open(uploaded_file)
-                st.image(image, caption="Image pour analyse", use_container_width=True)
-                
-                temp_dir = "temp_uploads"
-                os.makedirs(temp_dir, exist_ok=True)
-                temp_image_path = os.path.join(temp_dir, uploaded_file.name)
-                image.save(temp_image_path)
-            else:
-                temp_image_path = None
-    
-    fusion_strategy = st.selectbox("Stratégie de fusion", ["mean", "product", "weighted", "confidence_weighted"])
-    
-    if st.button("🔍 Générer les Explications", disabled=(temp_image_path is None)):
-        try:
-            with st.spinner("Génération des explications..."):
-                # S'assurer que le texte est bien une chaîne de caractères (même correction que pour les tests)
-                def clean_text_input(text_input):
-                    if isinstance(text_input, np.ndarray):
-                        if text_input.size == 1:
-                            return str(text_input.item()).strip()
+        if st.button("🔍 Générer les Explications Multimodales", disabled=(temp_image_path is None), key="generate_fusion_explanations"):
+            try:
+                with st.spinner("Génération des explications multimodales..."):
+                    # S'assurer que le texte est bien une chaîne de caractères
+                    def clean_text_input(text_input):
+                        if isinstance(text_input, np.ndarray):
+                            if text_input.size == 1:
+                                return str(text_input.item()).strip()
+                            else:
+                                return ' '.join([str(item) for item in text_input.flatten()]).strip()
+                        elif text_input is None:
+                            return ""
                         else:
-                            return ' '.join([str(item) for item in text_input.flatten()]).strip()
-                    elif text_input is None:
-                        return ""
+                            return str(text_input).strip()
+                    
+                    text_input_clean = clean_text_input(text_input)
+                    
+                    if len(text_input_clean) == 0:
+                        st.error("❌ Le texte d'entrée est vide après nettoyage")
+                        st.stop()
+                    
+                    explanations = pipeline.get_model_explanations(text_input_clean, temp_image_path, fusion_strategy)
+                    
+                    if 'error' in explanations:
+                        st.error(f"❌ Erreur: {explanations['error']}")
                     else:
-                        return str(text_input).strip()
-                
-                text_input_clean = clean_text_input(text_input)
-                
-                if len(text_input_clean) == 0:
-                    st.error("❌ Le texte d'entrée est vide après nettoyage")
-                    st.stop()
-                
-                explanations = pipeline.get_model_explanations(text_input_clean, temp_image_path, fusion_strategy)
-                
-                if 'error' in explanations:
-                    st.error(f"❌ Erreur: {explanations['error']}")
-                else:
-                    # Résultat de la prédiction
-                    st.subheader("🎯 Résultat de la Prédiction")
-                    col1, col2, col3 = st.columns(3)
-                    
-                    with col1:
-                        st.metric("Classe Prédite", explanations['prediction']['predicted_class_name'])
-                    with col2:
-                        st.metric("Confiance", f"{explanations['prediction']['confidence']:.3f}")
-                    with col3:
-                        st.metric("Code Classe", explanations['prediction']['predicted_class'])
-                    
-                    # Comparaison avec la vérité terrain pour test_split
-                    if mode == "🎲 Exemple test_split" and 'current_explainer_example' in st.session_state:
-                        example = st.session_state.current_explainer_example
-                        is_correct = explanations['prediction']['predicted_class'] == example['class_code']
+                        # Résultat de la prédiction
+                        st.subheader("🎯 Résultat de la Fusion")
+                        col1, col2, col3 = st.columns(3)
                         
-                        st.subheader("🎯 Évaluation vs Vérité Terrain")
-                        eval_col1, eval_col2, eval_col3 = st.columns(3)
-                        
-                        with eval_col1:
-                            status = "✅ Correct" if is_correct else "❌ Incorrect"
-                            st.metric("Résultat", status)
-                        with eval_col2:
-                            st.metric("Classe Réelle", example['class_name'])
-                        with eval_col3:
+                        with col1:
                             st.metric("Classe Prédite", explanations['prediction']['predicted_class_name'])
-                        
-                        if not is_correct:
-                            st.error("🔍 **Erreur de classification détectée !**")
-                    
-                    # Comparaison des modalités
-                    st.subheader("🔄 Comparaison des Modalités")
-                    
-                    ind_preds = explanations['individual_predictions']
-                    
-                    col1, col2 = st.columns(2)
-                    with col1:
-                        st.metric(
-                            "📝 Texte Seul", 
-                            pipeline.category_names.get(ind_preds['text_prediction'], 'Unknown'),
-                            f"Confiance: {ind_preds['text_confidence']:.3f}"
-                        )
-                    
-                    with col2:
-                        st.metric(
-                            "🖼️ Image Seule", 
-                            pipeline.category_names.get(ind_preds['image_prediction'], 'Unknown'),
-                            f"Confiance: {ind_preds['image_confidence']:.3f}"
-                        )
-                    
-                    # Importance des modalités
-                    st.subheader("⚖️ Importance des Modalités")
-                    
-                    modality_imp = explanations['modality_importance']
-                    
-                    importance_df = pd.DataFrame({
-                        'Modalité': ['Texte', 'Image'],
-                        'Poids': [modality_imp['text_weight']*100, modality_imp['image_weight']*100]
-                    })
-                    
-                    fig = px.pie(importance_df, values='Poids', names='Modalité',
-                                title=f"Contribution des Modalités (Stratégie: {fusion_strategy})")
-                    st.plotly_chart(fig, use_container_width=True)
-                    
-                    # Analyse détaillée
-                    st.subheader("🔍 Analyse Détaillée")
-                    
-                    tabs = st.tabs(["📝 Analyse Texte", "🖼️ Analyse Image", "🔗 Analyse Fusion"])
-                    
-                    with tabs[0]:
-                        text_analysis = explanations['text_analysis']
-                        st.write("**Statistiques du texte:**")
-                        col1, col2, col3 = st.columns(3)
-                        with col1:
-                            st.metric("Longueur", text_analysis['text_length'])
                         with col2:
-                            st.metric("Nombre de mots", text_analysis['word_count'])
+                            st.metric("Confiance", f"{explanations['prediction']['confidence']:.3f}")
                         with col3:
-                            st.metric("Confiance", f"{text_analysis['text_confidence']:.3f}")
+                            st.metric("Code Classe", explanations['prediction']['predicted_class'])
                         
-                        st.write("**Premiers mots:**")
-                        st.write(" • ".join(text_analysis['top_words']))
-                    
-                    with tabs[1]:
-                        image_analysis = explanations['image_analysis']
-                        if image_analysis['feature_importance_available']:
-                            st.write("**Features les plus importantes (indices):**")
-                            for i, feature_idx in enumerate(image_analysis['top_features'], 1):
-                                st.write(f"{i}. Feature {feature_idx}")
-                        else:
-                            st.info("Importance des features non disponible pour ce modèle")
-                    
-                    with tabs[2]:
-                        fusion_analysis = explanations['fusion_analysis']
-                        st.write("**Analyse de la fusion:**")
+                        # Comparaison avec la vérité terrain pour test_split
+                        if mode == "🎲 Exemple test_split" and 'current_explainer_example' in st.session_state:
+                            example = st.session_state.current_explainer_example
+                            is_correct = explanations['prediction']['predicted_class'] == example['class_code']
+                            
+                            st.subheader("🎯 Évaluation vs Vérité Terrain")
+                            eval_col1, eval_col2, eval_col3 = st.columns(3)
+                            
+                            with eval_col1:
+                                status = "✅ Correct" if is_correct else "❌ Incorrect"
+                                st.metric("Résultat", status)
+                            with eval_col2:
+                                st.metric("Classe Réelle", example['class_name'])
+                            with eval_col3:
+                                st.metric("Classe Prédite", explanations['prediction']['predicted_class_name'])
+                            
+                            if not is_correct:
+                                st.error("🔍 **Erreur de classification détectée !**")
                         
-                        col1, col2, col3 = st.columns(3)
+                        # Comparaison des modalités
+                        st.subheader("🔄 Comparaison des Modalités")
+                        
+                        ind_preds = explanations['individual_predictions']
+                        
+                        col1, col2 = st.columns(2)
                         with col1:
-                            agreement_status = "✅ Oui" if fusion_analysis['agreement'] else "❌ Non"
-                            st.metric("Accord Texte-Image", agreement_status)
+                            st.metric(
+                                "📝 Texte Seul (SVM)", 
+                                pipeline.category_names.get(ind_preds['text_prediction'], 'Unknown'),
+                                f"Confiance: {ind_preds['text_confidence']:.3f}"
+                            )
                         
                         with col2:
-                            boost_status = "✅ Oui" if fusion_analysis['confidence_boost'] else "❌ Non"
-                            st.metric("Fusion Améliore", boost_status)
+                            st.metric(
+                                "🖼️ Image Seule (XGBoost/Neural)", 
+                                pipeline.category_names.get(ind_preds['image_prediction'], 'Unknown'),
+                                f"Confiance: {ind_preds['image_confidence']:.3f}"
+                            )
                         
-                        with col3:
-                            dominant = "📝 Texte" if fusion_analysis['dominant_modality'] == 'text' else "🖼️ Image"
-                            st.metric("Modalité Dominante", dominant)
+                        # Importance des modalités
+                        st.subheader("⚖️ Poids des Modalités dans la Fusion")
                         
-                        # Interprétation
-                        st.write("**Interprétation:**")
-                        if fusion_analysis['agreement']:
-                            st.success("🎯 Les deux modalités sont d'accord, la prédiction est fiable")
-                        else:
-                            st.warning("⚠️ Désaccord entre modalités, vérifier la prédiction")
+                        modality_imp = explanations['modality_importance']
                         
-                        if fusion_analysis['confidence_boost']:
-                            st.info("📈 La fusion améliore la confiance de la prédiction")
-                        else:
-                            st.info("📊 La fusion n'améliore pas la confiance")
+                        importance_df = pd.DataFrame({
+                            'Modalité': ['Texte (SVM)', 'Image (XGBoost/Neural)'],
+                            'Poids': [modality_imp['text_weight']*100, modality_imp['image_weight']*100]
+                        })
+                        
+                        fig = px.pie(importance_df, values='Poids', names='Modalité',
+                                    title=f"Contribution des Modalités (Stratégie: {fusion_strategy})")
+                        st.plotly_chart(fig, use_container_width=True)
+                        
+                        # Analyse détaillée
+                        st.subheader("🔍 Analyse Détaillée de la Fusion")
+                        
+                        tabs = st.tabs(["📝 Analyse Texte", "🖼️ Analyse Image", "🔗 Analyse Fusion"])
+                        
+                        with tabs[0]:
+                            text_analysis = explanations['text_analysis']
+                            st.write("**Statistiques du texte (analysé par SVM):**")
+                            col1, col2, col3 = st.columns(3)
+                            with col1:
+                                st.metric("Longueur", text_analysis['text_length'])
+                            with col2:
+                                st.metric("Nombre de mots", text_analysis['word_count'])
+                            with col3:
+                                st.metric("Confiance SVM", f"{text_analysis['text_confidence']:.3f}")
+                            
+                            st.write("**Premiers mots détectés:**")
+                            st.write(" • ".join(text_analysis['top_words']))
+                        
+                        with tabs[1]:
+                            image_analysis = explanations['image_analysis']
+                            st.write("**Analyse des features image (par XGBoost/Neural Net):**")
+                            if image_analysis['feature_importance_available']:
+                                st.write("**Features ResNet50 les plus importantes (indices):**")
+                                for i, feature_idx in enumerate(image_analysis['top_features'], 1):
+                                    st.write(f"{i}. Feature {feature_idx}")
+                                st.info("💡 Ces indices correspondent aux neurones ResNet50 les plus influents")
+                            else:
+                                st.info("Importance des features non disponible pour ce modèle")
+                        
+                        with tabs[2]:
+                            fusion_analysis = explanations['fusion_analysis']
+                            st.write("**Analyse de la stratégie de fusion:**")
+                            
+                            col1, col2, col3 = st.columns(3)
+                            with col1:
+                                agreement_status = "✅ Oui" if fusion_analysis['agreement'] else "❌ Non"
+                                st.metric("Accord Texte-Image", agreement_status)
+                            
+                            with col2:
+                                boost_status = "✅ Oui" if fusion_analysis['confidence_boost'] else "❌ Non"
+                                st.metric("Fusion Améliore", boost_status)
+                            
+                            with col3:
+                                dominant = "📝 Texte" if fusion_analysis['dominant_modality'] == 'text' else "🖼️ Image"
+                                st.metric("Modalité Dominante", dominant)
+                            
+                            # Interprétation
+                            st.write("**Interprétation de la fusion:**")
+                            if fusion_analysis['agreement']:
+                                st.success("🎯 Les modalités texte (SVM) et image (XGBoost/Neural) sont d'accord, la prédiction est fiable")
+                            else:
+                                st.warning("⚠️ Désaccord entre les modalités, vérifier la prédiction de fusion")
+                            
+                            if fusion_analysis['confidence_boost']:
+                                st.info("📈 La fusion multimodale améliore la confiance par rapport aux prédictions individuelles")
+                            else:
+                                st.info("📊 La fusion n'améliore pas la confiance, une modalité domine probablement")
+                    
+            except Exception as e:
+                st.error(f"❌ Erreur génération explications multimodales: {str(e)}")
+                st.info("💡 Vérifiez que tous les modèles (texte SVM + image XGBoost/Neural Net) sont correctement chargés.")
+        
+        # Aide
+        if not test_examples and mode == "🎲 Exemple test_split":
+            st.warning("⚠️ Aucun exemple test_split disponible. Utilisez le mode 'Saisie manuelle'.")
+        
+        # Statistiques sur les catégories (si disponible)
+        if test_examples:
+            with st.expander("📊 Statistiques détaillées des exemples test_split"):
+                category_stats = {}
+                for example in test_examples:
+                    cat = example['class_name']
+                    if cat not in category_stats:
+                        category_stats[cat] = {'count': 0}
+                    category_stats[cat]['count'] += 1
                 
-        except Exception as e:
-            st.error(f"❌ Erreur génération explications: {str(e)}")
-            st.info("💡 Vérifiez que tous les modèles sont correctement chargés.")
-    
-    # Aide
-    if not test_examples and mode == "🎲 Exemple test_split":
-        st.warning("⚠️ Aucun exemple test_split disponible. Utilisez le mode 'Saisie manuelle'.")
-    
-    
-    # Statistiques sur les catégories
-    if test_examples:
-        with st.expander("📊 Statistiques détaillées"):
-            category_stats = {}
-            for example in test_examples:
-                cat = example['class_name']
-                if cat not in category_stats:
-                    category_stats[cat] = {
-                        'count': 0, 
-                        # 'emoji': example['class_emoji'],
-                        'desc': example['class_desc']
-                    }
-                category_stats[cat]['count'] += 1
-            
-            st.write("**Distribution par catégorie**:")
-            for cat_name, stats in sorted(category_stats.items(), key=lambda x: x[1]['count'], reverse=True):
-                st.write(f"{stats['emoji']} **{cat_name}**: {stats['count']} exemples - {stats['desc']}")
-            
-            # Recommandations
-            under_represented = [cat for cat, stats in category_stats.items() if stats['count'] < 2]
-            if under_represented:
-                st.warning(f"⚠️ Catégories sous-représentées ({len(under_represented)}): {', '.join(under_represented[:5])}{'...' if len(under_represented) > 5 else ''}")
+                st.write("**Distribution par catégorie dans les exemples:**")
+                for cat_name, stats in sorted(category_stats.items(), key=lambda x: x[1]['count'], reverse=True):
+                    st.write(f"• **{cat_name}**: {stats['count']} exemples")
+                
+                # Recommandations
+                under_represented = [cat for cat, stats in category_stats.items() if stats['count'] < 2]
+                if under_represented:
+                    st.warning(f"⚠️ Catégories sous-représentées ({len(under_represented)}): {', '.join(under_represented[:5])}{'...' if len(under_represented) > 5 else ''}")
 
 # Footer
 st.markdown("---")

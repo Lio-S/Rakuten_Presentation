@@ -1,0 +1,12 @@
+,accuracy,weighted_f1,model_type,fusion_strategy
+text_only,0.833078191238813,0.8345229772008367,text,
+xgboost_only,0.6202896844088553,0.6234369105124593,image,
+xgboost_mean,0.8506241168158266,0.8488447313863171,multimodal,mean
+xgboost_product,0.8511540273198305,0.8501715069728799,multimodal,product
+xgboost_weighted,0.8580428638718794,0.8567508925586317,multimodal,weighted
+xgboost_confidence_weighted,0.8492110221384833,0.8473366125135108,multimodal,confidence_weighted
+neural_net_only,0.6206429580781913,0.6241195564349381,image,
+neural_net_mean,0.8506829957607159,0.8493132642245373,multimodal,mean
+neural_net_product,0.8530970325011776,0.8526339367259601,multimodal,product
+neural_net_weighted,0.8545690061234102,0.853618496487021,multimodal,weighted
+neural_net_confidence_weighted,0.8496231747527084,0.8481448867327552,multimodal,confidence_weighted
