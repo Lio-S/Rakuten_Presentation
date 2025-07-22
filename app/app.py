@@ -98,7 +98,7 @@ def load_results_data():
     results_files = {
         'image_models': get_result_file('models_comparaison_results.csv'),
         'text_model': get_result_file('text_model_results.csv'),
-        'multimodal': get_report_file('multimodal_comparaison_results.csv')
+        'multimodal': get_report_file('multimodal_comparison_results.csv')
     }
     
     for key, file_path in results_files.items():
