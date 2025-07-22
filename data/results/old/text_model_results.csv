@@ -1,0 +1,2 @@
+,accuracy,weighted_f1,macro_f1,mean_confidence,median_confidence,min_confidence,low_confidence_samples,high_confidence_samples,num_samples
+SVM,0.8116,0.8161,0.8078,0.8217,0.9504,0.1016,2435,11592,16984

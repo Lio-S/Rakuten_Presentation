@@ -1,17 +1,18 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+# import matplotlib.pyplot as plt
+# import seaborn as sns
 from PIL import Image
 import os
+import sys
 import plotly.express as px
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-from pathlib import Path
-from utils_path import *
+# import plotly.graph_objects as go
+# from plotly.subplots import make_subplots
+# from pathlib import Path
 
-import main 
+from utils_path import *
+import main #(chargement des données)
 from utils import safe_read_csv
 
 # Configuration de la page
@@ -27,22 +28,12 @@ st.set_page_config(
 def load_pipeline():
     """Charge le pipeline et les modèles (mis en cache)"""
     
-    # Obtenir le répertoire du script sans changer le working directory
-    script_dir = Path(__file__).parent
-    
-    # Debug
-    st.write("### 🔍 Debug")
-    st.write(f"**Répertoire du script:** `{APP_DIR}`")
-    st.write(f"**Répertoire de travail:** `{Path.cwd()}`")
-    st.write(f"**Répertoire data:** `{DATA_DIR}`")
-    
     try:
-        # Vérifier que les fichiers existent
-        st.write(f"**config.yaml existe:** {'✅' if CONFIG_FILE.exists() else '❌'}")
-        st.write(f"**preprocess.py existe:** {'✅' if (APP_DIR / 'preprocess.py').exists() else '❌'}")
+    #     # Vérifier que les fichiers existent
+    #     st.write(f"**config.yaml existe:** {'✅' if CONFIG_FILE.exists() else '❌'}")
+    #     st.write(f"**preprocess.py existe:** {'✅' if (APP_DIR / 'preprocess.py').exists() else '❌'}")
                 
         # Ajouter le répertoire du script au PATH Python
-        import sys
         if str(APP_DIR) not in sys.path:
             sys.path.insert(0, str(APP_DIR))
         
