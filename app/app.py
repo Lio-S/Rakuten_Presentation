@@ -35,11 +35,7 @@ st.set_page_config(
 def load_pipeline():
     """Charge le pipeline et les modèles (mis en cache)"""
     
-    try:
-    #     # Vérifier que les fichiers existent
-    #     st.write(f"**config.yaml existe:** {'✅' if CONFIG_FILE.exists() else '❌'}")
-    #     st.write(f"**preprocess.py existe:** {'✅' if (APP_DIR / 'preprocess.py').exists() else '❌'}")
-                
+    try:                
         # Ajouter le répertoire du script au PATH Python
         if str(APP_DIR) not in sys.path:
             sys.path.insert(0, str(APP_DIR))

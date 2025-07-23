@@ -5,9 +5,9 @@ import pandas as pd
 import pickle
 import shutil
 from tqdm import tqdm
-from typing import Optional#, Dict, Any
+from typing import Optional, Dict, Any
 import yaml
-# import time
+import time
 # from datetime import datetime
 from dataclasses import dataclass, fields
 # import sys
@@ -19,7 +19,7 @@ import xgboost as xgb
 from sklearn.metrics import (
     accuracy_score, f1_score#, precision_score, recall_score
 )
-from sklearn.model_selection import train_test_split#, StratifiedKFold
+from sklearn.model_selection import train_test_split, StratifiedKFold
 # import optuna
 
 # Imports PyTorch
@@ -28,7 +28,7 @@ torch.cuda.empty_cache()
 torch.backends.cudnn.benchmark = True
 import torch.nn as nn
 # import torch.nn.functional as F
-from torch.utils.data import Dataset, DataLoader#, TensorDataset
+from torch.utils.data import Dataset, DataLoader, TensorDataset
 from torchvision.models import resnet50, ResNet50_Weights
 import torchvision.transforms as transforms
 # import torch.optim as optim
@@ -77,8 +77,8 @@ class PipelineConfig:
     batch_size: int = 128
     target_size: int = 2000
     random_state: int = 42
-    num_workers: Optional[int] = 7
-    early_stopping_patience: int = 7
+    num_workers: Optional[int] = 14
+    early_stopping_patience: int = 5
 
     @classmethod
     def from_yaml(cls, yaml_path: str) -> 'PipelineConfig':
@@ -377,7 +377,7 @@ class ProductClassificationPipeline:
         images_not_found = 0
         
         try:
-            self.logger.info(f"Création dataset à partir de {len(df)} entrées...")
+            self.logger.info(f"Création dataset {df_name} à partir de {len(df)} entrées...")
             
             # Déterminer le répertoire d'images selon df_name
             if df_name == "X_train" or df_name == "X_test_split":
@@ -418,17 +418,104 @@ class ProductClassificationPipeline:
         """
         try:
             # 1) Train
-            X_train = np.load(required_files['X_train'], allow_pickle=True)['arr_0']
-            y_train = np.load(required_files['y_train'], allow_pickle=True)['arr_0']
-            train_indices = np.load(required_files['train_indices'], allow_pickle=True)['arr_0']
+            X_train_npz = np.load(required_files['X_train'], allow_pickle=True)
+            y_train_npz = np.load(required_files['y_train'], allow_pickle=True)
+            train_indices_npz = np.load(required_files['train_indices'], allow_pickle=True)
+            
+            # Extraction des données - gérer les différents formats de sauvegarde
+            X_train = X_train_npz['X_train_'] if 'X_train_' in X_train_npz.files else X_train_npz['arr_0']
+            y_train = y_train_npz['y_train_'] if 'y_train_' in y_train_npz.files else y_train_npz['arr_0']
+            train_indices = train_indices_npz['train_indices'] if 'train_indices' in train_indices_npz.files else train_indices_npz['arr_0']
             
             # 2) Test
-            X_test = np.load(required_files['X_test'], allow_pickle=True)['arr_0']
+            X_test_npz = np.load(required_files['X_test'], allow_pickle=True)
+            X_test = X_test_npz['X_test'] if 'X_test' in X_test_npz.files else X_test_npz['arr_0']
             
             # 3) Test_split
-            X_test_split = np.load(required_files['X_test_split'], allow_pickle=True)['arr_0']
-            y_test_split = np.load(required_files['y_test_split'], allow_pickle=True)['arr_0']
-            test_split_indices = np.load(required_files['test_split_indices'], allow_pickle=True)['arr_0']
+            X_test_split_npz = np.load(required_files['X_test_split'], allow_pickle=True)
+            y_test_split_npz = np.load(required_files['y_test_split'], allow_pickle=True)
+            test_split_indices_npz = np.load(required_files['test_split_indices'], allow_pickle=True)
+            
+            X_test_split = X_test_split_npz['X_test_split'] if 'X_test_split' in X_test_split_npz.files else X_test_split_npz['arr_0']
+            y_test_split = y_test_split_npz['y_test_split'] if 'y_test_split' in y_test_split_npz.files else y_test_split_npz['arr_0']
+            test_split_indices = test_split_indices_npz['test_split_indices'] if 'test_split_indices' in test_split_indices_npz.files else test_split_indices_npz['arr_0']
+            
+            # Fermeture des fichiers npz
+            X_train_npz.close()
+            y_train_npz.close()
+            train_indices_npz.close()
+            X_test_npz.close()
+            X_test_split_npz.close()
+            y_test_split_npz.close()
+            test_split_indices_npz.close()
+            
+            # Extraction robuste des features
+            def extract_features_safe(data, data_name=""):
+                """Extrait les features des données selon leur format - version sécurisée"""
+                self.logger.info(f"Extraction de {data_name}: type={type(data)}, shape={getattr(data, 'shape', 'N/A')}")
+                
+                try:
+                    # Cas 1: Dictionnaire direct
+                    if isinstance(data, dict):
+                        if 'features' in data:
+                            self.logger.info(f"  → Extraction via clé 'features'")
+                            return data['features']
+                        else:
+                            self.logger.info(f"  → Dictionnaire sans 'features', clés: {list(data.keys())}")
+                            return data
+                    
+                    # Cas 2: Array 0D contenant un objet (ATTENTION au .item())
+                    elif isinstance(data, np.ndarray) and data.shape == ():
+                        try:
+                            item = data.item()
+                            self.logger.info(f"  → Array 0D converti, type de l'item: {type(item)}")
+                            
+                            if isinstance(item, dict) and 'features' in item:
+                                self.logger.info(f"  → Extraction via clé 'features' de l'item")
+                                return item['features']
+                            else:
+                                return item
+                        except ValueError as e:
+                            self.logger.warning(f"  → Échec .item(): {e}, retour direct")
+                            return data
+                    
+                    # Cas 3: Array numpy classique
+                    elif isinstance(data, np.ndarray):
+                        if data.ndim >= 2:  # Array 2D ou plus = probablement les features directement
+                            self.logger.info(f"  → Array {data.ndim}D, utilisation directe")
+                            return data
+                        else:
+                            self.logger.info(f"  → Array 1D, tentative de reshape")
+                            return data
+                    
+                    # Cas 4: Autres types
+                    else:
+                        self.logger.info(f"  → Type non géré spécifiquement, retour direct")
+                        return data
+                        
+                except Exception as e:
+                    self.logger.error(f"  → Erreur extraction {data_name}: {e}")
+                    return data
+            
+            # Application de l'extraction sécurisée
+            self.logger.info("=== EXTRACTION DES FEATURES ===")
+            X_train = extract_features_safe(X_train, "X_train")
+            X_test = extract_features_safe(X_test, "X_test")
+            X_test_split = extract_features_safe(X_test_split, "X_test_split")
+            
+            # Log des informations finales
+            self.logger.info("=== RÉSULTATS FINAUX ===")
+            self.logger.info(f"X_train: {type(X_train)} shape={getattr(X_train, 'shape', 'N/A')}")
+            self.logger.info(f"y_train: {type(y_train)} shape={getattr(y_train, 'shape', 'N/A')}")
+            self.logger.info(f"X_test: {type(X_test)} shape={getattr(X_test, 'shape', 'N/A')}")
+            self.logger.info(f"X_test_split: {type(X_test_split)} shape={getattr(X_test_split, 'shape', 'N/A')}")
+            self.logger.info(f"y_test_split: {type(y_test_split)} shape={getattr(y_test_split, 'shape', 'N/A')}")
+            
+            # Vérifications supplémentaires
+            if hasattr(X_train, 'shape') and len(X_train.shape) == 0:
+                self.logger.warning("X_train est un array 0D - investigation nécessaire")
+            if hasattr(X_test_split, 'shape') and len(X_test_split.shape) == 0:
+                self.logger.warning("X_test_split est un array 0D - investigation nécessaire")
             
             # Construction du dictionnaire
             preprocessed_data = {
@@ -440,10 +527,20 @@ class ProductClassificationPipeline:
                 'train_indices': train_indices,
                 'test_split_indices': test_split_indices
             }
+            
             return preprocessed_data
 
         except Exception as e:
             self.logger.error(f"Erreur chargement données : {str(e)}")
+            # Debug supplémentaire
+            for name, path in required_files.items():
+                if os.path.exists(path):
+                    try:
+                        npz_file = np.load(path, allow_pickle=True)
+                        self.logger.error(f"  {name}: fichiers={npz_file.files}")
+                        npz_file.close()
+                    except Exception as e2:
+                        self.logger.error(f"  {name}: erreur lecture={e2}")
             raise         
 
     def _load_existing_processed_data_streamlit(self, required_files):
@@ -461,9 +558,18 @@ class ProductClassificationPipeline:
             
             # 1) Données de test split (nécessaires pour évaluations et exemples)
             try:
-                X_test_split = np.load(required_files['X_test_split'], allow_pickle=True)['arr_0']
-                y_test_split = np.load(required_files['y_test_split'], allow_pickle=True)['arr_0']
-                test_split_indices = np.load(required_files['test_split_indices'], allow_pickle=True)['arr_0']
+                X_test_split_npz = np.load(required_files['X_test_split'], allow_pickle=True)
+                y_test_split_npz = np.load(required_files['y_test_split'], allow_pickle=True)
+                test_split_indices_npz = np.load(required_files['test_split_indices'], allow_pickle=True)
+                
+                X_test_split = X_test_split_npz['X_test_split'] if 'X_test_split' in X_test_split_npz.files else X_test_split_npz['arr_0']
+                y_test_split = y_test_split_npz['y_test_split'] if 'y_test_split' in y_test_split_npz.files else y_test_split_npz['arr_0']
+                test_split_indices = test_split_indices_npz['test_split_indices'] if 'test_split_indices' in test_split_indices_npz.files else test_split_indices_npz['arr_0']
+                
+                # Fermeture des fichiers npz
+                X_test_split_npz.close()
+                y_test_split_npz.close()
+                test_split_indices_npz.close()
                 
                 preprocessed_data.update({
                     'X_test_split': X_test_split,
@@ -667,32 +773,31 @@ class ProductClassificationPipeline:
                 # c) Éventuel balancing
                 if balance_classes:
                     train_indices = self._create_balanced_dataset(X_train, y_train)
-                    # Si vous renvoyez la liste finale des indices 
                     X_train = X_train.loc[train_indices]
                     y_train = y_train.loc[train_indices]
 
                 # d) Extraction features via _extract_resnet_features
                 #    1) Création dataset PyTorch pour train
-                train_dataset = self._create_dataset(X_train, y_train, df_name="X_train")
+                train_dataset = self._create_dataset(X_train, df_name="X_train")
                 X_train_features = self._extract_resnet_features(train_dataset, desc="Extraction features train")
 
                 #    2) Création dataset PyTorch pour test "officiel"
-                test_dataset = self._create_dataset(X_test_df, None, df_name="X_test")
+                test_dataset = self._create_dataset(X_test_df, df_name="X_test")
                 X_test_features = self._extract_resnet_features(test_dataset, desc="Extraction features test")
 
                 #    3) Création dataset PyTorch pour test_split
-                test_split_dataset = self._create_dataset(X_test_split, y_test_split, df_name="X_test_split")
+                test_split_dataset = self._create_dataset(X_test_split, df_name="X_test_split")
                 X_test_split_features = self._extract_resnet_features(test_split_dataset, desc="Extraction features test_split")
 
                 self.logger.info(f"Sauvegarde des fichiers images...")
                 # e) Sauvegarde via _save_processed_data
                 self._save_processed_data(
-                    X_train_features, 
+                    X_train_features['features'], 
                     y_train['prdtypecode'].values,
-                    X_test_features,
-                    X_test_split_features,
-                    y_test_split['prdtypecode'].values,
                     train_indices,
+                    X_test_features['features'],
+                    X_test_split_features['features'],
+                    y_test_split['prdtypecode'].values,
                     test_split_indices,
                     required_files
                 )
@@ -857,6 +962,369 @@ class ProductClassificationPipeline:
             self.logger.error(f"Erreur chargement modèle {model_type}: {str(e)}")
             raise
 
+    ############## Entrainement modèles ############
+    def cross_validate_model(self, model_type: str, **model_params) -> Dict[str, Any]:
+        """
+        Effectue une validation croisée avec support GPU et affiche la progression
+        
+        Args:
+            model_type (str): Type de modèle à entraîner ('xgboost', 'lightgbm', 'catboost', 'logistic', 'neural_net')
+            **model_params: Paramètres spécifiques au modèle
+            
+        Returns:
+            Dict[str, Any]: Dictionnaire contenant le meilleur modèle et son F1-score
+        """
+        try:
+            start_time = time.time()
+            self.logger.info(f"Début de la validation croisée pour {model_type}")
+            
+            X = self.preprocessed_data['X_train']
+            y = self.preprocessed_data['y_train']
+            
+            # Conversion des labels pour tous les modèles
+            y = np.array([self.category_to_idx[label] for label in y])
+        
+            skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+            best_f1 = 0
+            best_model = None
+            
+            for fold, (train_idx, val_idx) in enumerate(tqdm(list(skf.split(X, y)), desc="Validation croisée", total=5), 1):
+                fold_start = time.time()
+                self.logger.info(f"Début du fold {fold}/5")
+                
+                X_fold_train, X_fold_val = X[train_idx], X[val_idx]
+                y_fold_train, y_fold_val = y[train_idx], y[val_idx]
+                
+                # Initialisation du modèle en fonction du type
+                if model_type == 'xgboost':
+                    model = xgb.XGBClassifier(**model_params)
+                    model.fit(X_fold_train, y_fold_train)
+                    
+                elif model_type == 'neural_net':
+                    model = NeuralClassifier(
+                        num_classes=len(self.category_names),
+                        config=model_params
+                    ).to(self.device)
+                    
+                    optimizer = torch.optim.Adam(
+                        model.parameters(),
+                        lr=model_params.get('learning_rate', 0.001),
+                        weight_decay=model_params.get('weight_decay', 0.01)
+                    )
+                    
+                    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+                        optimizer,
+                        mode='min',
+                        factor=model_params.get('scheduler_params', {}).get('factor', 0.1),
+                        patience=model_params.get('scheduler_params', {}).get('patience', 3),
+                        min_lr=model_params.get('scheduler_params', {}).get('min_lr', 1e-6)
+                    )
+                    
+                    criterion = nn.CrossEntropyLoss()
+                    best_val_loss = float('inf')
+                    patience_counter = 0
+                    
+                    # Entraînement du modèle neuronal
+                    for epoch in range(model_params.get('epochs', 30)):
+                        model.train()
+                        total_loss = 0
+                        batch_count = 0
+                        
+                        # Phase d'entraînement
+                        for batch_idx in range(0, len(X_fold_train), model_params.get('batch_size', 32)):
+                            batch_end = min(batch_idx + model_params.get('batch_size', 32), len(X_fold_train))
+                            batch_X = torch.FloatTensor(X_fold_train[batch_idx:batch_end]).to(self.device)
+                            batch_y = torch.LongTensor(y_fold_train[batch_idx:batch_end]).to(self.device)
+                            
+                            optimizer.zero_grad()
+                            outputs = model(batch_X)
+                            loss = criterion(outputs, batch_y)
+                            loss.backward()
+                            optimizer.step()
+                            
+                            total_loss += loss.item()
+                            batch_count += 1
+                        
+                        avg_loss = total_loss / batch_count
+                        
+                        # Phase de validation
+                        model.eval()
+                        val_predictions = []
+                        with torch.no_grad():
+                            for batch_idx in range(0, len(X_fold_val), model_params.get('batch_size', 32)):
+                                batch_end = min(batch_idx + model_params.get('batch_size', 32), len(X_fold_val))
+                                batch_X = torch.FloatTensor(X_fold_val[batch_idx:batch_end]).to(self.device)
+                                outputs = model(batch_X)
+                                _, preds = torch.max(outputs, 1)
+                                val_predictions.extend(preds.cpu().numpy())
+                        
+                        y_pred = np.array(val_predictions)
+                        val_f1 = f1_score(y_fold_val, y_pred, average='weighted')
+                        
+                        # Mise à jour du scheduler
+                        scheduler.step(1 - val_f1)  # Utilise 1 - F1 comme métrique à minimiser
+                        
+                        # Early stopping
+                        if val_f1 > best_val_loss:
+                            best_val_loss = val_f1
+                            patience_counter = 0
+                        else:
+                            patience_counter += 1
+                        
+                        if patience_counter >= model_params.get('early_stopping_patience', 5):
+                            self.logger.info(f"Early stopping à l'époque {epoch + 1}")
+                            break
+                
+                else:
+                    raise ValueError(f"Type de modèle non supporté : {model_type}")
+                
+                # Calcul du F1-score pour le fold
+                fold_f1 = f1_score(y_fold_val, y_pred, average='weighted')
+                fold_time = time.time() - fold_start
+                self.logger.info(f"Fold {fold}/5 terminé en {fold_time:.2f}s - F1-score: {fold_f1:.4f}")
+                
+                if fold_f1 > best_f1:
+                    best_f1 = fold_f1
+                    best_model = model
+            
+            total_time = time.time() - start_time
+            self.logger.info(f"Validation croisée terminée en {total_time:.2f}s - Meilleur F1-score: {best_f1:.4f}")
+            
+            return {
+                'model': best_model,
+                'best_f1': best_f1
+            }
+                
+        except Exception as e:
+            self.logger.error(f"Erreur validation croisée: {str(e)}")
+            raise
+
+    def train_model(self, model_type='xgboost', use_cv=False, **model_params):
+        """
+        Choix du bon type d'entraînement selon le modèle
+        """
+        if model_type == 'neural_net':
+            self.train_dl_model(use_cv=use_cv, **model_params)
+        else:
+            self.train_ml_model(model_type, use_cv=use_cv, **model_params)
+        
+        self.logger.info(f"Sauvegarde modèle {model_type} en cours...")
+        self.save_model(model_type)
+
+    def train_ml_model(self, model_type, use_cv, **model_params):
+        """
+        Entraîne un modèle ML avec les paramètres fournis
+        
+        Args:
+            model_type (str): Type de modèle ('xgboost', 'lightgbm', 'catboost', 'logistic')
+            use_cv (bool): Utiliser la validation croisée
+            **model_params: Paramètres spécifiques au modèle
+        """
+        try:
+            if not hasattr(self, 'preprocessed_data') or self.preprocessed_data is None:
+                raise ValueError("Les données prétraitées ne sont pas disponibles")
+
+            self.logger.info(f"Début entraînement {model_type}")
+            start_time = time.time()
+
+            # Préparation des données
+            X_train = self.preprocessed_data['X_train']
+            if isinstance(X_train, dict):
+                X_train = X_train['features']
+            if X_train.shape == ():
+                X_train = X_train.item()['features']
+                
+            # Conversion des labels pour tous les modèles
+            y_train = np.array([self.category_to_idx[label] for label in self.preprocessed_data['y_train']])
+
+            if use_cv:
+                result = self.cross_validate_model(model_type, **model_params)
+                self.model = result['model']
+            else:
+                # Initialisation du modèle selon le type
+                if model_type == 'xgboost':
+                    self.model = xgb.XGBClassifier(**model_params)
+                else:
+                    raise ValueError(f"Type de modèle ML non supporté: {model_type}")
+
+                # Entraînement
+                self.model.fit(X_train, y_train)
+
+            training_time = time.time() - start_time
+            self.logger.info(f"Entraînement terminé en {training_time:.2f}s")
+
+        except Exception as e:
+            self.logger.error(f"Erreur entraînement {model_type}: {str(e)}")
+            raise
+
+    def train_dl_model(self, use_cv, **model_params):
+        """
+        Entraîne le modèle deep learning
+        
+        Args:
+            use_cv (bool): Utiliser la validation croisée
+            **model_params: Paramètres du modèle
+        """
+        try:
+            if not hasattr(self, 'preprocessed_data') or self.preprocessed_data is None:
+                raise ValueError("Les données prétraitées ne sont pas disponibles")
+
+            self.logger.info("Début entraînement deep learning")
+            start_time = time.time()
+
+            # Conversion des labels
+            y_train = np.array([self.category_to_idx[label] for label in self.preprocessed_data['y_train']])
+
+            # Préparation et conversion des données
+            X_train_data = self.preprocessed_data['X_train']
+            if isinstance(X_train_data, dict):
+                X_train_data = X_train_data['features']
+            if X_train_data.shape == ():
+                X_train_data = X_train_data.item()['features']
+            
+            # Conversion en float32 pour assurer la compatibilité
+            X_train_data = np.array(X_train_data, dtype=np.float32)
+            
+            # Création des tenseurs
+            X_train_tensor = torch.FloatTensor(X_train_data)
+            y_train_tensor = torch.LongTensor(y_train)
+            
+            train_idx, val_idx = train_test_split(
+                np.arange(len(X_train_tensor)),
+                test_size=0.1,
+                stratify=y_train,
+                random_state=self.config.random_state
+            )
+            
+            # Création des datasets
+            train_dataset = TensorDataset(
+                X_train_tensor[train_idx], 
+                y_train_tensor[train_idx]
+            )
+            val_dataset = TensorDataset(
+                X_train_tensor[val_idx], 
+                y_train_tensor[val_idx]
+            )
+
+            # Extraction des paramètres spécifiques au DataLoader
+            dataloader_params = {
+                'batch_size': model_params['batch_size'],
+                'num_workers': model_params['dataloader_params']['num_workers'],
+                'pin_memory': model_params['dataloader_params']['pin_memory'],
+                'prefetch_factor': model_params['dataloader_params']['prefetch_factor'],
+                'persistent_workers': model_params['dataloader_params']['persistent_workers'],
+            }
+
+            # Création des DataLoaders avec les paramètres filtrés
+            train_loader = DataLoader(train_dataset, shuffle=True, **dataloader_params)
+            val_loader = DataLoader(val_dataset, shuffle=False, **dataloader_params)
+
+            if use_cv:
+                result = self.cross_validate_model('neural_net', **model_params)
+                self.model = result['model']
+            else:
+                # Initialisation du modèle
+                self.model = NeuralClassifier(
+                    num_classes=len(self.category_names),
+                    config=model_params
+                ).to(self.device)
+
+                # Configuration de l'optimisation
+                optimizer = torch.optim.Adam(
+                    self.model.parameters(),
+                    lr=model_params.get('learning_rate', 0.001),
+                    weight_decay=model_params.get('weight_decay', 0.01)
+                )
+
+                scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+                    optimizer,
+                    mode='max',
+                    factor=0.5,
+                    patience=5,
+                    min_lr=1e-6
+                )
+
+                criterion = nn.CrossEntropyLoss()
+                best_val_f1 = 0
+                patience_counter = 0
+                
+                # Boucle d'entraînement
+                for epoch in range(model_params.get('epochs', 30)):
+                    # Mode entraînement
+                    self.model.train()
+                    train_loss = 0
+                    train_steps = 0
+
+                    for batch_idx, (data, target) in enumerate(tqdm(train_loader, desc=f"Epoch {epoch+1}")):
+                        data, target = data.to(self.device), target.to(self.device)
+                        
+                        optimizer.zero_grad()
+                        output = self.model(data)
+                        loss = criterion(output, target)
+                        loss.backward()
+                        optimizer.step()
+
+                        train_loss += loss.item()
+                        train_steps += 1
+
+                    avg_train_loss = train_loss / train_steps
+
+                    # Validation (pour early stopping)
+                    self.model.eval()
+                    val_predictions = []
+                    val_targets = []
+                    val_loss = 0
+                    val_steps = 0
+
+                    with torch.no_grad():
+                        for data, target in val_loader:
+                            data, target = data.to(self.device), target.to(self.device)
+                            output = self.model(data)
+                            loss = criterion(output, target)
+                            val_loss += loss.item()
+                            val_steps += 1
+
+                            _, predicted = torch.max(output.data, 1)
+                            val_predictions.extend(predicted.cpu().numpy())
+                            val_targets.extend(target.cpu().numpy())
+
+                    val_f1 = f1_score(val_targets, val_predictions, average='weighted')
+                    avg_val_loss = val_loss / val_steps
+
+                    # Mise à jour du scheduler
+                    scheduler.step(val_f1)
+
+                    # Early stopping
+                    if val_f1 > best_val_f1:
+                        best_val_f1 = val_f1
+                        patience_counter = 0
+                        # Sauvegarde du meilleur modèle
+                        best_model_state = self.model.state_dict()
+                    else:
+                        patience_counter += 1
+
+                    self.logger.info(
+                        f"Epoch {epoch+1}: "
+                        f"Train Loss = {avg_train_loss:.4f}, "
+                        f"Val Loss = {avg_val_loss:.4f}, "
+                        f"Val F1 = {val_f1:.4f}"
+                    )
+
+                    if patience_counter >= model_params.get('early_stopping_patience', 5):
+                        self.logger.info(f"Early stopping à l'epoch {epoch+1}")
+                        break
+
+                # Restauration du meilleur modèle
+                self.model.load_state_dict(best_model_state)
+
+            training_time = time.time() - start_time
+            self.logger.info(f"Entraînement terminé en {training_time:.2f}s")
+
+        except Exception as e:
+            self.logger.error(f"Erreur entraînement DL: {str(e)}")
+            raise
+    ################################################
+
     def predict(self, X):
         """
         Génère les prédictions pour de nouvelles données
@@ -871,27 +1339,68 @@ class ProductClassificationPipeline:
             if self.model is None:
                 raise ValueError("Le modèle n'est pas entraîné")
 
-            # Gestion des données en format dict ou array 0D
-            if isinstance(X, np.ndarray) and X.shape == ():
-                # Si X est un scalaire, on le convertit en array 2D
-                X = X.item()
-                if isinstance(X, dict) and 'features' in X:
-                    X = X['features']
-                X = np.array(X)
-
-            # Assurer que X est 2D et a la bonne forme
-            if isinstance(X, (np.ndarray, list)):
-                X = np.array(X, dtype=np.float32)
-            
-            if len(X.shape) == 1:
-                X = X.reshape(1, -1)
+            # 1. Gestion des NpzFile (objet retourné par np.load)
+            if hasattr(X, 'files'):  # C'est un NpzFile
+                print("Détection d'un NpzFile, extraction des données...")
+                # Essayer différentes clés communes
+                possible_keys = ['arr_0', 'features', 'X_test_split', 'X_test']
+                data_extracted = False
                 
-            self.logger.debug(f"Shape après traitement: {X.shape}")
-            self.logger.debug(f"Type de données: {X.dtype}")
+                for key in possible_keys:
+                    if key in X.files:
+                        X = X[key]
+                        print(f"Données extraites avec la clé '{key}'")
+                        data_extracted = True
+                        break
+                
+                if not data_extracted:
+                    # Prendre la première clé disponible
+                    first_key = X.files[0]
+                    X = X[first_key]
+                    print(f"Données extraites avec la première clé disponible '{first_key}'")
 
+            # 2. Gestion des scalaires numpy (array 0D)
+            if isinstance(X, np.ndarray) and X.shape == ():
+                X = X.item()  # Convertit en objet Python
+                print("Conversion d'un array 0D en objet Python")
+
+            # 3. Gestion des dictionnaires
+            if isinstance(X, dict):
+                if 'features' in X:
+                    X = X['features']
+                    print("Extraction des features depuis un dictionnaire")
+                else:
+                    # Prendre la première valeur du dictionnaire
+                    first_key = list(X.keys())[0]
+                    X = X[first_key]
+                    print(f"Extraction des données avec la clé '{first_key}'")
+
+            # 4. Conversion en numpy array si nécessaire
+            if not isinstance(X, (np.ndarray, torch.Tensor)):
+                X = np.array(X)
+                print("Conversion en numpy array")
+
+            # 5. Assurer que X est 2D
+            if isinstance(X, np.ndarray):
+                if len(X.shape) == 1:
+                    X = X.reshape(1, -1)
+                    print("Reshape de 1D vers 2D")
+                elif len(X.shape) > 2:
+                    # Aplatir les dimensions supplémentaires
+                    X = X.reshape(X.shape[0], -1)
+                    print(f"Reshape de {len(X.shape)}D vers 2D")
+
+            # === DEBUG INFORMATION ===
+            print(f"Type final de X: {type(X)}")
+            print(f"Shape finale de X: {X.shape if hasattr(X, 'shape') else 'pas de shape'}")
+            if isinstance(X, np.ndarray):
+                print(f"Type des données: {X.dtype}")
+
+            # === PRÉDICTION ===
+            
             # Vérification du type de modèle
             is_dl_model = isinstance(self.model, NeuralClassifier)
-
+            
             if is_dl_model:
                 self.model.eval()
                 # Conversion en tensor si nécessaire
@@ -914,12 +1423,14 @@ class ProductClassificationPipeline:
                 predictions = np.array(predictions)
                 probabilities = np.array(probabilities)
                 
-                # Pour les modèles DL, convertir les indices en codes de catégorie
-                predictions = np.array([self.idx_to_category[idx] for idx in predictions])
+                # Pour les modèles DL, les prédictions sont déjà des indices
+                # Les convertir en codes de catégorie
+                predictions = np.array([self.idx_to_category[int(idx)] for idx in predictions])
                 
             else:
                 # Pour les modèles ML classiques
-                self.logger.debug("Prédiction avec modèle ML")
+                self.logger.info("Prédiction avec modèle ML")
+                
                 if isinstance(self.model, xgb.XGBClassifier):
                     batch_size = 1000
                     predictions = []
@@ -932,21 +1443,27 @@ class ProductClassificationPipeline:
                         predictions.extend(batch_pred)
                         probabilities.extend(batch_prob)
                         
-                    predictions = np.array(predictions)
                     probabilities = np.array(probabilities)
+                    predictions = np.array(predictions)
                 else:
                     predictions = self.model.predict(X)
                     probabilities = self.model.predict_proba(X)
-                        
-                # Convertir les indices en codes de catégorie pour les modèles ML
+
+                # Conversion des indices en codes de catégorie pour les modèles ML
                 predictions = np.array([self.idx_to_category[int(idx)] for idx in predictions])
 
+            print(f"Prédictions générées: {len(predictions)} échantillons")
+            print(f"Shape des probabilités: {probabilities.shape}")
+            
             return predictions, probabilities
 
         except Exception as e:
             self.logger.error(f"Erreur prédiction: {str(e)}")
-            import traceback
-            self.logger.error(traceback.format_exc())
+            self.logger.error(f"Type de X reçu: {type(X)}")
+            if hasattr(X, 'shape'):
+                self.logger.error(f"Shape de X: {X.shape}")
+            elif hasattr(X, 'files'):
+                self.logger.error(f"Fichiers dans NpzFile: {X.files}")
             raise
     
     def predictions_exist(self, model_name):
@@ -1371,7 +1888,6 @@ class ProductClassificationPipeline:
         except Exception as e:
             self.logger.error(f"Erreur lors de la prédiction multimodale: {str(e)}")
             raise
-
 
     def get_model_explanations(self, text_input, image_path, fusion_strategy='mean'):
         """

@@ -1163,3 +1163,37 @@ AttributeError: 'numpy.ndarray' object has no attribute 'lower'
 2025-07-21 18:06:50,341 - classification_pipeline - INFO - Données texte préparées: 16984 échantillons
 2025-07-21 18:10:55,241 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
 2025-07-21 18:10:57,833 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-23 09:38:08,822 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-23 09:38:08,826 - classification_pipeline - ERROR - Erreur chargement données : 'arr_0 is not a file in the archive'
+2025-07-23 09:38:08,826 - classification_pipeline - ERROR - Erreur préparation données: 'arr_0 is not a file in the archive'
+2025-07-23 09:39:55,284 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-23 09:39:55,285 - classification_pipeline - ERROR - Erreur chargement données : 'arr_0 is not a file in the archive'
+2025-07-23 09:39:55,285 - classification_pipeline - ERROR - Erreur préparation données: 'arr_0 is not a file in the archive'
+2025-07-23 09:40:14,628 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-23 09:40:14,628 - classification_pipeline - ERROR - Erreur chargement données : 'arr_0 is not a file in the archive'
+2025-07-23 09:40:14,628 - classification_pipeline - ERROR - Erreur préparation données: 'arr_0 is not a file in the archive'
+2025-07-23 09:41:46,552 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-23 09:41:46,558 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-23 09:41:46,559 - classification_pipeline - WARNING - ATTENTION: Seulement 0/1 indices test_split sont valides
+2025-07-23 09:41:46,559 - classification_pipeline - INFO - Indices test_split mis à jour avec 0 indices valides
+2025-07-23 09:41:46,859 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-23 09:41:46,967 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
+2025-07-23 09:41:47,549 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-23 11:22:40,753 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-23 11:22:42,555 - classification_pipeline - INFO - === EXTRACTION DES FEATURES ===
+2025-07-23 11:22:42,555 - classification_pipeline - INFO - Extraction de X_train: type=<class 'numpy.ndarray'>, shape=(54000, 2048)
+2025-07-23 11:22:42,555 - classification_pipeline - INFO -   → Array 2D, utilisation directe
+2025-07-23 11:22:42,555 - classification_pipeline - INFO - Extraction de X_test: type=<class 'numpy.ndarray'>, shape=(13812, 2048)
+2025-07-23 11:22:42,556 - classification_pipeline - INFO -   → Array 2D, utilisation directe
+2025-07-23 11:22:42,556 - classification_pipeline - INFO - Extraction de X_test_split: type=<class 'numpy.ndarray'>, shape=(16984, 2048)
+2025-07-23 11:22:42,556 - classification_pipeline - INFO -   → Array 2D, utilisation directe
+2025-07-23 11:22:42,556 - classification_pipeline - INFO - === RÉSULTATS FINAUX ===
+2025-07-23 11:22:42,556 - classification_pipeline - INFO - X_train: <class 'numpy.ndarray'> shape=(54000, 2048)
+2025-07-23 11:22:42,556 - classification_pipeline - INFO - y_train: <class 'numpy.ndarray'> shape=(54000,)
+2025-07-23 11:22:42,556 - classification_pipeline - INFO - X_test: <class 'numpy.ndarray'> shape=(13812, 2048)
+2025-07-23 11:22:42,556 - classification_pipeline - INFO - X_test_split: <class 'numpy.ndarray'> shape=(16984, 2048)
+2025-07-23 11:22:42,556 - classification_pipeline - INFO - y_test_split: <class 'numpy.ndarray'> shape=(16984,)
+2025-07-23 11:22:42,556 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-23 11:22:42,888 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-23 11:22:42,997 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
+2025-07-23 11:22:43,573 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
