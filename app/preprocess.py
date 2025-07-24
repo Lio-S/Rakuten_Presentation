@@ -1944,11 +1944,21 @@ class ProductClassificationPipeline:
                 top_image_features = np.arange(10)  # Fallback
             
             # Analyse texte basique (longueur, mots clés, etc.)
+            # S'assurer que le texte est bien une string
+            raw_text = features['raw_text']
+            if isinstance(raw_text, np.ndarray):
+                if raw_text.size == 1:
+                    raw_text = str(raw_text.item())
+                else:
+                    raw_text = ' '.join([str(item) for item in raw_text.flatten()])
+            else:
+                raw_text = str(raw_text)
+
             text_analysis = {
-                'text_length': len(features['raw_text']),
-                'word_count': len(features['raw_text'].split()),
+                'text_length': len(raw_text),
+                'word_count': len(raw_text.split()),
                 'text_confidence': np.max(text_probs),
-                'top_words': features['raw_text'].lower().split()[:10]  # Premiers mots
+                'top_words': raw_text.lower().split()[:10]  # Maintenant safe car raw_text est une string
             }
             
             # Analyse des contributions
@@ -2139,6 +2149,216 @@ class ProductClassificationPipeline:
         
         return indices_dict
                 
+    def predict_text_single(self, text_input):
+        """
+        Prédiction texte pour un seul échantillon (usage Streamlit)
+        
+        Args:
+            text_input (str): Texte à classifier
+            
+        Returns:
+            tuple: (prediction, probabilities)
+        """
+        try:
+            if not hasattr(self, 'text_model') or self.text_model is None:
+                raise ValueError("Modèle texte non chargé. Appelez load_text_model() d'abord.")
+            
+            # S'assurer que l'entrée est une string
+            if isinstance(text_input, list):
+                text_input = text_input[0]
+            text_input = str(text_input).strip()
+            
+            if len(text_input) == 0:
+                raise ValueError("Le texte d'entrée est vide")
+            
+            # Prédiction directe avec le modèle SVM
+            predictions = self.text_model.predict([text_input])
+            probabilities = self.text_model.predict_proba([text_input])
+            
+            self.logger.info(f"Prédiction texte: {predictions[0]}, confiance: {np.max(probabilities[0]):.3f}")
+            
+            return predictions[0], probabilities[0]
+            
+        except Exception as e:
+            self.logger.error(f"Erreur prédiction texte single: {e}")
+            raise
+
+    def process_single_input(self, text_input=None, image_path=None):
+        """
+        Prétraite une entrée unique (texte et/ou image) pour prédiction
+        Version améliorée qui gère texte seul, image seule, ou multimodal
+        
+        Args:
+            text_input (str, optional): Texte d'entrée
+            image_path (str, optional): Chemin vers l'image
+            
+        Returns:
+            dict: Features prétraitées selon les modalités disponibles
+        """
+        try:
+            self.logger.info(f"Prétraitement entrée unique - Texte: {'Oui' if text_input else 'Non'}, Image: {'Oui' if image_path else 'Non'}")
+            
+            features = {}
+            
+            # 1. Traitement du texte si fourni
+            if text_input is not None and len(str(text_input).strip()) > 0:
+                text_input_clean = str(text_input).strip()
+                
+                # Vérifier que le modèle texte est chargé
+                if not hasattr(self, 'text_model') or self.text_model is None:
+                    import joblib
+                    model_path = self.base_dir / 'data/models/SVM/model.pkl'
+                    if model_path.exists():
+                        self.text_model = joblib.load(str(model_path))
+                        self.logger.info("Modèle SVM chargé pour prétraitement")
+                    else:
+                        raise FileNotFoundError(f"Modèle SVM non trouvé: {model_path}")
+                
+                # Prétraitement avec TF-IDF (via le pipeline SVM)
+                if hasattr(self.text_model, 'named_steps') and 'tfidf' in self.text_model.named_steps:
+                    tfidf = self.text_model.named_steps['tfidf']
+                    text_features = tfidf.transform([text_input_clean]).toarray()
+                    features['text_features'] = text_features
+                    features['raw_text'] = text_input_clean
+                    self.logger.info(f"Features texte extraites: {text_features.shape}")
+                else:
+                    raise ValueError("Modèle texte sans TF-IDF Vectorizer")
+            
+            # 2. Traitement de l'image si fournie
+            if image_path is not None and os.path.exists(str(image_path)):
+                # Créer un dataset d'une seule image
+                single_dataset = RakutenImageDataset([str(image_path)])
+                
+                # Extraire les features via ResNet
+                resnet = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
+                resnet.fc = nn.Identity()  # Retire la dernière couche
+                resnet = resnet.to(self.device)
+                resnet.eval()
+                
+                # Créer un DataLoader pour un seul élément
+                dataloader = DataLoader(
+                    single_dataset,
+                    batch_size=1,
+                    num_workers=0,  # Éviter les problèmes multiprocessing en Streamlit
+                    pin_memory=False  # Plus stable pour un seul échantillon
+                )
+                
+                # Extraire les features
+                with torch.no_grad():
+                    for batch in dataloader:
+                        inputs = batch.to(self.device)
+                        image_features = resnet(inputs).cpu().numpy()
+                        features['image_features'] = image_features
+                        self.logger.info(f"Features image extraites: {image_features.shape}")
+                        break  # Un seul batch
+            
+            # 3. Validation
+            if not features:
+                raise ValueError("Aucune modalité valide fournie (texte ou image)")
+            
+            self.logger.info(f"Prétraitement terminé. Modalités: {list(features.keys())}")
+            return features
+            
+        except Exception as e:
+            self.logger.error(f"Erreur prétraitement entrée unique: {e}")
+            raise
+
+    def predict_multimodal(self, text_input, image_path, fusion_strategy='mean'):
+        """
+        Effectue une prédiction multimodale sur un nouvel exemple
+        Version corrigée utilisant les nouvelles fonctions robustes
+        
+        Args:
+            text_input (str): Texte d'entrée
+            image_path (str): Chemin vers l'image
+            fusion_strategy (str): Stratégie de fusion ('mean', 'product', 'weighted')
+            
+        Returns:
+            dict: Résultats de prédiction
+        """
+        try:
+            self.logger.info(f"Prédiction multimodale: {fusion_strategy}")
+            
+            # 1. Prétraiter l'exemple avec la nouvelle fonction robuste
+            features = self.process_single_input(text_input, image_path)
+            
+            # 2. Prédictions individuelles
+            
+            # Modèle texte
+            if 'text_features' in features:
+                if not hasattr(self, 'text_model') or self.text_model is None:
+                    import joblib
+                    self.text_model = joblib.load('data/models/SVM/model.pkl')
+                
+                text_pred = self.text_model.predict(features['text_features'])
+                text_probs = self.text_model.predict_proba(features['text_features'])
+                
+                # Pour SVM, les prédictions sont directement les codes de catégorie
+                text_prediction = text_pred[0]
+                text_probabilities = text_probs[0]
+            else:
+                raise ValueError("Features texte non disponibles")
+            
+            # Modèle image
+            if 'image_features' in features:
+                image_pred, image_probs = self.predict(features['image_features'])
+                
+                # Pour les modèles image, convertir l'indice vers code de catégorie
+                if isinstance(image_pred, np.ndarray):
+                    image_prediction = image_pred[0]
+                else:
+                    image_prediction = image_pred
+                    
+                if len(image_probs.shape) > 1:
+                    image_probabilities = image_probs[0]
+                else:
+                    image_probabilities = image_probs
+            else:
+                raise ValueError("Features image non disponibles")
+            
+            # 3. S'assurer que les probabilités ont la même forme
+            if text_probabilities.shape != image_probabilities.shape:
+                self.logger.warning(f"Dimensions des probabilités différentes: texte {text_probabilities.shape}, image {image_probabilities.shape}")
+                # Adapter si nécessaire - généralement, elles devraient avoir la même taille (27 classes)
+                min_size = min(len(text_probabilities), len(image_probabilities))
+                text_probabilities = text_probabilities[:min_size]
+                image_probabilities = image_probabilities[:min_size]
+            
+            # 4. Fusion des prédictions
+            fused_probs = self.fuse_predictions(
+                text_probabilities.reshape(1, -1), 
+                image_probabilities.reshape(1, -1), 
+                strategy=fusion_strategy
+            )
+            
+            # 5. Prédiction finale
+            predicted_idx = np.argmax(fused_probs, axis=1)[0]
+            
+            # Convertir l'indice en code de catégorie
+            if hasattr(self, 'idx_to_category') and predicted_idx in self.idx_to_category:
+                predicted_class = self.idx_to_category[predicted_idx]
+            else:
+                # Si pas de mapping, supposer que l'indice EST le code
+                predicted_class = predicted_idx
+                
+            predicted_class_name = self.category_names.get(predicted_class, f"Unknown_{predicted_class}")
+            
+            results = {
+                'predicted_class': int(predicted_class),
+                'predicted_class_name': predicted_class_name,
+                'probabilities': fused_probs[0],
+                'text_prediction': int(text_prediction),
+                'image_prediction': int(image_prediction),
+                'confidence': float(np.max(fused_probs))
+            }
+            
+            self.logger.info(f"Prédiction multimodale terminée: {predicted_class_name} (confiance: {results['confidence']:.3f})")
+            return results
+            
+        except Exception as e:
+            self.logger.error(f"Erreur prédiction multimodale: {str(e)}")
+            raise
+
 class NeuralClassifier(nn.Module):
     def __init__(self, num_classes, config=None):
         super().__init__()
