@@ -1274,3 +1274,257 @@ AttributeError: 'numpy.ndarray' object has no attribute 'lower'
 2025-07-24 10:35:27,481 - classification_pipeline - INFO - Features image extraites: (1, 2048)
 2025-07-24 10:35:27,482 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['image_features']
 2025-07-24 10:35:27,483 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-07-24 10:59:37,865 - classification_pipeline - INFO - 📥 Fichiers .npz manquants - Téléchargement automatique...
+2025-07-24 10:59:38,127 - classification_pipeline - INFO - 📥 Téléchargement des données préprocessées...
+2025-07-24 10:59:59,802 - classification_pipeline - INFO - 📂 Extraction des données...
+2025-07-24 11:00:05,589 - classification_pipeline - INFO - ✅ Données téléchargées et extraites avec succès
+2025-07-24 11:00:06,247 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-24 11:00:08,447 - classification_pipeline - INFO - === EXTRACTION DES FEATURES ===
+2025-07-24 11:00:08,448 - classification_pipeline - INFO - Extraction de X_train: type=<class 'numpy.ndarray'>, shape=()
+2025-07-24 11:00:08,448 - classification_pipeline - INFO -   → Array 0D converti, type de l'item: <class 'dict'>
+2025-07-24 11:00:08,448 - classification_pipeline - INFO -   → Extraction via clé 'features' de l'item
+2025-07-24 11:00:08,448 - classification_pipeline - INFO - Extraction de X_test: type=<class 'numpy.ndarray'>, shape=()
+2025-07-24 11:00:08,448 - classification_pipeline - INFO -   → Array 0D converti, type de l'item: <class 'dict'>
+2025-07-24 11:00:08,448 - classification_pipeline - INFO -   → Extraction via clé 'features' de l'item
+2025-07-24 11:00:08,448 - classification_pipeline - INFO - Extraction de X_test_split: type=<class 'numpy.ndarray'>, shape=()
+2025-07-24 11:00:08,448 - classification_pipeline - INFO -   → Array 0D converti, type de l'item: <class 'dict'>
+2025-07-24 11:00:08,449 - classification_pipeline - INFO -   → Extraction via clé 'features' de l'item
+2025-07-24 11:00:08,449 - classification_pipeline - INFO - === RÉSULTATS FINAUX ===
+2025-07-24 11:00:08,449 - classification_pipeline - INFO - X_train: <class 'numpy.ndarray'> shape=(54000, 2048)
+2025-07-24 11:00:08,449 - classification_pipeline - INFO - y_train: <class 'numpy.ndarray'> shape=(54000,)
+2025-07-24 11:00:08,449 - classification_pipeline - INFO - X_test: <class 'numpy.ndarray'> shape=(13812, 2048)
+2025-07-24 11:00:08,449 - classification_pipeline - INFO - X_test_split: <class 'numpy.ndarray'> shape=(16984, 2048)
+2025-07-24 11:00:08,449 - classification_pipeline - INFO - y_test_split: <class 'numpy.ndarray'> shape=(16984,)
+2025-07-24 11:00:08,449 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-24 11:00:08,707 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 11:00:08,782 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
+2025-07-24 11:00:09,330 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 11:02:15,264 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 11:02:15,703 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 11:02:15,704 - classification_pipeline - INFO - Prédiction multimodale: mean
+2025-07-24 11:02:15,704 - classification_pipeline - INFO - Prétraitement entrée unique - Texte: Oui, Image: Oui
+2025-07-24 11:02:15,705 - classification_pipeline - INFO - Features texte extraites: (1, 45000)
+2025-07-24 11:02:16,170 - classification_pipeline - INFO - Features image extraites: (1, 2048)
+2025-07-24 11:02:16,170 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['text_features', 'raw_text', 'image_features']
+2025-07-24 11:02:16,171 - classification_pipeline - ERROR - Erreur prédiction multimodale: 'numpy.ndarray' object has no attribute 'lower'
+2025-07-24 11:19:48,500 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 11:19:48,973 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 11:19:48,974 - classification_pipeline - INFO - Prédiction multimodale: mean
+2025-07-24 11:19:48,974 - classification_pipeline - INFO - Prétraitement entrée unique - Texte: Oui, Image: Oui
+2025-07-24 11:19:48,976 - classification_pipeline - INFO - Features texte extraites: (1, 45000)
+2025-07-24 11:19:49,341 - classification_pipeline - INFO - Features image extraites: (1, 2048)
+2025-07-24 11:19:49,342 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['text_features', 'raw_text', 'image_features']
+2025-07-24 11:19:49,343 - classification_pipeline - ERROR - Erreur prédiction multimodale: 'numpy.ndarray' object has no attribute 'lower'
+2025-07-24 11:20:02,673 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 11:20:02,735 - classification_pipeline - INFO - Prédiction texte: 2705, confiance: 0.966
+2025-07-24 11:20:16,578 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 11:20:16,579 - classification_pipeline - INFO - Prétraitement entrée unique - Texte: Non, Image: Oui
+2025-07-24 11:20:16,942 - classification_pipeline - INFO - Features image extraites: (1, 2048)
+2025-07-24 11:20:16,943 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['image_features']
+2025-07-24 11:20:16,944 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-07-24 11:20:58,278 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 11:20:58,713 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 11:20:58,714 - classification_pipeline - INFO - Prédiction multimodale: weighted
+2025-07-24 11:20:58,714 - classification_pipeline - INFO - Prétraitement entrée unique - Texte: Oui, Image: Oui
+2025-07-24 11:20:58,715 - classification_pipeline - INFO - Features texte extraites: (1, 45000)
+2025-07-24 11:20:59,116 - classification_pipeline - INFO - Features image extraites: (1, 2048)
+2025-07-24 11:20:59,116 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['text_features', 'raw_text', 'image_features']
+2025-07-24 11:20:59,117 - classification_pipeline - ERROR - Erreur prédiction multimodale: 'numpy.ndarray' object has no attribute 'lower'
+2025-07-24 12:45:36,051 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 13:37:56,246 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 13:38:26,109 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 13:38:26,166 - classification_pipeline - INFO - Prédiction texte: 2705, confiance: 0.966
+2025-07-24 13:42:39,316 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 13:42:39,845 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 13:42:39,845 - classification_pipeline - INFO - Prédiction multimodale: weighted
+2025-07-24 13:42:39,845 - classification_pipeline - INFO - Prétraitement entrée unique - Texte: Oui, Image: Oui
+2025-07-24 13:42:39,846 - classification_pipeline - INFO - Features texte extraites: (1, 45000)
+2025-07-24 13:42:40,375 - classification_pipeline - INFO - Features image extraites: (1, 2048)
+2025-07-24 13:42:40,375 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['text_features', 'raw_text', 'image_features']
+2025-07-24 13:42:40,376 - classification_pipeline - ERROR - Erreur prédiction multimodale: 'numpy.ndarray' object has no attribute 'lower'
+2025-07-24 13:45:13,184 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-24 13:45:16,166 - classification_pipeline - INFO - === EXTRACTION DES FEATURES ===
+2025-07-24 13:45:16,167 - classification_pipeline - INFO - Extraction de X_train: type=<class 'numpy.ndarray'>, shape=()
+2025-07-24 13:45:16,167 - classification_pipeline - INFO -   → Array 0D converti, type de l'item: <class 'dict'>
+2025-07-24 13:45:16,167 - classification_pipeline - INFO -   → Extraction via clé 'features' de l'item
+2025-07-24 13:45:16,167 - classification_pipeline - INFO - Extraction de X_test: type=<class 'numpy.ndarray'>, shape=()
+2025-07-24 13:45:16,167 - classification_pipeline - INFO -   → Array 0D converti, type de l'item: <class 'dict'>
+2025-07-24 13:45:16,167 - classification_pipeline - INFO -   → Extraction via clé 'features' de l'item
+2025-07-24 13:45:16,167 - classification_pipeline - INFO - Extraction de X_test_split: type=<class 'numpy.ndarray'>, shape=()
+2025-07-24 13:45:16,167 - classification_pipeline - INFO -   → Array 0D converti, type de l'item: <class 'dict'>
+2025-07-24 13:45:16,167 - classification_pipeline - INFO -   → Extraction via clé 'features' de l'item
+2025-07-24 13:45:16,167 - classification_pipeline - INFO - === RÉSULTATS FINAUX ===
+2025-07-24 13:45:16,167 - classification_pipeline - INFO - X_train: <class 'numpy.ndarray'> shape=(54000, 2048)
+2025-07-24 13:45:16,167 - classification_pipeline - INFO - y_train: <class 'numpy.ndarray'> shape=(54000,)
+2025-07-24 13:45:16,167 - classification_pipeline - INFO - X_test: <class 'numpy.ndarray'> shape=(13812, 2048)
+2025-07-24 13:45:16,168 - classification_pipeline - INFO - X_test_split: <class 'numpy.ndarray'> shape=(16984, 2048)
+2025-07-24 13:45:16,168 - classification_pipeline - INFO - y_test_split: <class 'numpy.ndarray'> shape=(16984,)
+2025-07-24 13:45:16,168 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-24 13:45:16,424 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 13:45:16,508 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
+2025-07-24 13:45:17,043 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 13:45:24,538 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 13:45:24,971 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 13:45:24,972 - classification_pipeline - INFO - Prédiction multimodale: weighted
+2025-07-24 13:45:24,972 - classification_pipeline - INFO - Prétraitement entrée unique - Texte: Oui, Image: Oui
+2025-07-24 13:45:24,974 - classification_pipeline - INFO - Features texte extraites: (1, 45000)
+2025-07-24 13:45:25,480 - classification_pipeline - INFO - Features image extraites: (1, 2048)
+2025-07-24 13:45:25,481 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['text_features', 'raw_text', 'image_features']
+2025-07-24 13:45:25,481 - classification_pipeline - ERROR - Erreur prédiction multimodale: 'numpy.ndarray' object has no attribute 'lower'
+2025-07-24 13:52:56,818 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 13:52:56,819 - classification_pipeline - INFO - Prétraitement entrée unique - Texte: Non, Image: Oui
+2025-07-24 13:52:57,245 - classification_pipeline - INFO - Features image extraites: (1, 2048)
+2025-07-24 13:52:57,245 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['image_features']
+2025-07-24 13:52:57,246 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-07-24 13:53:19,636 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 13:53:19,694 - classification_pipeline - INFO - Prédiction texte: 2705, confiance: 0.966
+2025-07-24 13:53:31,691 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 13:53:31,691 - classification_pipeline - INFO - Prétraitement entrée unique - Texte: Non, Image: Oui
+2025-07-24 13:53:32,024 - classification_pipeline - INFO - Features image extraites: (1, 2048)
+2025-07-24 13:53:32,025 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['image_features']
+2025-07-24 13:53:32,027 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-07-24 13:53:41,403 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 13:53:41,459 - classification_pipeline - INFO - Prédiction texte: 2705, confiance: 0.966
+2025-07-24 13:56:16,248 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 13:56:16,313 - classification_pipeline - INFO - Prédiction texte: 2705, confiance: 0.966
+2025-07-24 13:56:28,815 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 13:56:28,815 - classification_pipeline - INFO - Prétraitement entrée unique - Texte: Non, Image: Oui
+2025-07-24 13:56:29,205 - classification_pipeline - INFO - Features image extraites: (1, 2048)
+2025-07-24 13:56:29,205 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['image_features']
+2025-07-24 13:56:29,206 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-07-24 13:56:39,194 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 13:56:39,599 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 13:56:39,599 - classification_pipeline - INFO - Prédiction multimodale: weighted
+2025-07-24 13:56:39,599 - classification_pipeline - INFO - Prétraitement entrée unique - Texte: Oui, Image: Oui
+2025-07-24 13:56:39,600 - classification_pipeline - INFO - Features texte extraites: (1, 45000)
+2025-07-24 13:56:39,902 - classification_pipeline - INFO - Features image extraites: (1, 2048)
+2025-07-24 13:56:39,902 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['text_features', 'raw_text', 'image_features']
+2025-07-24 13:56:39,903 - classification_pipeline - ERROR - Erreur prédiction multimodale: 'numpy.ndarray' object has no attribute 'lower'
+2025-07-24 13:57:05,824 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 13:57:06,224 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 13:57:06,226 - classification_pipeline - INFO - Prédiction multimodale: weighted
+2025-07-24 13:57:06,226 - classification_pipeline - INFO - Prétraitement entrée unique - Texte: Oui, Image: Oui
+2025-07-24 13:57:06,228 - classification_pipeline - INFO - Features texte extraites: (1, 45000)
+2025-07-24 13:57:06,570 - classification_pipeline - INFO - Features image extraites: (1, 2048)
+2025-07-24 13:57:06,571 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['text_features', 'raw_text', 'image_features']
+2025-07-24 13:57:06,572 - classification_pipeline - ERROR - Erreur prédiction multimodale: 'numpy.ndarray' object has no attribute 'lower'
+2025-07-24 13:57:14,632 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 13:57:14,667 - classification_pipeline - INFO - Prédiction texte: 1160, confiance: 1.000
+2025-07-24 13:57:26,981 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 13:57:27,013 - classification_pipeline - INFO - Prédiction texte: 2280, confiance: 0.226
+2025-07-24 13:57:39,085 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 13:57:39,145 - classification_pipeline - INFO - Prédiction texte: 1160, confiance: 0.971
+2025-07-24 13:59:05,325 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 13:59:05,326 - classification_pipeline - INFO - Prétraitement entrée unique - Texte: Non, Image: Oui
+2025-07-24 13:59:05,726 - classification_pipeline - INFO - Features image extraites: (1, 2048)
+2025-07-24 13:59:05,726 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['image_features']
+2025-07-24 13:59:05,727 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-07-24 13:59:39,235 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 13:59:39,235 - classification_pipeline - INFO - Prétraitement entrée unique - Texte: Non, Image: Oui
+2025-07-24 13:59:39,557 - classification_pipeline - INFO - Features image extraites: (1, 2048)
+2025-07-24 13:59:39,558 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['image_features']
+2025-07-24 13:59:39,558 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-07-24 14:28:51,586 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 14:38:33,973 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 14:38:34,504 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 14:38:34,504 - classification_pipeline - INFO - Prédiction multimodale: weighted
+2025-07-24 14:38:34,504 - classification_pipeline - INFO - Prétraitement entrée unique - Texte: Oui, Image: Oui
+2025-07-24 14:38:34,506 - classification_pipeline - INFO - Features texte extraites: (1, 45000)
+2025-07-24 14:38:35,077 - classification_pipeline - INFO - Features image extraites: (1, 2048)
+2025-07-24 14:38:35,077 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['text_features', 'raw_text', 'image_features']
+2025-07-24 14:38:35,078 - classification_pipeline - ERROR - Erreur prédiction multimodale: 'numpy.ndarray' object has no attribute 'lower'
+2025-07-24 14:38:45,320 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 14:38:52,782 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 14:38:52,782 - classification_pipeline - INFO - Prétraitement entrée unique - Texte: Non, Image: Oui
+2025-07-24 14:38:53,077 - classification_pipeline - INFO - Features image extraites: (1, 2048)
+2025-07-24 14:38:53,077 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['image_features']
+2025-07-24 14:38:53,078 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-07-24 14:41:19,834 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 14:44:56,362 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 14:44:56,880 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 14:44:56,880 - classification_pipeline - INFO - Prédiction multimodale: weighted
+2025-07-24 14:44:56,880 - classification_pipeline - INFO - Prétraitement entrée unique - Texte: Oui, Image: Oui
+2025-07-24 14:44:56,882 - classification_pipeline - INFO - Features texte extraites: (1, 45000)
+2025-07-24 14:44:57,381 - classification_pipeline - INFO - Features image extraites: (1, 2048)
+2025-07-24 14:44:57,382 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['text_features', 'raw_text', 'image_features']
+2025-07-24 14:44:57,383 - classification_pipeline - ERROR - Erreur prédiction multimodale: 'numpy.ndarray' object has no attribute 'lower'
+2025-07-24 14:45:06,222 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 14:45:06,223 - classification_pipeline - INFO - Prétraitement entrée unique - Texte: Non, Image: Oui
+2025-07-24 14:45:06,522 - classification_pipeline - INFO - Features image extraites: (1, 2048)
+2025-07-24 14:45:06,522 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['image_features']
+2025-07-24 14:45:06,523 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-07-24 14:46:48,886 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 14:48:20,415 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 14:49:26,384 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 14:50:29,713 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 14:52:41,771 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 14:57:24,404 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 14:58:43,552 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 14:58:43,973 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 14:58:43,973 - classification_pipeline - INFO - Prédiction multimodale: weighted
+2025-07-24 14:58:43,973 - classification_pipeline - INFO - Prétraitement entrée unique - Texte: Oui, Image: Oui
+2025-07-24 14:58:43,974 - classification_pipeline - INFO - Features texte extraites: (1, 45000)
+2025-07-24 14:58:44,402 - classification_pipeline - INFO - Features image extraites: (1, 2048)
+2025-07-24 14:58:44,403 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['text_features', 'raw_text', 'image_features']
+2025-07-24 14:58:44,403 - classification_pipeline - ERROR - Erreur prédiction multimodale: 'numpy.ndarray' object has no attribute 'lower'
+2025-07-24 15:04:19,215 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-24 15:04:24,020 - classification_pipeline - INFO - === EXTRACTION DES FEATURES ===
+2025-07-24 15:04:24,021 - classification_pipeline - INFO - Extraction de X_train: type=<class 'numpy.ndarray'>, shape=()
+2025-07-24 15:04:24,021 - classification_pipeline - INFO -   → Array 0D converti, type de l'item: <class 'dict'>
+2025-07-24 15:04:24,021 - classification_pipeline - INFO -   → Extraction via clé 'features' de l'item
+2025-07-24 15:04:24,021 - classification_pipeline - INFO - Extraction de X_test: type=<class 'numpy.ndarray'>, shape=()
+2025-07-24 15:04:24,021 - classification_pipeline - INFO -   → Array 0D converti, type de l'item: <class 'dict'>
+2025-07-24 15:04:24,021 - classification_pipeline - INFO -   → Extraction via clé 'features' de l'item
+2025-07-24 15:04:24,021 - classification_pipeline - INFO - Extraction de X_test_split: type=<class 'numpy.ndarray'>, shape=()
+2025-07-24 15:04:24,021 - classification_pipeline - INFO -   → Array 0D converti, type de l'item: <class 'dict'>
+2025-07-24 15:04:24,021 - classification_pipeline - INFO -   → Extraction via clé 'features' de l'item
+2025-07-24 15:04:24,022 - classification_pipeline - INFO - === RÉSULTATS FINAUX ===
+2025-07-24 15:04:24,022 - classification_pipeline - INFO - X_train: <class 'numpy.ndarray'> shape=(54000, 2048)
+2025-07-24 15:04:24,022 - classification_pipeline - INFO - y_train: <class 'numpy.ndarray'> shape=(54000,)
+2025-07-24 15:04:24,022 - classification_pipeline - INFO - X_test: <class 'numpy.ndarray'> shape=(13812, 2048)
+2025-07-24 15:04:24,022 - classification_pipeline - INFO - X_test_split: <class 'numpy.ndarray'> shape=(16984, 2048)
+2025-07-24 15:04:24,022 - classification_pipeline - INFO - y_test_split: <class 'numpy.ndarray'> shape=(16984,)
+2025-07-24 15:04:24,022 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-24 15:04:24,287 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 15:04:24,368 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
+2025-07-24 15:04:24,929 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 15:05:07,090 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 15:05:07,497 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 15:05:07,497 - classification_pipeline - INFO - Prédiction multimodale: weighted
+2025-07-24 15:05:07,559 - classification_pipeline - INFO - Prédiction texte ok
+2025-07-24 15:05:08,061 - classification_pipeline - INFO - Extraction features ok
+2025-07-24 15:05:08,061 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-07-24 15:05:08,074 - classification_pipeline - INFO - Prédiction image ok
+2025-07-24 15:05:08,075 - classification_pipeline - INFO - Prédiction multimodale terminée: Livres neufs (confiance: 0.975)
+2025-07-24 15:11:12,607 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-24 15:11:14,511 - classification_pipeline - INFO - === EXTRACTION DES FEATURES ===
+2025-07-24 15:11:14,512 - classification_pipeline - ERROR - Erreur chargement données : 'builtin_function_or_method' object is not subscriptable
+2025-07-24 15:11:14,512 - classification_pipeline - ERROR -   X_train: fichiers=['arr_0']
+2025-07-24 15:11:14,512 - classification_pipeline - ERROR -   y_train: fichiers=['arr_0']
+2025-07-24 15:11:14,512 - classification_pipeline - ERROR -   X_test: fichiers=['arr_0']
+2025-07-24 15:11:14,512 - classification_pipeline - ERROR -   X_test_split: fichiers=['arr_0']
+2025-07-24 15:11:14,513 - classification_pipeline - ERROR -   y_test_split: fichiers=['arr_0']
+2025-07-24 15:11:14,513 - classification_pipeline - ERROR -   train_indices: fichiers=['arr_0']
+2025-07-24 15:11:14,513 - classification_pipeline - ERROR -   test_split_indices: fichiers=['arr_0']
+2025-07-24 15:11:14,513 - classification_pipeline - ERROR - Erreur préparation données: 'builtin_function_or_method' object is not subscriptable
+2025-07-24 15:12:09,614 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-24 15:12:12,556 - classification_pipeline - INFO - === EXTRACTION DES FEATURES ===
+2025-07-24 15:12:12,556 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-24 15:12:12,783 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 15:12:12,855 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
+2025-07-24 15:12:13,273 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 15:12:22,130 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 15:12:22,541 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 15:12:22,541 - classification_pipeline - INFO - Prédiction multimodale: weighted
+2025-07-24 15:12:23,021 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-07-24 15:12:23,033 - classification_pipeline - INFO - Prédiction multimodale terminée: Livres neufs (confiance: 0.975)
+2025-07-24 15:14:17,037 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-24 15:14:19,032 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-24 15:14:19,263 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 15:14:19,326 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
+2025-07-24 15:14:19,764 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 15:14:23,399 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-24 15:14:23,829 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 15:14:23,829 - classification_pipeline - INFO - Prédiction multimodale: weighted
+2025-07-24 15:14:24,307 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-07-24 15:14:24,320 - classification_pipeline - INFO - Prédiction multimodale terminée: Livres neufs (confiance: 0.975)

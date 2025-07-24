@@ -394,7 +394,8 @@ if page == "🏠 Accueil":
     st.markdown("---")
     
     # Présentation du projet
-    col1, col2 = st.columns([2, 1])
+    col1, col2 = st.columns([2,  2])
+    # col1, col2, col3 = st.columns([2.5, 1.5, 2])
     
     with col1:
         st.markdown("""
@@ -428,15 +429,33 @@ if page == "🏠 Accueil":
         # Afficher les meilleurs résultats si disponibles
         if 'multimodal' in results_data and not results_data['multimodal'].empty:
             try:
-                best_model = results_data['multimodal'].loc[results_data['multimodal']['weighted_f1'].idxmax()]
+                top3_models = results_data['multimodal'].sort_values(by="weighted_f1", ascending=False).head(3)
+                best_model, second_model, third_model = top3_models.iloc[0], top3_models.iloc[1], top3_models.iloc[2]
+
                 st.success(f"🥇 **{best_model.name}**")
                 st.metric("F1-Score", f"{best_model['weighted_f1']:.3f}")
                 st.metric("Accuracy", f"{best_model['accuracy']:.3f}")
+    #             st.success(f"1. 🥇 **{best_model.name}**")
+    #             st.success(f"2. 🥈 **{second_model.name}**")
+    #             st.success(f"3. 🥉 **{third_model.name}**")
             except Exception as e:
                 st.info("Résultats multimodaux en cours de traitement...")
         else:
             st.info("Résultats multimodaux en cours de traitement...")
     
+    # with col3:
+    #     st.markdown("### 📈 Performances")
+    #     # st.write("")
+    #     if 'multimodal' in results_data and not results_data['multimodal'].empty:
+    #         try:
+    #             st.info(f"F1-Score: {best_model['weighted_f1']:.3f}, Accuracy:{best_model['accuracy']:.3f}")
+    #             st.info(f"F1-Score: {second_model['weighted_f1']:.3f}, Accuracy:{second_model['accuracy']:.3f}")
+    #             st.info(f"F1-Score: {third_model['weighted_f1']:.3f}, Accuracy:{third_model['accuracy']:.3f}")
+    #         except Exception as e:
+    #             st.info("Résultats multimodaux en cours de traitement...")
+    #     else:
+    #         st.info("Résultats multimodaux en cours de traitement...")
+
     # Distribution des classes
     st.markdown("### 📊 Distribution des Classes")
     
@@ -789,337 +808,6 @@ elif page == "🔗 Analyse Multimodale":
         st.warning("Résultats multimodaux non disponibles. Exécutez d'abord main.py pour générer les analyses multimodales.")
 
 # # ==================== PAGE TEST NOUVELLES DONNÉES ====================
-# elif page == "🧪 Test Nouvelles Données":
-#     st.title("🧪 Test sur Nouvelles Données")
-#     st.markdown("---")
-    
-#     # Explication des modes
-#     with st.expander("📖 Explication des modes de test"):
-#         st.markdown("""
-#         **🎲 Exemple test_split**: Utilise des données **non vues pendant l'entraînement** (20% des données d'origine). 
-#         Les labels sont connus, permettant une évaluation correcte des performances.
-        
-#         **🏆 Exemple challenge**: Utilise les **vraies données de test du challenge**. 
-#         Les labels ne sont pas connus, simule une utilisation réelle.
-        
-#         **✍️ Saisie manuelle**: Permet de tester avec vos propres données.
-        
-#         **📁 Upload fichier**: Traite des fichiers CSV avec plusieurs exemples.
-#         """)
-    
-#     st.markdown("---")
-    
-#     # Sélection des paramètres
-#     st.subheader("⚙️ Configuration")
-#     col1, col2 = st.columns(2)
-    
-    # with col1:
-    #     model_type = st.selectbox("Modèle Image", ["xgboost", "neural_net"])
-    
-    # # Fonction pour extraire infos d'une image sélectionnée
-    # def extract_info_from_image(image_name):
-    #     """Extrait les informations produit à partir du nom d'image"""
-    #     try:
-    #         # Format: image_{imageid}_product_{productid}.jpg
-    #         parts = image_name.replace('.jpg', '').replace('.jpeg', '').replace('.png', '')
-    #         if 'image_' in parts and '_product_' in parts:
-    #             imageid = parts.split('image_')[1].split('_product_')[0]
-    #             productid = parts.split('_product_')[1]
-                
-    #             # Charger les données
-    #             X_test_df = safe_read_csv(str(TEST_FILE))  
-                
-    #             # Chercher la ligne correspondante
-    #             matching_row = X_test_df[
-    #                 (X_test_df['imageid'].astype(str) == str(imageid)) & 
-    #                 (X_test_df['productid'].astype(str) == str(productid))
-    #             ]
-                
-    #             if not matching_row.empty:
-    #                 row = matching_row.iloc[0]
-    #                 text = f"{row.get('designation', '')} {row.get('description', '')}".strip()
-    #                 return {
-    #                     'text': text,
-    #                     'imageid': imageid,
-    #                     'productid': productid,
-    #                     'designation': row.get('designation', ''),
-    #                     'description': row.get('description', '')
-    #                 }
-    #         return None
-    #     except Exception as e:
-    #         st.error(f"Erreur extraction info image: {e}")
-    #         return None
-
-    # with col2:
-    #     fusion_strategy = st.selectbox("Stratégie de Fusion", 
-    #                                   ["mean", "product", "weighted", "confidence_weighted"])
-    
-    # # Interface de test
-    # st.subheader("📝 Saisie des Données")
-    
-    # # Modes de test
-    # test_mode = st.radio("Mode de test", 
-    #                     ["🎲 Exemple test_split", "🏆 Exemple challenge", "✍️ Saisie manuelle"])
-    
-    # if test_mode == "🎲 Exemple test_split":
-    #     st.info("📊 **Données test_split** : Échantillons non vus pendant l'entraînement (labels connus)")
-        
-    #     # Bouton pour générer un nouvel exemple
-    #     if st.button("🎲 Générer nouvel exemple test_split"):
-    #         # Charger des exemples diversifiés comme dans la page explicabilité
-    #         try:
-    #             X_train_df = safe_read_csv(str(X_TRAIN_FILE))
-    #             Y_train_df = safe_read_csv(str(Y_TRAIN_FILE))
-                
-    #             if hasattr(pipeline, 'preprocessed_data') and 'test_split_indices' in pipeline.preprocessed_data:
-    #                 test_split_indices = pipeline.preprocessed_data['test_split_indices']
-    #             else:
-    #                 n_total = len(X_train_df)
-    #                 test_split_indices = X_train_df.index[-int(0.2 * n_total):]
-                
-    #             available_indices = [idx for idx in test_split_indices if idx in X_train_df.index and idx in Y_train_df.index]
-    #             sample_idx = np.random.choice(available_indices)
-                
-    #             row = X_train_df.loc[sample_idx]
-    #             label = Y_train_df.loc[sample_idx]
-                
-    #             text = f"{row.get('designation', '')} {row.get('description', '')}".strip()
-    #             image_file = f"image_{row['imageid']}_product_{row['productid']}.jpg"
-    #             image_path = TRAIN_IMAGES_DIR / image_file
-                
-    #             if image_path.exists() and len(text) > 10:
-    #                 st.session_state.test_example = {
-    #                     'text': text,
-    #                     'image_path': str(image_path),
-    #                     'class_name': pipeline.category_names.get(label['prdtypecode'], 'Unknown'),
-    #                     'class_code': label['prdtypecode'],
-    #                     'imageid': row['imageid'],
-    #                     'productid': row['productid'],
-    #                     'mode': 'test_split'
-    #                 }
-    #             else:
-    #                 st.error("Exemple non valide, réessayez")
-                    
-    #         except Exception as e:
-    #             st.error(f"Erreur génération exemple: {e}")
-        
-    #     # Afficher l'exemple actuel
-    #     if 'test_example' not in st.session_state:
-    #         # Exemple par défaut
-    #         st.session_state.test_example = {
-    #             'text': "Console de jeu PlayStation 5 dernière génération avec écran OLED",
-    #             'image_path': None,
-    #             'class_name': 'Exemple',
-    #             'mode': 'manual'
-    #         }
-        
-    #     if st.session_state.test_example['mode'] == 'test_split':
-    #         example = st.session_state.test_example
-            
-    #         col1, col2 = st.columns(2)
-            
-    #         with col1:
-    #             st.write("**Texte du produit:**")
-    #             text_input = st.text_area("Description + Désignation", 
-    #                                      value=example['text'], height=120, key="text_test_split")
-    #             st.success(f"**Classe réelle:** {example['class_name']} ({example['class_code']})")
-            
-    #         with col2:
-    #             st.write("**Image du produit:**")
-    #             if example['image_path'] and os.path.exists(example['image_path']):
-    #                 image = Image.open(example['image_path'])
-    #                 st.image(image, caption=f"Image ID: {example['imageid']}", use_container_width=True)
-    #                 temp_image_path = example['image_path']
-    #             else:
-    #                 st.error("Image non trouvée")
-    #                 temp_image_path = None
-    #     else:
-    #         text_input = st.text_input("Texte du produit", "Console de jeu PlayStation 5", key="text_default")
-    #         temp_image_path = None
-    
-    # elif test_mode == "🏆 Exemple challenge":
-    #     st.info("🏆 **Données challenge** : Vraies données de test (labels inconnus)")
-        
-    #     if st.button("🏆 Générer exemple challenge"):
-    #         try:
-    #             X_test_df = safe_read_csv(str(TEST_FILE))
-    #             sample_idx = np.random.choice(X_test_df.index)
-    #             row = X_test_df.loc[sample_idx]
-                
-    #             text = f"{row.get('designation', '')} {row.get('description', '')}".strip()
-    #             image_file = f"image_{row['imageid']}_product_{row['productid']}.jpg"
-    #             image_path = TEST_IMAGES_DIR / image_file
-                
-    #             if image_path.exists() and len(text) > 10:
-    #                 st.session_state.test_example = {
-    #                     'text': text,
-    #                     'image_path': str(image_path),
-    #                     'imageid': row['imageid'],
-    #                     'productid': row['productid'],
-    #                     'mode': 'challenge'
-    #                 }
-    #             else:
-    #                 st.error("Exemple non valide, réessayez")
-    #         except Exception as e:
-    #             st.error(f"Erreur génération exemple challenge: {e}")
-        
-    #     if 'test_example' in st.session_state and st.session_state.test_example['mode'] == 'challenge':
-    #         example = st.session_state.test_example
-            
-    #         col1, col2 = st.columns(2)
-            
-    #         with col1:
-    #             st.write("**Texte du produit:**")
-    #             text_input = st.text_area("Description + Désignation", 
-    #                                      value=example['text'], height=120, key="text_challenge")
-            
-    #         with col2:
-    #             st.write("**Image du produit:**")
-    #             if example['image_path'] and os.path.exists(example['image_path']):
-    #                 image = Image.open(example['image_path'])
-    #                 st.image(image, caption=f"Image ID: {example['imageid']}", use_container_width=True)
-    #                 temp_image_path = example['image_path']
-    #             else:
-    #                 st.error("Image non trouvée")
-    #                 temp_image_path = None
-    #     else:
-    #         text_input = st.text_input("Texte du produit", "Console de jeu PlayStation 5", key="text_challenge_default")
-    #         temp_image_path = None
-    
-    # else:  # Saisie manuelle
-    #     col1, col2 = st.columns(2)
-        
-    #     with col1:
-    #         st.write("**Texte du produit:**")
-    #         # Initialisation du texte par défaut
-    #         default_text = "Smartphone Samsung Galaxy dernière génération avec écran OLED"
-            
-    #         # Si une image a été sélectionnée et qu'on a extrait le texte
-    #         if 'extracted_text' in st.session_state:
-    #             default_text = st.session_state.extracted_text
-            
-    #         text_input = st.text_area("Description + Désignation", 
-    #                                  value=default_text, height=120, key="text_manual")
-        
-    #     with col2:
-    #         st.write("**Image du produit:**")
-            
-    #         # Indiquer le chemin par défaut
-    #         st.info("💡 Sélectionnez une image du dossier `image_test` pour détecter automatiquement le texte")
-            
-    #         uploaded_file = st.file_uploader(
-    #             "Choisir une image du dossier image_test...", 
-    #             type=["jpg", "jpeg", "png"],
-    #             help="Naviguez vers le dossier data/images/image_test pour sélectionner une image"
-    #         )
-            
-    #         if uploaded_file is not None:
-    #             image = Image.open(uploaded_file)
-    #             st.image(image, caption="Image sélectionnée", use_container_width=True)
-                
-    #             # Sauvegarder temporairement
-    #             temp_dir = APP_DIR / "temp_uploads"
-    #             temp_dir.mkdir(exist_ok=True)
-    #             temp_image_path = temp_dir / uploaded_file.name
-    #             image.save(str(temp_image_path))
-                
-    #             # Essayer d'extraire les infos automatiquement
-    #             extracted_info = extract_info_from_image(uploaded_file.name)
-    #             if extracted_info:
-    #                 st.success("✅ Texte détecté automatiquement !")
-    #                 st.session_state.extracted_text = extracted_info['text']
-                    
-    #                 with st.expander("📋 Infos extraites"):
-    #                     st.write(f"**Image ID:** {extracted_info['imageid']}")
-    #                     st.write(f"**Product ID:** {extracted_info['productid']}")
-    #                     st.write(f"**Désignation:** {extracted_info['designation']}")
-    #                     st.write(f"**Description:** {extracted_info['description']}")
-                    
-    #                 # Rerun pour mettre à jour le text_area
-    #                 st.rerun()
-    #             else:
-    #                 st.warning("⚠️ Impossible d'extraire le texte automatiquement. Vérifiez le format du nom de fichier.")
-    #         else:
-    #             temp_image_path = None
-
-    # # Bouton de prédiction
-    # if st.button("🔍 Classifier le Produit", disabled=(temp_image_path is None)):
-    #     try:
-    #         with st.spinner("Classification en cours..."):
-    #             # Charger le modèle sélectionné
-    #             pipeline.load_model(model_type)
-                
-    #             # S'assurer que le texte est bien une chaîne de caractères
-    #             text_input_clean = str(text_input).strip()
-                
-    #             # Effectuer la prédiction
-    #             results = pipeline.predict_multimodal(text_input_clean, temp_image_path, fusion_strategy)
-                
-    #             # Afficher les résultats
-    #             st.success("✅ Classification terminée!")
-                
-    #             # Résultat principal
-    #             st.subheader("🎯 Résultat Principal")
-    #             st.success(f"**Classe prédite:** {results['predicted_class_name']}")
-    #             st.info(f"**Code classe:** {results['predicted_class']}")
-                
-    #             # Afficher la classe réelle si c'est un exemple test_split
-    #             if test_mode == "🎲 Exemple test_split" and 'test_example' in st.session_state:
-    #                 example = st.session_state.test_example
-    #                 if example['mode'] == 'test_split':
-    #                     is_correct = results['predicted_class'] == example['class_code']
-    #                     if is_correct:
-    #                         st.success(f"✅ **Correct !** Classe réelle: {example['class_name']}")
-    #                     else:
-    #                         st.error(f"❌ **Erreur !** Classe réelle: {example['class_name']}")
-                
-    #             # Probabilités top 5
-    #             st.subheader("📊 Top 5 des Probabilités")
-    #             top_indices = np.argsort(results['probabilities'])[-5:][::-1]
-    #             top_probs = results['probabilities'][top_indices]
-    #             top_classes = [pipeline.category_names[pipeline.idx_to_category[idx]] for idx in top_indices]
-                
-    #             prob_df = pd.DataFrame({
-    #                 "Classe": top_classes,
-    #                 "Probabilité": top_probs
-    #             })
-                
-    #             # Graphique des probabilités
-    #             fig = px.bar(prob_df, x="Probabilité", y="Classe", orientation='h',
-    #                         title="Top 5 des Prédictions")
-    #             st.plotly_chart(fig, use_container_width=True)
-                
-    #             # Comparaison des modalités
-    #             st.subheader("🔄 Comparaison par Modalité")
-    #             col1, col2, col3 = st.columns(3)
-                
-    #             with col1:
-    #                 st.metric("Texte seul", 
-    #                          pipeline.category_names[results['text_prediction']])
-                
-    #             with col2:
-    #                 st.metric("Image seule", 
-    #                          pipeline.category_names[results['image_prediction']])
-                
-    #             with col3:
-    #                 st.metric("Fusion", 
-    #                          results['predicted_class_name'])
-                
-    #     except Exception as e:
-    #         st.error(f"❌ Erreur lors de la classification: {str(e)}")
-    #         st.error("Vérifiez que tous les modèles sont correctement chargés.")
-            
-    #         # Informations de débogage
-    #         with st.expander("🔍 Informations de débogage"):
-    #             st.write(f"**Type de text_input:** {type(text_input)}")
-    #             st.write(f"**Contenu de text_input:** {text_input}")
-    #             st.write(f"**Chemin image:** {temp_image_path}")
-    #             st.write(f"**Modèle sélectionné:** {model_type}")
-    #             st.write(f"**Stratégie de fusion:** {fusion_strategy}")
-    #             st.write(f"**Mode de test:** {test_mode}")
-# ==================== PAGE TEST NOUVELLES DONNÉES ====================
-# Cette section remplace la page "🧪 Test Nouvelles Données" dans app.py
-
 elif page == "🧪 Test Nouvelles Données":
     st.title("🧪 Test sur Nouvelles Données")
     st.markdown("---")
@@ -1154,7 +842,7 @@ elif page == "🧪 Test Nouvelles Données":
         with col2:
             fusion_strategy = st.selectbox(
                 "Stratégie de Fusion", 
-                ["mean", "weighted", "product", "confidence_weighted"],
+                ["weighted", "mean", "product", "confidence_weighted"],
                 help="Méthode pour combiner texte et image"
             )
     
@@ -1163,8 +851,8 @@ elif page == "🧪 Test Nouvelles Données":
         if prediction_strategy == "Multimodal (texte + image)":
             st.markdown("""
             **🔗 Multimodal** : Combine les prédictions texte (SVM) et image (XGBoost/Neural Net)
-            - **Mean** : Moyenne simple des probabilités
             - **Weighted** : Pondération fixe (60% texte, 40% image)  
+            - **Mean** : Moyenne simple des probabilités
             - **Product** : Produit des probabilités (renforce l'accord)
             - **Confidence_weighted** : Pondération selon la confiance de chaque modèle
             """)
@@ -1190,18 +878,10 @@ elif page == "🧪 Test Nouvelles Données":
         try:
             X_train_df = safe_read_csv(str(X_TRAIN_FILE))
             Y_train_df = safe_read_csv(str(Y_TRAIN_FILE))
-            
-            # DEBUG : Analyser le problème available_indices
-            st.write("🔍 **Debug - Analyse des indices**")
-            st.write(f"Pipeline preprocessed_data existe: {pipeline.preprocessed_data is not None}")
-            
-            if pipeline.preprocessed_data:
-                st.write(f"Clés disponibles: {list(pipeline.preprocessed_data.keys())}")
-                
+                        
+            if pipeline.preprocessed_data:                
                 if 'test_split_indices' in pipeline.preprocessed_data:
                     test_split_indices = pipeline.preprocessed_data['test_split_indices']
-                    st.write(f"Test split indices trouvés: {len(test_split_indices)} éléments")
-                    st.write(f"Premiers indices: {test_split_indices[:5] if len(test_split_indices) > 0 else 'VIDE!'}")
                 else:
                     st.warning("⚠️ 'test_split_indices' non trouvé dans preprocessed_data")
                     test_split_indices = None
@@ -1209,8 +889,6 @@ elif page == "🧪 Test Nouvelles Données":
                 st.error("❌ pipeline.preprocessed_data est None")
                 test_split_indices = None
             
-            st.write(f"X_train_df shape: {len(X_train_df)}, index min-max: {X_train_df.index.min()}-{X_train_df.index.max()}")
-            st.write(f"Y_train_df shape: {len(Y_train_df)}, index min-max: {Y_train_df.index.min()}-{Y_train_df.index.max()}")
             
             # Fallback si pas de test_split_indices
             if test_split_indices is None or len(test_split_indices) == 0:
@@ -1221,7 +899,6 @@ elif page == "🧪 Test Nouvelles Données":
             
             # Intersection avec les DataFrames
             available_indices = [idx for idx in test_split_indices if idx in X_train_df.index and idx in Y_train_df.index]
-            st.write(f"Indices valides (intersection): {len(available_indices)} sur {len(test_split_indices)}")
             
             # Vérifier qu'on a des indices disponibles
             if len(available_indices) == 0:
@@ -1230,7 +907,6 @@ elif page == "🧪 Test Nouvelles Données":
                 available_indices = X_train_df.index.tolist()[:100]
             
             sample_idx = np.random.choice(available_indices)
-            st.write(f"✅ Index sélectionné: {sample_idx}")
             
             row = X_train_df.loc[sample_idx]
             label = Y_train_df.loc[sample_idx]
@@ -1239,13 +915,8 @@ elif page == "🧪 Test Nouvelles Données":
             image_file = f"image_{row['imageid']}_product_{row['productid']}.jpg"
             image_path = TRAIN_IMAGES_DIR / image_file
             
-            st.write(f"Image cherchée: {image_file}")
-            st.write(f"Chemin complet: {image_path}")
-            st.write(f"Image existe: {image_path.exists()}")
-            st.write(f"Longueur texte: {len(text)}")
-            
             if image_path.exists() and len(text) > 10:
-                st.success("✅ Exemple test_split créé avec succès")
+                # st.success("✅ Exemple test_split créé avec succès")
                 return {
                     'text': text,
                     'image_path': str(image_path),
@@ -1554,7 +1225,11 @@ elif page == "🧪 Test Nouvelles Données":
                     pipeline.load_text_model('SVM')
                     text_input_clean = str(text_input).strip()
                     
-                    predicted_class, probabilities = pipeline.predict_text_single(text_input_clean)
+                    # predicted_class, probabilities = pipeline.predict_text_single(text_input_clean)
+                    predictions, probabilities = pipeline.predict_text([text_input_clean])
+                    predicted_class = predictions[0]
+                    probabilities = probabilities[0]
+
                     predicted_class_name = pipeline.category_names[predicted_class]
                     
                     results = {
@@ -1618,8 +1293,8 @@ elif page == "🧪 Test Nouvelles Données":
                 
                 # Gestion des noms de classe selon la stratégie
                 if prediction_strategy == "Texte seul":
-                    # Pour SVM, les indices correspondent directement aux codes de catégorie
-                    top_classes = [pipeline.category_names[code] for code in top_indices if code in pipeline.category_names]
+                    top_classes = [pipeline.category_names[pipeline.idx_to_category[idx]] for idx in top_indices]
+                    
                 elif prediction_strategy == "Image seule":
                     # Pour les modèles image, convertir via idx_to_category si nécessaire
                     if hasattr(pipeline, 'idx_to_category'):

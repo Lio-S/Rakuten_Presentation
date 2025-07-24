@@ -449,67 +449,9 @@ class ProductClassificationPipeline:
             y_test_split_npz.close()
             test_split_indices_npz.close()
             
-            # Extraction robuste des features
-            def extract_features_safe(data, data_name=""):
-                """Extrait les features des données selon leur format - version sécurisée"""
-                self.logger.info(f"Extraction de {data_name}: type={type(data)}, shape={getattr(data, 'shape', 'N/A')}")
-                
-                try:
-                    # Cas 1: Dictionnaire direct
-                    if isinstance(data, dict):
-                        if 'features' in data:
-                            self.logger.info(f"  → Extraction via clé 'features'")
-                            return data['features']
-                        else:
-                            self.logger.info(f"  → Dictionnaire sans 'features', clés: {list(data.keys())}")
-                            return data
-                    
-                    # Cas 2: Array 0D contenant un objet (ATTENTION au .item())
-                    elif isinstance(data, np.ndarray) and data.shape == ():
-                        try:
-                            item = data.item()
-                            self.logger.info(f"  → Array 0D converti, type de l'item: {type(item)}")
-                            
-                            if isinstance(item, dict) and 'features' in item:
-                                self.logger.info(f"  → Extraction via clé 'features' de l'item")
-                                return item['features']
-                            else:
-                                return item
-                        except ValueError as e:
-                            self.logger.warning(f"  → Échec .item(): {e}, retour direct")
-                            return data
-                    
-                    # Cas 3: Array numpy classique
-                    elif isinstance(data, np.ndarray):
-                        if data.ndim >= 2:  # Array 2D ou plus = probablement les features directement
-                            self.logger.info(f"  → Array {data.ndim}D, utilisation directe")
-                            return data
-                        else:
-                            self.logger.info(f"  → Array 1D, tentative de reshape")
-                            return data
-                    
-                    # Cas 4: Autres types
-                    else:
-                        self.logger.info(f"  → Type non géré spécifiquement, retour direct")
-                        return data
-                        
-                except Exception as e:
-                    self.logger.error(f"  → Erreur extraction {data_name}: {e}")
-                    return data
-            
-            # Application de l'extraction sécurisée
-            self.logger.info("=== EXTRACTION DES FEATURES ===")
-            X_train = extract_features_safe(X_train, "X_train")
-            X_test = extract_features_safe(X_test, "X_test")
-            X_test_split = extract_features_safe(X_test_split, "X_test_split")
-            
-            # Log des informations finales
-            self.logger.info("=== RÉSULTATS FINAUX ===")
-            self.logger.info(f"X_train: {type(X_train)} shape={getattr(X_train, 'shape', 'N/A')}")
-            self.logger.info(f"y_train: {type(y_train)} shape={getattr(y_train, 'shape', 'N/A')}")
-            self.logger.info(f"X_test: {type(X_test)} shape={getattr(X_test, 'shape', 'N/A')}")
-            self.logger.info(f"X_test_split: {type(X_test_split)} shape={getattr(X_test_split, 'shape', 'N/A')}")
-            self.logger.info(f"y_test_split: {type(y_test_split)} shape={getattr(y_test_split, 'shape', 'N/A')}")
+            X_train = X_train.item()['features']
+            X_test = X_test.item()['features']
+            X_test_split = X_test_split.item()['features']
             
             # Vérifications supplémentaires
             if hasattr(X_train, 'shape') and len(X_train.shape) == 0:
@@ -543,154 +485,6 @@ class ProductClassificationPipeline:
                         self.logger.error(f"  {name}: erreur lecture={e2}")
             raise         
 
-    def _load_existing_processed_data_streamlit(self, required_files):
-        """
-        Version simplifiée pour Streamlit - Charge seulement les données nécessaires pour l'inférence
-        
-        Args:
-            required_files: Dictionnaire des chemins vers les fichiers
-            
-        Returns:
-            dict: Données prétraitées minimales pour Streamlit
-        """
-        try:
-            preprocessed_data = {}
-            
-            # 1) Données de test split (nécessaires pour évaluations et exemples)
-            try:
-                X_test_split_npz = np.load(required_files['X_test_split'], allow_pickle=True)
-                y_test_split_npz = np.load(required_files['y_test_split'], allow_pickle=True)
-                test_split_indices_npz = np.load(required_files['test_split_indices'], allow_pickle=True)
-                
-                X_test_split = X_test_split_npz['X_test_split'] if 'X_test_split' in X_test_split_npz.files else X_test_split_npz['arr_0']
-                y_test_split = y_test_split_npz['y_test_split'] if 'y_test_split' in y_test_split_npz.files else y_test_split_npz['arr_0']
-                test_split_indices = test_split_indices_npz['test_split_indices'] if 'test_split_indices' in test_split_indices_npz.files else test_split_indices_npz['arr_0']
-                
-                # Fermeture des fichiers npz
-                X_test_split_npz.close()
-                y_test_split_npz.close()
-                test_split_indices_npz.close()
-                
-                preprocessed_data.update({
-                    'X_test_split': X_test_split,
-                    'y_test_split': y_test_split,
-                    'test_split_indices': test_split_indices
-                })
-                self.logger.info("✅ Données test_split chargées")
-                
-            except Exception as e:
-                self.logger.warning(f"⚠️ Impossible de charger test_split: {e}")
-            
-            # 2) Données de test challenge (optionnel - pour visualisations)
-            try:
-                X_test = np.load(required_files['X_test'], allow_pickle=True)['arr_0']
-                preprocessed_data['X_test'] = X_test
-                self.logger.info("✅ Données X_test chargées")
-                
-            except Exception as e:
-                self.logger.warning(f"⚠️ X_test non disponible: {e}")
-            
-            # 3) Données d'entraînement (optionnel - seulement si nécessaires pour certaines méthodes)
-            load_train_data = False  # Flag pour activer si nécessaire
-            
-            if load_train_data:
-                try:
-                    X_train = np.load(required_files['X_train'], allow_pickle=True)['arr_0']
-                    y_train = np.load(required_files['y_train'], allow_pickle=True)['arr_0']
-                    train_indices = np.load(required_files['train_indices'], allow_pickle=True)['arr_0']
-                    
-                    preprocessed_data.update({
-                        'X_train': X_train,
-                        'y_train': y_train,
-                        'train_indices': train_indices
-                    })
-                    self.logger.info("✅ Données d'entraînement chargées")
-                    
-                except Exception as e:
-                    self.logger.warning(f"⚠️ Données d'entraînement non disponibles: {e}")
-            
-            # Vérification minimale
-            if not preprocessed_data:
-                raise ValueError("Aucune donnée n'a pu être chargée")
-            
-            self.logger.info(f"📊 Données chargées: {list(preprocessed_data.keys())}")
-            return preprocessed_data
-            
-        except Exception as e:
-            self.logger.error(f"❌ Erreur chargement données Streamlit: {str(e)}")
-            raise
-
-    # Version encore plus minimale si on veut juste l'inférence
-    def _load_minimal_data_for_inference(self):
-        """
-        Version ultra-minimale - charge seulement ce qui est absolument nécessaire
-        pour faire de l'inférence sur nouvelles données
-        """
-        try:
-            # Juste les indices pour cohérence (si nécessaire)
-            features_dir = os.path.join(self.config.data_path, 'processed_data')
-            test_split_indices_path = os.path.join(features_dir, 'test_split_indices.npz')
-            
-            preprocessed_data = {}
-            
-            if os.path.exists(test_split_indices_path):
-                test_split_indices = np.load(test_split_indices_path, allow_pickle=True)['arr_0']
-                preprocessed_data['test_split_indices'] = test_split_indices
-                self.logger.info(f"✅ Indices chargés: {len(test_split_indices)} éléments")
-            
-            return preprocessed_data
-            
-        except Exception as e:
-            self.logger.error(f"❌ Erreur chargement minimal: {str(e)}")
-            return {}
-
-    # Mise à jour de prepare_data() pour Streamlit
-    def prepare_data_streamlit(self, force_preprocess_image=False, force_preprocess_text=False):
-        """
-        Version Streamlit de prepare_data() - Optimisée pour l'inférence
-        
-        Args:
-            force_preprocess_image: Si True, force le prétraitement (pas recommandé en prod)
-            force_preprocess_text: Si True, force le prétraitement texte (pas recommandé en prod)
-        """
-        try:
-            # 1) Vérifier les fichiers de données pré-traitées
-            features_dir = os.path.join(self.config.data_path, 'processed_data')
-            required_files = {
-                'X_test_split': os.path.join(features_dir, 'X_test_split.npz'),
-                'y_test_split': os.path.join(features_dir, 'y_test_split.npz'),
-                'test_split_indices': os.path.join(features_dir, 'test_split_indices.npz'),
-                'X_test': os.path.join(features_dir, 'X_test.npz'),
-            }
-            
-            # 2) Charger les données existantes (mode normal)
-            if not force_preprocess_image:
-                self.logger.info("📁 Chargement des données pré-traitées...")
-                self.preprocessed_data = self._load_existing_processed_data_streamlit(required_files)
-                self.logger.info("✅ Données chargées pour Streamlit")
-            else:
-                # Mode développement - retraitement complet (à éviter en production)
-                self.logger.warning("🔄 Mode retraitement activé - peut être lent...")
-                return self.prepare_data(
-                    balance_classes=True,
-                    force_preprocess_image=True,
-                    force_preprocess_text=force_preprocess_text
-                )
-            
-            # 3) Vérifier la disponibilité du modèle texte
-            if force_preprocess_text:
-                self.logger.info("🔄 Vérification du modèle texte...")
-                svm_path = 'data/models/SVM/model.pkl'
-                if not os.path.exists(svm_path):
-                    self.logger.warning("⚠️ Modèle SVM non trouvé - entraînement nécessaire")
-                    # Ici on pourrait déclencher un entraînement ou retourner une erreur
-            
-            return self.preprocessed_data
-            
-        except Exception as e:
-            self.logger.error(f"❌ Erreur préparation données Streamlit: {str(e)}")
-            raise
-        
     def prepare_data(self, balance_classes=True, force_preprocess_image=False, force_preprocess_text=False):
         """
         Prépare les données
@@ -1826,69 +1620,6 @@ class ProductClassificationPipeline:
             self.logger.error(f"Erreur lors du prétraitement: {str(e)}")
             raise
 
-    def predict_multimodal(self, text_input, image_path, fusion_strategy='mean'):
-        """
-        Effectue une prédiction multimodale sur un nouvel exemple
-        
-        Args:
-            text_input (str): Texte d'entrée
-            image_path (str): Chemin vers l'image
-            fusion_strategy (str): Stratégie de fusion ('mean', 'product', 'weighted')
-            
-        Returns:
-            dict: Résultats de prédiction {
-                'predicted_class': int,
-                'predicted_class_name': str,
-                'probabilities': np.array,
-                'text_prediction': int,
-                'image_prediction': int
-            }
-        """
-        try:
-            # 1. Prétraiter l'exemple
-            features = self.process_new_input(text_input, image_path)
-            
-            # 2. Prédictions individuelles
-            # Modèle texte
-            if not hasattr(self, 'text_model') or self.text_model is None:
-                import joblib
-                self.text_model = joblib.load('data/models/SVM/model.pkl')
-            
-            text_pred = self.text_model.predict(features['text_features'])
-            text_probs = self.text_model.predict_proba(features['text_features'])
-            
-            # Modèle image
-            image_pred, image_probs = self.predict(features['image_features'])
-            
-            # S'assurer que les probabilités ont la même forme
-            if text_probs.shape != image_probs.shape:
-                self.logger.warning(f"Dimensions des probabilités texte ({text_probs.shape}) et image ({image_probs.shape}) différentes.")
-                # Étendre ou réduire si nécessaire
-                if len(text_probs.shape) > len(image_probs.shape):
-                    image_probs = image_probs.reshape(text_probs.shape)
-                else:
-                    text_probs = text_probs.reshape(image_probs.shape)
-            
-            # 3. Fusion des prédictions
-            fused_probs = self.fuse_predictions(text_probs, image_probs, strategy=fusion_strategy)
-            
-            # 4. Prédiction finale
-            predicted_idx = np.argmax(fused_probs, axis=1)[0]
-            predicted_class = self.idx_to_category[predicted_idx]
-            predicted_class_name = self.category_names[predicted_class]
-            
-            return {
-                'predicted_class': int(predicted_class),
-                'predicted_class_name': predicted_class_name,
-                'probabilities': fused_probs[0],
-                'text_prediction': int(text_pred[0]),
-                'image_prediction': int(image_pred[0]) if isinstance(image_pred, np.ndarray) else int(image_pred)
-            }
-        
-        except Exception as e:
-            self.logger.error(f"Erreur lors de la prédiction multimodale: {str(e)}")
-            raise
-
     def get_model_explanations(self, text_input, image_path, fusion_strategy='mean'):
         """
         Génère des explications SHAP pour une prédiction multimodale (Version corrigée)
@@ -2149,44 +1880,10 @@ class ProductClassificationPipeline:
         
         return indices_dict
                 
-    def predict_text_single(self, text_input):
-        """
-        Prédiction texte pour un seul échantillon (usage Streamlit)
-        
-        Args:
-            text_input (str): Texte à classifier
-            
-        Returns:
-            tuple: (prediction, probabilities)
-        """
-        try:
-            if not hasattr(self, 'text_model') or self.text_model is None:
-                raise ValueError("Modèle texte non chargé. Appelez load_text_model() d'abord.")
-            
-            # S'assurer que l'entrée est une string
-            if isinstance(text_input, list):
-                text_input = text_input[0]
-            text_input = str(text_input).strip()
-            
-            if len(text_input) == 0:
-                raise ValueError("Le texte d'entrée est vide")
-            
-            # Prédiction directe avec le modèle SVM
-            predictions = self.text_model.predict([text_input])
-            probabilities = self.text_model.predict_proba([text_input])
-            
-            self.logger.info(f"Prédiction texte: {predictions[0]}, confiance: {np.max(probabilities[0]):.3f}")
-            
-            return predictions[0], probabilities[0]
-            
-        except Exception as e:
-            self.logger.error(f"Erreur prédiction texte single: {e}")
-            raise
-
     def process_single_input(self, text_input=None, image_path=None):
         """
-        Prétraite une entrée unique (texte et/ou image) pour prédiction
-        Version améliorée qui gère texte seul, image seule, ou multimodal
+        Prétraite une entrée unique (texte et/ou image) pour prédiction,
+        gère texte seul, image seule, ou multimodal
         
         Args:
             text_input (str, optional): Texte d'entrée
@@ -2264,46 +1961,50 @@ class ProductClassificationPipeline:
             raise
 
     def predict_multimodal(self, text_input, image_path, fusion_strategy='mean'):
-        """
-        Effectue une prédiction multimodale sur un nouvel exemple
-        Version corrigée utilisant les nouvelles fonctions robustes
-        
-        Args:
-            text_input (str): Texte d'entrée
-            image_path (str): Chemin vers l'image
-            fusion_strategy (str): Stratégie de fusion ('mean', 'product', 'weighted')
+            """
+            Effectue une prédiction multimodale sur un nouvel exemple
+            Version simplifiée utilisant les fonctions existantes
             
-        Returns:
-            dict: Résultats de prédiction
-        """
-        try:
-            self.logger.info(f"Prédiction multimodale: {fusion_strategy}")
-            
-            # 1. Prétraiter l'exemple avec la nouvelle fonction robuste
-            features = self.process_single_input(text_input, image_path)
-            
-            # 2. Prédictions individuelles
-            
-            # Modèle texte
-            if 'text_features' in features:
-                if not hasattr(self, 'text_model') or self.text_model is None:
-                    import joblib
-                    self.text_model = joblib.load('data/models/SVM/model.pkl')
+            Args:
+                text_input (str): Texte d'entrée
+                image_path (str): Chemin vers l'image
+                fusion_strategy (str): Stratégie de fusion ('mean', 'product', 'weighted')
                 
-                text_pred = self.text_model.predict(features['text_features'])
-                text_probs = self.text_model.predict_proba(features['text_features'])
+            Returns:
+                dict: Résultats de prédiction
+            """
+            try:
+                self.logger.info(f"Prédiction multimodale: {fusion_strategy}")
                 
-                # Pour SVM, les prédictions sont directement les codes de catégorie
+                # 1. Prédiction texte avec la fonction existante
+                text_pred, text_probs = self.predict_text([text_input])
                 text_prediction = text_pred[0]
                 text_probabilities = text_probs[0]
-            else:
-                raise ValueError("Features texte non disponibles")
-            
-            # Modèle image
-            if 'image_features' in features:
-                image_pred, image_probs = self.predict(features['image_features'])
                 
-                # Pour les modèles image, convertir l'indice vers code de catégorie
+                # 2. Prédiction image
+                # Extraire les features de l'image avec ResNet
+                # Créer un dataset d'une seule image
+                single_dataset = RakutenImageDataset([str(image_path)])
+                
+                # Extraire les features via ResNet
+                resnet = resnet50(weights=ResNet50_Weights.IMAGENET1K_V2)
+                resnet.fc = nn.Identity()
+                resnet = resnet.to(self.device)
+                resnet.eval()
+                
+                # DataLoader pour un seul élément
+                dataloader = DataLoader(single_dataset, batch_size=1, num_workers=0, pin_memory=False)
+                
+                # Extraire les features
+                with torch.no_grad():
+                    for batch in dataloader:
+                        inputs = batch.to(self.device)
+                        image_features = resnet(inputs).cpu().numpy()
+                        break
+                
+                # Prédiction avec le modèle image
+                image_pred, image_probs = self.predict(image_features)
+                
                 if isinstance(image_pred, np.ndarray):
                     image_prediction = image_pred[0]
                 else:
@@ -2313,52 +2014,48 @@ class ProductClassificationPipeline:
                     image_probabilities = image_probs[0]
                 else:
                     image_probabilities = image_probs
-            else:
-                raise ValueError("Features image non disponibles")
-            
-            # 3. S'assurer que les probabilités ont la même forme
-            if text_probabilities.shape != image_probabilities.shape:
-                self.logger.warning(f"Dimensions des probabilités différentes: texte {text_probabilities.shape}, image {image_probabilities.shape}")
-                # Adapter si nécessaire - généralement, elles devraient avoir la même taille (27 classes)
-                min_size = min(len(text_probabilities), len(image_probabilities))
-                text_probabilities = text_probabilities[:min_size]
-                image_probabilities = image_probabilities[:min_size]
-            
-            # 4. Fusion des prédictions
-            fused_probs = self.fuse_predictions(
-                text_probabilities.reshape(1, -1), 
-                image_probabilities.reshape(1, -1), 
-                strategy=fusion_strategy
-            )
-            
-            # 5. Prédiction finale
-            predicted_idx = np.argmax(fused_probs, axis=1)[0]
-            
-            # Convertir l'indice en code de catégorie
-            if hasattr(self, 'idx_to_category') and predicted_idx in self.idx_to_category:
-                predicted_class = self.idx_to_category[predicted_idx]
-            else:
-                # Si pas de mapping, supposer que l'indice EST le code
-                predicted_class = predicted_idx
                 
-            predicted_class_name = self.category_names.get(predicted_class, f"Unknown_{predicted_class}")
+                # 3. Vérifier que les probabilités ont la même forme
+                if text_probabilities.shape != image_probabilities.shape:
+                    self.logger.warning(f"Dimensions différentes: texte {text_probabilities.shape}, image {image_probabilities.shape}")
+                    min_size = min(len(text_probabilities), len(image_probabilities))
+                    text_probabilities = text_probabilities[:min_size]
+                    image_probabilities = image_probabilities[:min_size]
+                
+                # 4. Fusion des prédictions
+                fused_probs = self.fuse_predictions(
+                    text_probabilities.reshape(1, -1), 
+                    image_probabilities.reshape(1, -1), 
+                    strategy=fusion_strategy
+                )
+                
+                # 5. Prédiction finale
+                predicted_idx = np.argmax(fused_probs, axis=1)[0]
+                
+                # Convertir l'indice en code de catégorie
+                if hasattr(self, 'idx_to_category') and predicted_idx in self.idx_to_category:
+                    predicted_class = self.idx_to_category[predicted_idx]
+                else:
+                    predicted_class = predicted_idx
+                    
+                predicted_class_name = self.category_names.get(predicted_class, f"Unknown_{predicted_class}")
+                
+                results = {
+                    'predicted_class': int(predicted_class),
+                    'predicted_class_name': predicted_class_name,
+                    'probabilities': fused_probs[0],
+                    'text_prediction': int(text_prediction),
+                    'image_prediction': int(image_prediction),
+                    'confidence': float(np.max(fused_probs))
+                }
+                
+                self.logger.info(f"Prédiction multimodale terminée: {predicted_class_name} (confiance: {results['confidence']:.3f})")
+                return results
+                
+            except Exception as e:
+                self.logger.error(f"Erreur prédiction multimodale: {str(e)}")
+                raise
             
-            results = {
-                'predicted_class': int(predicted_class),
-                'predicted_class_name': predicted_class_name,
-                'probabilities': fused_probs[0],
-                'text_prediction': int(text_prediction),
-                'image_prediction': int(image_prediction),
-                'confidence': float(np.max(fused_probs))
-            }
-            
-            self.logger.info(f"Prédiction multimodale terminée: {predicted_class_name} (confiance: {results['confidence']:.3f})")
-            return results
-            
-        except Exception as e:
-            self.logger.error(f"Erreur prédiction multimodale: {str(e)}")
-            raise
-
 class NeuralClassifier(nn.Module):
     def __init__(self, num_classes, config=None):
         super().__init__()
