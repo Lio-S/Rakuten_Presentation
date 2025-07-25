@@ -1352,6 +1352,37 @@ elif page == "🧪 Test Nouvelles Données":
         else:
             st.warning("⚠️ Veuillez saisir un texte ET sélectionner une image pour activer la classification")
 
+    if st.button("🔍 Debug - Afficher arborescence"):
+        st.write("📁 **Arborescence des fichiers:**")
+        
+        # Racine
+        st.write(f"Répertoire courant: {Path.cwd()}")
+        
+        # Dossier data
+        if DATA_DIR.exists():
+            st.write(f"✅ {DATA_DIR} existe")
+            st.write("Contenu data/:")
+            for item in DATA_DIR.iterdir():
+                st.write(f"  - {item.name} ({'DIR' if item.is_dir() else 'FILE'})")
+        
+        # Dossier images
+        if IMAGES_DIR.exists():
+            st.write(f"✅ {IMAGES_DIR} existe")
+            st.write("Contenu data/images/:")
+            for item in IMAGES_DIR.iterdir():
+                st.write(f"  - {item.name} ({'DIR' if item.is_dir() else 'FILE'})")
+        
+        # Dossier image_train
+        if TRAIN_IMAGES_DIR.exists():
+            st.write(f"✅ {TRAIN_IMAGES_DIR} existe")
+            files = list(TRAIN_IMAGES_DIR.glob("*.jpg"))
+            st.write(f"Images .jpg trouvées: {len(files)}")
+            if files:
+                st.write("Premiers fichiers:")
+                for f in files[:10]:
+                    st.write(f"  - {f.name}")
+        else:
+            st.write(f"❌ {TRAIN_IMAGES_DIR} n'existe pas")
 # ==================== PAGE EXPLICABILITÉ ====================
 elif page == "🎯 Explicabilité":
     st.title("🎯 Explicabilité des Modèles")
