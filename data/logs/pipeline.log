@@ -1528,3 +1528,8 @@ AttributeError: 'numpy.ndarray' object has no attribute 'lower'
 2025-07-24 15:14:23,829 - classification_pipeline - INFO - Prédiction multimodale: weighted
 2025-07-24 15:14:24,307 - classification_pipeline - INFO - Prédiction avec modèle ML
 2025-07-24 15:14:24,320 - classification_pipeline - INFO - Prédiction multimodale terminée: Livres neufs (confiance: 0.975)
+2025-07-25 11:07:37,730 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-25 11:07:40,508 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-25 11:07:40,797 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-07-25 11:07:40,922 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
+2025-07-25 11:07:41,516 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès

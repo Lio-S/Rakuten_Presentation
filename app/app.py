@@ -1383,6 +1383,18 @@ elif page == "🧪 Test Nouvelles Données":
                     st.write(f"  - {f.name}")
         else:
             st.write(f"❌ {TRAIN_IMAGES_DIR} n'existe pas")
+        
+        # Dossier image_test
+        if TEST_IMAGES_DIR.exists():
+            st.write(f"✅ {TEST_IMAGES_DIR} existe")
+            files = list(TEST_IMAGES_DIR.glob("*.jpg"))
+            st.write(f"Images .jpg trouvées: {len(files)}")
+            if files:
+                st.write("Premiers fichiers:")
+                for f in files[:10]:
+                    st.write(f"  - {f.name}")
+        else:
+            st.write(f"❌ {TEST_IMAGES_DIR} n'existe pas")
 # ==================== PAGE EXPLICABILITÉ ====================
 elif page == "🎯 Explicabilité":
     st.title("🎯 Explicabilité des Modèles")
