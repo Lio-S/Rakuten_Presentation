@@ -199,7 +199,7 @@ class ProductClassificationPipeline:
         import zipfile
         import shutil
         
-        url = "https://drive.google.com/file/d/1guhuHp0dVRPWCtZ7570jEsTub6m2RrRF/view?usp=sharing"
+        url = "https://drive.google.com/drive/folders/1PbT3OlPIJUJcRUIx8J5YtAd0maAu_OWI?usp=sharing"
         fichier_zip = "Preprocessed_data.zip"
         dossier_donnees_pretraitees = PROCESSED_DATA_DIR
         

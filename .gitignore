@@ -4,3 +4,4 @@
 **/images/**
 *.npz
 **/temp_uploads/** 
+**/.venv/**
