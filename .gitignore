@@ -1,7 +1,8 @@
 /Raw_data/
 **/.ipynb_checkpoints/**
 **/__pycache__/**
-**/images/**
+**/images/image_test/**
+**/images/image_train/**
 *.npz
 **/temp_uploads/** 
 **/.venv/**
