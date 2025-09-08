@@ -1528,8 +1528,80 @@ AttributeError: 'numpy.ndarray' object has no attribute 'lower'
 2025-07-24 15:14:23,829 - classification_pipeline - INFO - Prédiction multimodale: weighted
 2025-07-24 15:14:24,307 - classification_pipeline - INFO - Prédiction avec modèle ML
 2025-07-24 15:14:24,320 - classification_pipeline - INFO - Prédiction multimodale terminée: Livres neufs (confiance: 0.975)
-2025-07-25 11:07:37,730 - classification_pipeline - INFO - Chargement des features pré-calculées...
-2025-07-25 11:07:40,508 - classification_pipeline - INFO - Chargement effectué avec succès.
-2025-07-25 11:07:40,797 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
-2025-07-25 11:07:40,922 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
-2025-07-25 11:07:41,516 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-07-24 14:16:26,672 - classification_pipeline - INFO - 📥 Fichiers .npz manquants - Téléchargement automatique...
+2025-07-24 14:16:26,887 - classification_pipeline - INFO - 📥 Téléchargement des données préprocessées...
+2025-07-24 14:16:39,205 - classification_pipeline - INFO - 📂 Extraction des données...
+2025-07-24 14:16:44,861 - classification_pipeline - INFO - ✅ Données téléchargées et extraites avec succès
+2025-07-24 14:16:46,369 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-07-24 14:16:48,692 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-07-24 14:16:56,336 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/xgboost
+2025-07-24 14:16:48,766 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/neural_net
+2025-07-24 14:16:50,568 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-08-24 21:09:28,460 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-08-24 21:09:31,774 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-08-24 21:13:20,038 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-08-24 21:13:28,010 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-08-24 21:13:28,594 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/xgboost
+2025-08-24 21:13:28,776 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/neural_net
+2025-08-24 21:13:29,482 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-08-24 21:32:25,169 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-08-24 21:32:29,079 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-08-24 21:32:29,624 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/xgboost
+2025-08-24 21:32:29,777 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/neural_net
+2025-08-24 21:32:31,436 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-08-29 22:46:37,170 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-08-29 22:46:41,356 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-08-29 22:46:42,596 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/xgboost
+2025-08-29 22:46:42,827 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/neural_net
+2025-08-29 22:46:44,034 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-08-31 16:06:54,232 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-08-31 16:06:57,610 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-08-31 16:06:57,916 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/xgboost
+2025-08-31 16:06:58,022 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/neural_net
+2025-08-31 16:06:58,603 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-08-31 16:33:39,195 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/xgboost
+2025-08-31 16:33:39,831 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-08-31 16:33:39,831 - classification_pipeline - INFO - Prédiction multimodale: weighted
+2025-08-31 16:33:42,140 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-08-31 16:33:42,155 - classification_pipeline - INFO - Prédiction multimodale terminée: Mobilier (confiance: 0.925)
+2025-08-31 16:35:09,774 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/xgboost
+2025-08-31 16:35:10,233 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-08-31 16:35:10,233 - classification_pipeline - INFO - Prédiction multimodale: weighted
+2025-08-31 16:35:10,762 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-08-31 16:35:10,773 - classification_pipeline - INFO - Prédiction multimodale terminée: Mobilier (confiance: 0.925)
+2025-08-31 16:35:32,700 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/xgboost
+2025-08-31 16:35:32,700 - classification_pipeline - INFO - Prétraitement entrée unique - Texte: Non, Image: Oui
+2025-08-31 16:35:33,061 - classification_pipeline - INFO - Features image extraites: (1, 2048)
+2025-08-31 16:35:33,061 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['image_features']
+2025-08-31 16:35:33,062 - classification_pipeline - INFO - Prédiction avec modèle ML
+2025-08-31 16:36:18,758 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/neural_net
+2025-08-31 16:36:18,759 - classification_pipeline - INFO - Prétraitement entrée unique - Texte: Non, Image: Oui
+2025-08-31 16:36:19,331 - classification_pipeline - INFO - Features image extraites: (1, 2048)
+2025-08-31 16:36:19,331 - classification_pipeline - INFO - Prétraitement terminé. Modalités: ['image_features']
+2025-09-07 23:15:20,837 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-09-07 23:15:23,317 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-09-07 23:15:24,747 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/xgboost
+2025-09-07 23:15:25,100 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/neural_net
+2025-09-07 23:15:25,976 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-09-08 10:12:01,019 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-09-08 10:12:06,552 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-09-08 10:12:07,633 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/xgboost
+2025-09-08 10:12:07,959 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/neural_net
+2025-09-08 10:12:08,972 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
+2025-09-08 10:41:40,821 - classification_pipeline - INFO - Génération des explications simplifiées...
+2025-09-08 10:41:40,822 - classification_pipeline - INFO - Prétraitement des données streamlit..
+2025-09-08 10:41:41,777 - classification_pipeline - INFO - Prétraitement du texte...
+2025-09-08 10:41:41,789 - classification_pipeline - INFO - Texte transformé avec TF-IDF: (1, 45000)
+2025-09-08 10:41:41,789 - classification_pipeline - INFO - Prétraitement terminé avec succès.
+2025-09-08 10:41:42,027 - classification_pipeline - INFO - Explications simplifiées générées avec succès
+2025-09-08 10:43:10,067 - classification_pipeline - INFO - Génération des explications simplifiées...
+2025-09-08 10:43:10,068 - classification_pipeline - INFO - Prétraitement des données streamlit..
+2025-09-08 10:43:10,832 - classification_pipeline - INFO - Prétraitement du texte...
+2025-09-08 10:43:10,834 - classification_pipeline - INFO - Texte transformé avec TF-IDF: (1, 45000)
+2025-09-08 10:43:10,834 - classification_pipeline - INFO - Prétraitement terminé avec succès.
+2025-09-08 10:43:10,911 - classification_pipeline - INFO - Explications simplifiées générées avec succès
+2025-09-08 12:13:08,817 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-09-08 12:13:12,131 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-09-08 12:13:12,481 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/xgboost
+2025-09-08 12:13:12,605 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/neural_net
+2025-09-08 12:13:13,359 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
