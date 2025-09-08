@@ -1618,3 +1618,8 @@ AttributeError: 'numpy.ndarray' object has no attribute 'lower'
 2025-09-08 12:13:12,605 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/mathieu/datascientest/Rakuten_Presentation/data/models/neural_net
 2025-09-08 12:13:13,359 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
 >>>>>>> 1b062ed841f8d7ed1edfd9a596f3fa6772d6badf
+2025-09-08 15:05:04,902 - classification_pipeline - INFO - Chargement des features pré-calculées...
+2025-09-08 15:05:07,574 - classification_pipeline - INFO - Chargement effectué avec succès.
+2025-09-08 15:05:07,832 - classification_pipeline - INFO - Modèle xgboost chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/xgboost
+2025-09-08 15:05:07,909 - classification_pipeline - INFO - Modèle neural_net chargé depuis /home/elion/DST/Rakuten-DS-main/Rakuten - Lionel/Rakuten_Presentation/data/models/neural_net
+2025-09-08 15:05:08,431 - classification_pipeline - INFO - Modèle texte SVM chargé avec succès
