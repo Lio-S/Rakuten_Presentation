@@ -6,4 +6,4 @@
 *.npz
 **/temp_uploads/** 
 **/.venv/**
-pipeline.log
+**/logs/**

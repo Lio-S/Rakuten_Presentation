@@ -335,7 +335,7 @@ def check_columns_and_get_mapping(df, expected_columns, file_type="rapport"):
                     found = True
                 elif file_type == "erreurs":
                     # Pour les fichiers d'erreurs, la confidence peut ne pas exister
-                    st.info("ℹ️ Colonne 'confidence' non disponible dans le fichier d'erreurs")
+                    # st.info("ℹ️ Colonne 'confidence' non disponible dans le fichier d'erreurs")
                     # Ne pas créer de colonne par défaut, juste ignorer
                     found = False
                 else:
@@ -455,12 +455,11 @@ if page == "🏠 Accueil":
             best_model, second_model, third_model = top3_models.iloc[0], top3_models.iloc[1], top3_models.iloc[2]
             
             st.success(f"🥇 **{best_model.name}**")
-            with st.container(horizontal=True, horizontal_alignment="center",gap="large"):
-                st.metric("F1-Score", f"{best_model['weighted_f1']:.3f}", width="content")
-                st.metric("Accuracy", f"{best_model['accuracy']:.3f}", width="content")
-        #             st.success(f"1. 🥇 **{best_model.name}**")
-        #             st.success(f"2. 🥈 **{second_model.name}**")
-        #             st.success(f"3. 🥉 **{third_model.name}**")
+            st.info(f"F1-Score: {best_model['weighted_f1']:.3f}, Accuracy:{best_model['accuracy']:.3f}")
+            st.success(f"2. 🥈 **{second_model.name}**")
+            st.info(f"F1-Score: {second_model['weighted_f1']:.3f}, Accuracy:{second_model['accuracy']:.3f}")
+            st.success(f"3. 🥉 **{third_model.name}**")
+            st.info(f"F1-Score: {third_model['weighted_f1']:.3f}, Accuracy:{third_model['accuracy']:.3f}")
         except Exception as e:
             st.info("Résultats multimodaux en cours de traitement...")
     else:
@@ -768,6 +767,15 @@ elif page == "🔗 Analyse Multimodale":
     st.title("🔗 Analyse Multimodale")
     st.markdown("---")
     
+    st.markdown("""
+    📖 **Description des stratégies: Multimodales** : Combine les prédictions texte (SVM) et image (XGBoost/Neural Net)
+    - **Weighted** : Pondération fixe (60% texte, 40% image)  
+    - **Mean** : Moyenne simple des probabilités
+    - **Product** : Produit des probabilités (renforce l'accord)
+    - **Confidence_weighted** : Pondération selon la confiance de chaque modèle
+    """)
+    
+    st.markdown("---")
     if 'multimodal' in results_data and not results_data['multimodal'].empty:
         multimodal_results: pd.DataFrame = results_data['multimodal']
         multimodal_results.index.rename(name="model", inplace=True)
